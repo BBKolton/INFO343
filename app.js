@@ -18,11 +18,11 @@ var app = express();
 // var controllers = glob.sync(path.join(config.root, 'app', 'controllers', '*.js'));
 // controllers.forEach(function assignController(controller) {
 // 	require(controller)(app);
-// });
+// }); // //
 
 
 app.get('*', function(req, res) {
-	res.send('HERP DE DERP');
+	res.send('Server functional');
 	console.log('request sent');
 })
 
