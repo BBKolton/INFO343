@@ -1,0 +1,29 @@
+{
+  "name": "INFO343.xyz",
+  "version": "0.0.0",
+  "description": "A final project for INFO 343 at the University of Washington",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bbkolton/INFO343"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/bbkolton/INFO343/issues"
+  },
+  "dependencies": {
+    "express": "~4.13.3",
+    "glob": "~6.0.1",
+    "jade": "~1.11.0",
+    "sequelize": "~3.13.0",
+    "cookie-parser": "~1.4.0",
+    "body-parser": "~1.14.1",
+    "mysql": "~2.9.0",
+    "passport": "~0.3.2",
+    "passport-uwshib": "~0.1.1"
+  }
+}
