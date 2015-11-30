@@ -1,30 +1,28 @@
-var express = require('express');
-var glob = require('glob');
-// var config = require('./config/config');
+var http = require('http'); //for rerouting during netid logins
+var https = require('https'); //for rerouting during netid logins
+var express = require('express'); //the xpress app framework
+var glob = require('glob'); //allows for globbing files by names
+var cookieParser = require('cookie-parser'); //no explanation needed
+var bodyParser = require('body-parser'); //parses json, html, etc to html
+var passport = require('passport'); //user authentication
+var shib = require('passport-uwshib'); //for shiubboleth authentication
+var db = require('./app/models'); //database connections
 var path = require('path');
-// var views = path.join(config.root, 'app', 'views');
+var config = require('./config/config');
 
 var app = express();
 
-// app.set('view engine', 'jade');
-// app.set('views', views);
+//static page index for the thing
+app.get('/', function(req, res) {
+	res.redirect('/index.html')
+});
+app.use(express.static('public'));
+app.use(express.static('public/pages'));
 
-// //static page index for the thing
-// app.get('/public/info343', function(req, res) {
-// 	res.redirect('/public/info343/index.html')
-// });
-// app.use(express.static('public'));
-
-// var controllers = glob.sync(path.join(config.root, 'app', 'controllers', '*.js'));
-// controllers.forEach(function assignController(controller) {
-// 	require(controller)(app);
-// }); // //
-
-
-app.get('*', function(req, res) {
-	res.send('Server functional');
-	console.log('request sent');
-})
+var controllers = glob.sync(path.join(config.root, 'app', 'controllers', '*.js'));
+controllers.forEach(function assignController(controller) {
+	require(controller)(app);
+}); 
 
 var server = app.listen(80, function() {
 	console.log('App running on port ' + server.address().port);
