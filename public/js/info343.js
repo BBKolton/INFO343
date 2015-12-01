@@ -2,7 +2,7 @@ var mainApp = angular.module('mainApp', ['ui.router']);
 
 mainApp.config(function($stateProvider) {
 	$stateProvider.state('home', {
-		url: '/',
+		url: '',
 		templateUrl: '../pages/home.html',
 		controller: 'homeCtrl'
 	})
