@@ -1,14 +1,23 @@
 /*css used by the whole website*/
 
 body {
-
+	font-size: 15px;
 }
 
 h1 {
-	font-size: 20px;
+	font-size: 25px;
 	padding: 1em;
+}
+
+h3 {
+	font-size: 20px;
 }
 
 #calendar, #chal-table {
 	padding: 5em;
+}
+
+#error404 {
+	max-height: 100%;
+	max-width: 100%;
 }

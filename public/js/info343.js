@@ -1,8 +1,14 @@
 var mainApp = angular.module('mainApp', ['ui.router']);
 
 mainApp.config(function($stateProvider) {
-	$stateProvider.state('home', {
+
+	$stateProvider.state('default', {
 		url: '',
+		templateUrl: '../pages/home.html',
+		controller: 'homeCtrl'
+	})
+	.state('home', {
+		url: '/',
 		templateUrl: '../pages/home.html',
 		controller: 'homeCtrl'
 	})
@@ -25,6 +31,10 @@ mainApp.config(function($stateProvider) {
 		url: '/message',
 		templateUrl: '../pages/message.html',
 		controller: 'messageCtrl'
+	}).state('error', {
+		url: '*path',
+		templateUrl: '../pages/error.html',
+		controller: 'errorCtrl'
 	})
 });
 
@@ -42,7 +52,7 @@ mainApp.controller('homeCtrl', function($scope) {
         events: [
 	        {
 	            title:  'Testing; presentations',
-	            start:  '2015-12-03T14:30:00',
+	            start:  '2015-12-03T08:30:00',
 	            allDay: false
 	        }
         	// other events here...
