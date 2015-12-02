@@ -34,6 +34,17 @@ mainApp.controller('homeCtrl', function($scope) {
 .controller('calendarCtrl', function($scope) {
     $('#calendar').fullCalendar({
         // put your options and callbacks here
+        events: [
+	        {
+	            title:  'Testing; presentations',
+	            start:  '2015-12-03T14:30:00',
+	            allDay: false
+	        }
+        	// other events here...
+        	// will likely be reading from a json file or database to input values in here
+        	// will require some function to reduce redundancy as well
+    	],
+    	timeFormat: 'h(:mm)'
     })
 })
 
