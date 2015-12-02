@@ -26,12 +26,17 @@ mainApp.config(function($stateProvider) {
 mainApp.controller('homeCtrl', function($scope) {
 
 })
+
 .controller('syllabusCtrl', function($scope) {
 
 })
-.controller('calendarCtrl', function($scope) {
 
+.controller('calendarCtrl', function($scope) {
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
 })
+
 .controller('challengesCtrl', function($scope) {
 
 });
