@@ -1,9 +1,6 @@
 <!-- SOME HTML HERE -->
 <!doctype html>
 <html lang="en" ng-app="mainApp">
-
-<h1>Make the angular app and stuff</h1>
-<html>
 	<head>
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,8 +19,8 @@
 
 		<!--font awesome-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<!--icon-->
-		<link rel="icon" href="../img/favicon.ico">
+		<!--icon, apparently is not supported by webserver for chrome. works on firefox though-->
+		<link rel="shortcut icon" href="../img/favicon.ico">
 
 		<!--link to css & js file-->
 		<link rel="stylesheet" href="../css/info343.css">
@@ -32,6 +29,8 @@
 	</head>
 
 	<body>
+		<h1>Make the angular app and stuff</h1>
+
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -39,12 +38,14 @@
 	            	<span class="icon-bar"></span>
 	            	<span class="icon-bar"></span>
 	            </button>
+
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<li><a ui-sref="home"><i class="fa fa-home"></i></a></li>
+						<li><a ui-sref="home"><i class="fa fa-home fa-lg"></i></a></li>
 						<li><a ui-sref="syllabus">Syllabus</a></li>
 						<li><a ui-sref="calendar">Calendar</a></li>
 						<li><a ui-sref="challenges">Challenges</a></li>
+						<li><a ui-sref="message">Message</a></li>
 					</ul>
 				</div>
 			</div>

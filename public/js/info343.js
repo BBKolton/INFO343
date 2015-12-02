@@ -21,6 +21,11 @@ mainApp.config(function($stateProvider) {
 		templateUrl: '../pages/challenges.html',
 		controller: 'challengesCtrl'
 	})
+	.state('message', {
+		url: '/message',
+		templateUrl: '../pages/message.html',
+		controller: 'messageCtrl'
+	})
 });
 
 mainApp.controller('homeCtrl', function($scope) {
@@ -49,5 +54,9 @@ mainApp.controller('homeCtrl', function($scope) {
 })
 
 .controller('challengesCtrl', function($scope) {
+
+})
+
+.controller('messageCtrl', function($scope) {
 
 });

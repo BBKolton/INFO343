@@ -1,8 +1,14 @@
 /*css used by the whole website*/
-h1 {
-	font-size: 16px;
+
+body {
+
 }
 
-#calendar {
+h1 {
+	font-size: 20px;
+	padding: 1em;
+}
+
+#calendar, #chal-table {
 	padding: 5em;
 }
