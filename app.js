@@ -16,7 +16,7 @@ var app = express();
 
 
 //authentication for UWNetID
-var loginURL = '/login';
+var loginURL = '/shib';
 var loginCallbackURL = '/login/callback';
 var httpPort = process.env.HTTPPORT || 80;
 var httpsPort = process.env.HTTPSPORT || 443;
