@@ -41,7 +41,7 @@ mainApp.config(function($stateProvider) {
 mainApp.controller('homeCtrl', function($scope) {
 	var weekView = calendarFeature();
 	weekView.fullCalendar('changeView', 'basicWeek');
-	weekView.fullCalendar({height: 200});
+	weekView.fullCalendar('option', 'height', 222);
 	//.fullCalendar({height: 650});
 })
 
