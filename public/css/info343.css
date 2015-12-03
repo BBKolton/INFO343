@@ -13,11 +13,19 @@ h3 {
 	font-size: 20px;
 }
 
-#calendar, #chal-table {
+.calendar, #chal-table {
 	padding: 5em;
 }
 
 #error404 {
 	max-height: 100%;
 	max-width: 100%;
+}
+
+/*#week, .fc-widget-content, element.style {
+	height: 50px;
+}*/
+
+.fc-agenda-slots td div {
+     height: 40px !important;
 }

@@ -39,7 +39,10 @@ mainApp.config(function($stateProvider) {
 });
 
 mainApp.controller('homeCtrl', function($scope) {
-
+	var weekView = calendarFeature();
+	weekView.fullCalendar('changeView', 'basicWeek');
+	weekView.fullCalendar({height: 200});
+	//.fullCalendar({height: 650});
 })
 
 .controller('syllabusCtrl', function($scope) {
@@ -47,7 +50,19 @@ mainApp.controller('homeCtrl', function($scope) {
 })
 
 .controller('calendarCtrl', function($scope) {
-    $('#calendar').fullCalendar({
+	calendarFeature();
+})
+
+.controller('challengesCtrl', function($scope) {
+
+})
+
+.controller('messageCtrl', function($scope) {
+
+});
+
+function calendarFeature() {
+	return $('.calendar').fullCalendar({
         // put your options and callbacks here
         events: [
 	        {
@@ -61,12 +76,4 @@ mainApp.controller('homeCtrl', function($scope) {
     	],
     	timeFormat: 'h(:mm)'
     })
-})
-
-.controller('challengesCtrl', function($scope) {
-
-})
-
-.controller('messageCtrl', function($scope) {
-
-});
+}
