@@ -1,13 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
 
-	var items = sequelize.define('items', {
+	var checks = sequelize.define('checks', {
 		id: {type: "INT", primaryKey: true},
+		netId: "VARCHAR(45)",
 		challenge: "TINYINT",
-		placement: "TINYINT",
-		description: "LONGTEXT"
+		listNumber: "TINYINT"
 	}, {
 		timestamps: false
 	});
 
-	return items;
+	return checks;
 };
