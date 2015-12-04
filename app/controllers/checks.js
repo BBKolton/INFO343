@@ -23,7 +23,7 @@ router.post('/api/checks/:challenge/:number', shib.ensureAuth('/shib'), function
 				listNumber: req.params.number
 			});
 		}
-		res.json({status: "Successful"});
+		res.json({status: 1});
 	});
 });
 

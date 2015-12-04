@@ -76,13 +76,33 @@ mainApp.controller('homeCtrl', function($scope, $http) {
     });
 })
 
-.controller('challengesCtrl', function($scope,  $http) {
+.controller('challengesCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
 		$scope.challengeList = result;
     });
 })
 
-.controller('messageCtrl', function($scope) {
+.controller('messageCtrl', function($scope, $http) {
+
+	function getMessages() {
+		$http.get(ROOT_API + "posts/1").then(function(posts) {
+			posts = posts.data;
+			console.log(posts);
+			$scope.posts = posts;
+		})
+	}
+
+	getMessages();
+
+	$scope.postReply = function() {
+		$http.post(ROOT_API + 'posts/challenge/1', {
+			title: $scope.replyTitle,
+			text: $scope.replyText
+		}).then(function() {
+			getMessages();
+		})
+	}
+
 
 });
 

@@ -7,7 +7,19 @@
 	<div class='container-fluid'>	
 		<p>Messages go here, for staff-student communication</p>
 		<div class='group'>
-
+			<div ng-repeat='post in posts'>
+				<h1>{{post.title}}</h1>
+				<p>{{post.text}}</p>
+				<p>By {{post.netId}}</p>
+				<p>In response to post {{post.parent}}</p>
+			</div>
+		</div>
+		<div>
+			<form>
+				<input type='text' ng-model='replyTitle' class='form-control' placeholder='Title'>
+				<input type='text' ng-model='replyText' class='form-control' placeholder='Text'>
+				<button ng-click='postReply()' type='button' class='btn btn-primary'>Submit</button>
+			</form>
 		</div>
 	</div>
 </body>
