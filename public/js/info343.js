@@ -41,14 +41,10 @@ mainApp.config(function($stateProvider) {
 
 mainApp.controller('homeCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
-		$scope.challengeList = result;
-		calendarFeature(result);
+		var weekView = calendarFeature(result);
+		weekView.fullCalendar('changeView', 'basicWeek');
+		weekView.fullCalendar('option', 'height', 222);
     });
-
-
-	var weekView = calendarFeature($scope.challengeList);
-	weekView.fullCalendar('changeView', 'basicWeek');
-	weekView.fullCalendar('option', 'height', 222);
 })
 
 .controller('navCtrl', function($scope, $http) {
@@ -58,7 +54,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
     	if (user.status != 2) {
 	    	$scope.userWelcome = "Hello, " + user.firstName + 
 	    			" " + user.lastName;
-	    	console.log($scope.user);
+	    	//console.log($scope.user);
     	} else {
     		$scope.userWelcome = "Login";
     	}
@@ -71,7 +67,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 
 .controller('calendarCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
-		$scope.challengeList = result;
+		//$scope.challengeList = result;
 		calendarFeature(result);
     });
 })
@@ -87,7 +83,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 	function getMessages() {
 		$http.get(ROOT_API + "posts/1").then(function(posts) {
 			posts = posts.data;
-			console.log(posts);
+			//console.log(posts);
 			$scope.posts = posts;
 		})
 	}
@@ -116,9 +112,9 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 // }
 
 function calendarFeature(list) {
-	var parentCalendar = $('.calendar').fullCalendar({
-    	timeFormat: 'h(:mm)'
-    })
+	var parentCalendar = $('.calendar').fullCalendar(
+		
+	)
 
     return populateEvent(list, parentCalendar);
 }
@@ -127,13 +123,22 @@ function populateEvent(list, parentCalendar) {
 	console.log(list);
 	for(var i = 0; i < list.length; i++) {
 		var curr = list[i];
-		var eventObj = {
-			id: '' + curr.id,
-			title: '' + curr.name,
-			start: '' + curr.dueDate
+		// var eventObj = {
+		// 	id: '' + curr.id,
+		// 	title: '' + curr.name,
+		// 	start: '' + curr.dueDate.substring(0, 10)
 
-		}
-		parentCalendar.fullCalendar('renderEvent', eventObj);
+		// }
+		// console.log(eventObj);
+		parentCalendar.fullCalendar('renderEvent',
+			{
+				id: '' + curr.id,
+				title: '' + curr.name,
+				start: '' + curr.dueDate.substring(0, 10),
+				allDay: true
+			},
+			true
+		);
 	}
 	return parentCalendar;
 }
