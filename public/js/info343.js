@@ -1,4 +1,5 @@
 var mainApp = angular.module('mainApp', ['ui.router']);
+var CHALLENGE_URL = 'https://info343.xyz/api/challenges/all';
 
 mainApp.config(function($stateProvider) {
 
@@ -42,7 +43,6 @@ mainApp.controller('homeCtrl', function($scope) {
 	var weekView = calendarFeature();
 	weekView.fullCalendar('changeView', 'basicWeek');
 	weekView.fullCalendar('option', 'height', 222);
-	//.fullCalendar({height: 650});
 })
 
 .controller('syllabusCtrl', function($scope) {
@@ -53,8 +53,10 @@ mainApp.controller('homeCtrl', function($scope) {
 	calendarFeature();
 })
 
-.controller('challengesCtrl', function($scope) {
-
+.controller('challengesCtrl', function($scope,  $http) {
+	$http.get(CHALLENGE_URL).success(function(result){
+		$scope.challengeList = result;
+    })
 })
 
 .controller('messageCtrl', function($scope) {
