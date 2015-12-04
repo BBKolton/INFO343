@@ -8,5 +8,6 @@ module.exports = function(app) {
 
 //get all items for a specific challenge
 router.get('/login', shib.ensureAuth('/shib'), function(req, res) {
+	console.log(req.user);
 	res.redirect('/');
 });

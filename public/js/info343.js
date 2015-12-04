@@ -1,5 +1,6 @@
 var mainApp = angular.module('mainApp', ['ui.router']);
-var CHALLENGE_URL = 'https://info343.xyz/api/challenges/all';
+var ROOT_API = 'https://info343.xyz/api/'
+var CHALLENGE_URL = ROOT_API + 'challenges/all';
 
 mainApp.config(function($stateProvider) {
 	$stateProvider.state('default', {
@@ -44,9 +45,24 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		calendarFeature(result);
     });
 
+
 	var weekView = calendarFeature($scope.challengeList);
 	weekView.fullCalendar('changeView', 'basicWeek');
 	weekView.fullCalendar('option', 'height', 222);
+})
+
+.controller('navCtrl', function($scope, $http) {
+    //get a user's name and netId if they're logged in
+    $http.get(ROOT_API + 'user').then(function(user) {
+	    user = user.data;
+    	if (user.status != 2) {
+	    	$scope.userWelcome = "Hello, " + user.firstName + 
+	    			" " + user.lastName;
+	    	console.log($scope.user);
+    	} else {
+    		$scope.userWelcome = "Login";
+    	}
+    });
 })
 
 .controller('syllabusCtrl', function($scope) {

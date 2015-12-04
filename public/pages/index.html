@@ -3,8 +3,8 @@
 <html lang="en" ng-app="mainApp">
 	<head>
 		<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>INFO 343</title>
 		<meta name="authors" content="Ying Dang, Bryce Kolton, Kyungmin Lee, Saki Uwagawa">
 
@@ -29,20 +29,18 @@
 
 		<!--link to css & js file-->
 		<link rel="stylesheet" href="../css/info343.css">
-        <script src="../js/info343.js"></script>
+		<script src="../js/info343.js"></script>
 
 	</head>
 
-	<body>
-		<h1>Make the angular app and stuff</h1>
-
+	<body ng-controller='navCtrl'>
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
-	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-	            	<span class="icon-bar"></span>
-	            	<span class="icon-bar"></span>
-	            	<span class="icon-bar"></span>
-	            </button>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
@@ -51,6 +49,9 @@
 						<li><a ui-sref="calendar">Calendar</a></li>
 						<li><a ui-sref="challenges">Challenges</a></li>
 						<li><a ui-sref="message">Message</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a ng-href='/login'>{{userWelcome}}</a></li>
 					</ul>
 				</div>
 			</div>
