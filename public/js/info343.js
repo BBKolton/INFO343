@@ -2,7 +2,6 @@ var mainApp = angular.module('mainApp', ['ui.router']);
 var CHALLENGE_URL = 'https://info343.xyz/api/challenges/all';
 
 mainApp.config(function($stateProvider) {
-
 	$stateProvider.state('default', {
 		url: '',
 		templateUrl: '../pages/home.html',
@@ -39,8 +38,13 @@ mainApp.config(function($stateProvider) {
 	})
 });
 
-mainApp.controller('homeCtrl', function($scope) {
-	var weekView = calendarFeature();
+mainApp.controller('homeCtrl', function($scope, $http) {
+	$http.get(CHALLENGE_URL).success(function(result){
+		$scope.challengeList = result;
+		calendarFeature(result);
+    });
+
+	var weekView = calendarFeature($scope.challengeList);
 	weekView.fullCalendar('changeView', 'basicWeek');
 	weekView.fullCalendar('option', 'height', 222);
 })
@@ -49,33 +53,51 @@ mainApp.controller('homeCtrl', function($scope) {
 
 })
 
-.controller('calendarCtrl', function($scope) {
-	calendarFeature();
+.controller('calendarCtrl', function($scope, $http) {
+	$http.get(CHALLENGE_URL).success(function(result){
+		$scope.challengeList = result;
+		calendarFeature(result);
+    });
 })
 
 .controller('challengesCtrl', function($scope,  $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
 		$scope.challengeList = result;
-    })
+    });
 })
 
 .controller('messageCtrl', function($scope) {
 
 });
 
-function calendarFeature() {
-	return $('.calendar').fullCalendar({
-        // put your options and callbacks here
-        events: [
-	        {
-	            title:  'Testing; presentations',
-	            start:  '2015-12-03T08:30:00',
-	            allDay: false
-	        }
-        	// other events here...
-        	// will likely be reading from a json file or database to input values in here
-        	// will require some function to reduce redundancy as well
-    	],
+// honestly don't know how to pull out an ajax request elegantly...
+// used by challenge, calendar, and homepage.
+
+// function requestChallenges(scope, http) {
+// 	http.get(CHALLENGE_URL).success(function(result){
+// 		scope = result;
+//     });
+// }
+
+function calendarFeature(list) {
+	var parentCalendar = $('.calendar').fullCalendar({
     	timeFormat: 'h(:mm)'
     })
+
+    return populateEvent(list, parentCalendar);
+}
+
+function populateEvent(list, parentCalendar) {
+	console.log(list);
+	for(var i = 0; i < list.length; i++) {
+		var curr = list[i];
+		var eventObj = {
+			id: '' + curr.id,
+			title: '' + curr.name,
+			start: '' + curr.dueDate
+
+		}
+		parentCalendar.fullCalendar('renderEvent', eventObj);
+	}
+	return parentCalendar;
 }
