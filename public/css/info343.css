@@ -13,6 +13,10 @@ h3 {
 	font-size: 20px;
 }
 
+#head_syllabus {
+	padding-left: 13px;
+}
+
 .calendar, #chal-table {
 	padding: 5em;
 }
