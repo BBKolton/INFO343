@@ -1,10 +1,12 @@
-<head>
-</head>
-
-<body>
+<div class="container">
 	<header>
-		<h1>Challenge One</h1>
+		<h1>{{name}}</h1>
+		<h5>Points: {{challenges.points}}</h5>
+		<h5>Due Date: {{challenges.dueDate.substring(5, 10) + '-' + challenges.dueDate.substring(0, 4)}}</h5>
+		<p>Message Board</p>
 	</header>
 	<div>
+		<h4>Description</h4>
+		<p>{{challenges.description}}</p>
 	</div>
-</body>
+</div>

@@ -37,6 +37,21 @@ mainApp.config(function($stateProvider) {
 		templateUrl: '../pages/error.html',
 		controller: 'errorCtrl'
 	})
+	.state('challenges-1', {
+		url: '/challenges/1',
+		templateUrl: '../pages/challenge-1.html',
+		controller: 'challenges-1Ctrl'
+	})
+	.state('challenges-2', {
+		url: '/challenges/2',
+		templateUrl: '../pages/challenge-2.html',
+		controller: 'challenges-2Ctrl'
+	})
+	.state('challenges-3', {
+		url: '/challenges/3',
+		templateUrl: '../pages/challenge-3.html',
+		controller: 'challenges-3Ctrl'
+	})
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
@@ -99,6 +114,22 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		})
 	}
 
+.controller('challenges-1Ctrl', function($scope, $http) {
+	$http.get(ROOT_API + 'challenges/1').success(function(result){
+		$scope.challenges = result;
+		console.log(result);
+    });
+})
+.controller('challenges-2Ctrl', function($scope, $http) {
+	$http.get(ROOT_API + 'challenges/2').success(function(result){
+		$scope.challengeInfo = result;
+    });
+})
+.controller('challenges-3Ctrl', function($scope, $http) {
+	$http.get(ROOT_API + 'challenges/3').success(function(result){
+		$scope.challengeInfo = result;
+    });
+})
 
 });
 
