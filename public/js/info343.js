@@ -37,6 +37,7 @@ mainApp.config(function($stateProvider) {
 		templateUrl: '../pages/error.html',
 		controller: 'errorCtrl'
 	})
+	//HEEEEELP!!!!!!!!!!!!!!!!!!!!!!!!! It's not working :'(
 	.state('challenges-1', {
 		url: '/challenges/1',
 		templateUrl: '../pages/challenge-1.html',
@@ -113,7 +114,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			getMessages();
 		})
 	}
-
+//HEEEEELP!!!!!!!!!!!!!!!!!!!!!!!!!
 .controller('challenges-1Ctrl', function($scope, $http) {
 	$http.get(ROOT_API + 'challenges/1').success(function(result){
 		$scope.challenges = result;
