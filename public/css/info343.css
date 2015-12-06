@@ -13,7 +13,7 @@ h3 {
 	font-size: 20px;
 }
 
-#head_syllabus {
+#syllabus_head {
 	padding-left: 13px;
 }
 
@@ -24,4 +24,8 @@ h3 {
 #error404 {
 	max-height: 100%;
 	max-width: 100%;
+}
+
+#syllabus_table td { 
+     border: none !important; 
 }
