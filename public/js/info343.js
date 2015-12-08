@@ -38,21 +38,6 @@ mainApp.config(function($stateProvider) {
 		templateUrl: '../pages/error.html',
 		controller: 'errorCtrl'
 	})
-	.state('challenges-1', {
-		url: '/challenges/1',
-		templateUrl: '../pages/challenge-1.html',
-		controller: 'challenges-1Ctrl'
-	})
-	.state('challenges-2', {
-		url: '/challenges/2',
-		templateUrl: '../pages/challenge-2.html',
-		controller: 'challenges-2Ctrl'
-	})
-	.state('challenges-3', {
-		url: '/challenges/3',
-		templateUrl: '../pages/challenge-3.html',
-		controller: 'challenges-3Ctrl'
-	})
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
@@ -114,13 +99,14 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 					console.log(unsorted[unsorted[post].parent].children);
 					if (unsorted[unsorted[post].parent].children === undefined) {
 						unsorted[unsorted[post].parent].children = [];
+						console.log('lololol');
 					}
 					unsorted[unsorted[post].parent].children.push(unsorted[post]);
 				} else {
 					$scope.parents.push(unsorted[post]);
 				}
 			}
-
+		
 		})
 	}
 

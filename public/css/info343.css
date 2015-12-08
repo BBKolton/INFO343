@@ -13,8 +13,15 @@ h3 {
 	font-size: 20px;
 }
 
+#navbar a {
+	color: white;
+}
+
 #syllabus_head {
-	padding-left: 13px;
+text-align: center;
+font-size: 30px;
+padding: 0px;
+margin-top: 0px;
 }
 
 .calendar, #chal-table {
@@ -34,15 +41,22 @@ h3 {
 #homeTitle {
 	font-size: 40px;
 	font-weight: 100;
-	padding-bottom: 0;
-	padding-left: 0;
+	padding: 0px;
+	margin-top: 0px;
 	text-align: center;
+}
+#infoTitle {
+	font-weight: 200;
+	font-size: 50px;
 }
 #classTimes {
 	text-align: center;
 }
-.row {
-	margin-bottom: 1em;
+#classInfo {
+	margin-bottom: 50px;
+}
+#upcoming {
+	margin-top: 50px;
 }
 
 .lol {
