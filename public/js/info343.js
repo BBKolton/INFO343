@@ -3,6 +3,7 @@ var ROOT_API = 'https://info343.xyz/api/'
 var CHALLENGE_URL = ROOT_API + 'challenges/all';
 
 mainApp.config(function($stateProvider) {
+
 	$stateProvider.state('default', {
 		url: '',
 		templateUrl: '../pages/home.html',
@@ -29,13 +30,28 @@ mainApp.config(function($stateProvider) {
 		controller: 'challengesCtrl'
 	})
 	.state('message', {
-		url: '/message',
+		url: '/message/:board',
 		templateUrl: '../pages/message.html',
 		controller: 'messageCtrl'
 	}).state('error', {
 		url: '*path',
 		templateUrl: '../pages/error.html',
 		controller: 'errorCtrl'
+	})
+	.state('challenges-1', {
+		url: '/challenges/1',
+		templateUrl: '../pages/challenge-1.html',
+		controller: 'challenges-1Ctrl'
+	})
+	.state('challenges-2', {
+		url: '/challenges/2',
+		templateUrl: '../pages/challenge-2.html',
+		controller: 'challenges-2Ctrl'
+	})
+	.state('challenges-3', {
+		url: '/challenges/3',
+		templateUrl: '../pages/challenge-3.html',
+		controller: 'challenges-3Ctrl'
 	})
 });
 
@@ -81,10 +97,10 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 
 
 
-.controller('messageCtrl', function($scope, $http) {
+.controller('messageCtrl', function($scope, $http, $stateParams) {
 
 	function getMessages() {
-		$http.get(ROOT_API + "posts/1").then(function(posts) {
+		$http.get(ROOT_API + "posts/" + $stateParams.board).then(function(posts) {
 			
 			var unsorted = [];
 			posts = posts.data;
@@ -92,25 +108,19 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 				unsorted[posts[post].id] = posts[post];
 			}
 
-			console.log(unsorted);
 			$scope.parents = [];
-
 
 			for (post in unsorted) {
 				if (unsorted[post].parent != 0) {
 					console.log(unsorted[unsorted[post].parent].children);
 					if (unsorted[unsorted[post].parent].children === undefined) {
 						unsorted[unsorted[post].parent].children = [];
-						console.log('lololol');
 					}
 					unsorted[unsorted[post].parent].children.push(unsorted[post]);
 				} else {
 					$scope.parents.push(unsorted[post]);
 				}
 			}
-
-			console.log($scope.parents);
-		
 
 		})
 	}
