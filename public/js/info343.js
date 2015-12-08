@@ -94,13 +94,39 @@ mainApp.controller('homeCtrl', function($scope, $http) {
     });
 })
 
+
+
 .controller('messageCtrl', function($scope, $http) {
 
 	function getMessages() {
 		$http.get(ROOT_API + "posts/1").then(function(posts) {
+			
+			var unsorted = [];
 			posts = posts.data;
-			//console.log(posts);
-			$scope.posts = posts;
+			for (post in posts) {
+				unsorted[posts[post].id] = posts[post];
+			}
+
+			console.log(unsorted);
+			$scope.parents = [];
+
+
+			for (post in unsorted) {
+				if (unsorted[post].parent != 0) {
+					console.log(unsorted[unsorted[post].parent].children);
+					if (unsorted[unsorted[post].parent].children === undefined) {
+						unsorted[unsorted[post].parent].children = [];
+						console.log('lololol');
+					}
+					unsorted[unsorted[post].parent].children.push(unsorted[post]);
+				} else {
+					$scope.parents.push(unsorted[post]);
+				}
+			}
+
+			console.log($scope.parents);
+		
+
 		})
 	}
 
@@ -114,7 +140,10 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			getMessages();
 		})
 	}
-//HEEEEELP!!!!!!!!!!!!!!!!!!!!!!!!!
+})
+
+
+
 .controller('challenges-1Ctrl', function($scope, $http) {
 	$http.get(ROOT_API + 'challenges/1').success(function(result){
 		$scope.challenges = result;
@@ -130,8 +159,6 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 	$http.get(ROOT_API + 'challenges/3').success(function(result){
 		$scope.challengeInfo = result;
     });
-})
-
 });
 
 // honestly don't know how to pull out an ajax request elegantly...

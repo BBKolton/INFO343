@@ -3,12 +3,21 @@
 	<div class='container-fluid'>	
 		<p>Messages go here, for staff-student communication</p>
 		<div class='group'>
-			<div ng-repeat='post in posts'>
-				<h1>{{post.title}}</h1>
-				<p>{{post.text}}</p>
-				<p>By {{post.netId}}</p>
-				<p>In response to post {{post.parent}}</p>
-			</div>
+			
+			<script type="text/ng-template" id='message-board-post.html'>
+				<div>
+					<div class='lol'
+						<h1>{{post.title}}</h1>
+						<p>{{post.text}}</p>
+						<p>By {{post.netId}}</p>
+						<p>In response to post {{post.parent}}</p>
+						<div ng-repeat='post in post.children' ng-include="'message-board-post.html'"></div>
+					</div>
+				</div>
+			</script>
+
+			<div ng-repeat="post in parents" ng-include="'message-board-post.html'"></div>
+
 		</div>
 		<div>
 			<form>
