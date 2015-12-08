@@ -37,22 +37,6 @@ mainApp.config(function($stateProvider) {
 		templateUrl: '../pages/error.html',
 		controller: 'errorCtrl'
 	})
-	//HEEEEELP!!!!!!!!!!!!!!!!!!!!!!!!! It's not working :'(
-	.state('challenges-1', {
-		url: '/challenges/1',
-		templateUrl: '../pages/challenge-1.html',
-		controller: 'challenges-1Ctrl'
-	})
-	.state('challenges-2', {
-		url: '/challenges/2',
-		templateUrl: '../pages/challenge-2.html',
-		controller: 'challenges-2Ctrl'
-	})
-	.state('challenges-3', {
-		url: '/challenges/3',
-		templateUrl: '../pages/challenge-3.html',
-		controller: 'challenges-3Ctrl'
-	})
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
@@ -91,6 +75,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 .controller('challengesCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
 		$scope.challengeList = result;
+		console.log(result);
     });
 })
 
