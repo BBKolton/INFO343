@@ -38,21 +38,6 @@ mainApp.config(function($stateProvider) {
 		templateUrl: '../pages/error.html',
 		controller: 'errorCtrl'
 	})
-	.state('challenges-1', {
-		url: '/challenges/1',
-		templateUrl: '../pages/challenge-1.html',
-		controller: 'challenges-1Ctrl'
-	})
-	.state('challenges-2', {
-		url: '/challenges/2',
-		templateUrl: '../pages/challenge-2.html',
-		controller: 'challenges-2Ctrl'
-	})
-	.state('challenges-3', {
-		url: '/challenges/3',
-		templateUrl: '../pages/challenge-3.html',
-		controller: 'challenges-3Ctrl'
-	})
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
@@ -91,7 +76,6 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 .controller('challengesCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
 		$scope.challengeList = result;
-		console.log(result);
     });
 })
 
@@ -108,19 +92,25 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 				unsorted[posts[post].id] = posts[post];
 			}
 
+			console.log(unsorted);
 			$scope.parents = [];
+
 
 			for (post in unsorted) {
 				if (unsorted[post].parent != 0) {
 					console.log(unsorted[unsorted[post].parent].children);
 					if (unsorted[unsorted[post].parent].children === undefined) {
 						unsorted[unsorted[post].parent].children = [];
+						console.log('lololol');
 					}
 					unsorted[unsorted[post].parent].children.push(unsorted[post]);
 				} else {
 					$scope.parents.push(unsorted[post]);
 				}
 			}
+
+			console.log($scope.parents);
+		
 
 		})
 	}
@@ -135,25 +125,6 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			getMessages();
 		})
 	}
-})
-
-
-
-.controller('challenges-1Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/1').success(function(result){
-		$scope.challenges = result;
-		console.log(result);
-    });
-})
-.controller('challenges-2Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/2').success(function(result){
-		$scope.challengeInfo = result;
-    });
-})
-.controller('challenges-3Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/3').success(function(result){
-		$scope.challengeInfo = result;
-    });
 });
 
 // honestly don't know how to pull out an ajax request elegantly...
