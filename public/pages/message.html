@@ -3,28 +3,35 @@
 	<div class='container-fluid'>	
 		<p>Messages go here, for staff-student communication</p>
 		<div class='group'>
-			
-			<script type="text/ng-template" id='message-board-post.html'>
-				<div>
-					<div class='lol'
-						<h1>{{post.title}}</h1>
-						<p>{{post.text}}</p>
-						<p>By {{post.netId}}</p>
-						<p>In response to post {{post.parent}}</p>
-						<div ng-repeat='post in post.children' ng-include="'message-board-post.html'"></div>
-					</div>
-				</div>
-			</script>
 
 			<div ng-repeat="post in parents" ng-include="'message-board-post.html'"></div>
+			<button ng-show="0 != replyAt" class="btn btn-primary" ng-click="openReply(post.id)">Reply</button>
+			<div ng-show="0 == replyAt"><div ng-show="loggedIn" ng-include="'reply-form.html'"></div></div>
 
-		</div>
-		<div>
-			<form>
-				<input type='text' ng-model='replyTitle' class='form-control' placeholder='Title'>
-				<input type='text' ng-model='replyText' class='form-control' placeholder='Text'>
-				<button ng-click='postReply()' type='button' class='btn btn-primary'>Submit</button>
-			</form>
 		</div>
 	</div>
 </div>
+
+
+<script type="text/ng-template" id='message-board-post.html'>
+	<div>
+		<div class='lol'>
+			<h4>{{post.title}}</h4>
+			<p>By {{post.netId}}</p>
+			<p>{{post.text}}</p>
+
+			<button ng-show="post.id != replyAt" class="btn btn-primary" ng-click="openReply(post.id)">Reply</button>
+			<div ng-show="post.id == replyAt"><div ng-show="loggedIn" ng-include="'reply-form.html'"></div></div>
+			
+			<div ng-repeat='post in post.children' ng-include="'message-board-post.html'"></div>
+		</div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="reply-form.html">
+	<form id="form-{{post.id}}">
+		<input type='text' name='replyTitle' class='form-control' placeholder='Title'>
+		<input type='text' name='replyText' class='form-control' placeholder='Text'>
+		<button ng-click='postReply(replyAt)' type='button' class='btn btn-primary'>Submit</button>
+	</form>
+</script>

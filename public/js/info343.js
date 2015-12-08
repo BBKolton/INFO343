@@ -124,16 +124,39 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		})
 	}
 
+	$scope.replyAt = null;
+	$scope.replyTitle = '';
+	$scope.replyText = '';
+	$scope.loggedIn = false;
+
 	getMessages();
 
-	$scope.postReply = function() {
-		$http.post(ROOT_API + 'posts/challenge/1', {
-			title: $scope.replyTitle,
-			text: $scope.replyText
+	$scope.postReply = function(id) {
+		id = (id === 0 ? '' : id);
+		var data = $('#form-' + id).serializeArray();
+		$http.post(ROOT_API + 'posts/challenge/' + $stateParams.board, {
+			title: data[0].value,
+			text: data[1].value,
+			parent: id
 		}).then(function() {
+			$scope.replyAt = null;
 			getMessages();
 		})
 	}
+
+	$scope.openReply = function(parent) {	
+		$http.get(ROOT_API + 'user').then(function(user) {
+			if (user.data.status && user.data.status == 2) {
+				window.location = "https://info343.xyz/login";
+				$scope.loggedIn = false;
+			} else {
+				$scope.loggedIn = true;
+				parent = (parent === undefined ? 0 : parent);
+				$scope.replyAt = parent;
+			}
+		})
+	}
+
 })
 
 

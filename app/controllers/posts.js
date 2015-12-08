@@ -19,14 +19,9 @@ router.get('/api/posts/:challenge', function(req, res) {
 	})
 });
 
-//write a new thread for a challenge
-router.post('/api/posts/challenge/:challenge', shib.ensureAuth('/shib'), function(req, res) {
-	createPost(res, req.user.netId, req.body['title'], req.body['text'], null, req.params.challenge)
-})
-
 //write a new post to an existing thread
-router.post('/api/posts/post:post', shib.ensureAuth('/shib'), function(req, res) {
-	createPost(res, req.user.netId, req.body['title'], req.body['text'], req.body['parent'], null); //fix this null later
+router.post('/api/posts/challenge/:challenge', shib.ensureAuth('/shib'), function(req, res) {
+	createPost(res, req.user.netId, req.body['title'], req.body['text'], req.body['parent'], req.params.challenge); 
 })
 
 function createPost(res, netId, title, text, parent, challenge) {
