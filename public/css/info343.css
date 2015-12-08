@@ -22,15 +22,15 @@ h3 {
 
 /* Home */
 #homeTitle {
-	font-size: 40px;
+	font-size: 25px;
 	font-weight: 100;
 	padding: 0px;
-	margin-top: 0px;
+	margin: 0px;
 	text-align: center;
 }
 #infoTitle {
 	font-weight: 200;
-	font-size: 50px;
+	font-size: 30px;
 }
 #classTimes {
 	text-align: center;
@@ -45,13 +45,6 @@ h3 {
 
 
 /* Syllabus */
-#syllabus_head {
-text-align: center;
-font-size: 30px;
-padding: 0px;
-margin-top: 0px;
-}
-
 #syllabus_table td { 
      border: none !important; 
 }
