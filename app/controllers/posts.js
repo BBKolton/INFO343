@@ -13,7 +13,7 @@ router.get('/api/posts/:challenge', function(req, res) {
 	db.posts.findAll({
 		where: {
 			challenge: req.params.challenge
-		}
+		}, order: [['parent', 'ASC']]
 	}).then(function(posts) {
 		res.json(posts);
 	})
