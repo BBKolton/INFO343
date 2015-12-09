@@ -3,7 +3,7 @@ var ROOT_API = 'https://info343.xyz/api/'
 var CHALLENGE_URL = ROOT_API + 'challenges/all';
 var LECTURE_URL = ROOT_API + 'lectures/all';
 
-var LECTURE_TIME = '08:30:00.000Z'
+var LECTURE_TIME = 'T08:30:00.000Z'
 
 mainApp.config(function($stateProvider) {
 
@@ -248,7 +248,7 @@ function populateEvent(c_list, l_list, parentCalendar) {
 	for(var i = 0; i < l_list.length; i++) {
 		var curr = l_list[i];
 		var newEvent = {
-                start: curr.date,
+                start: (curr.date.substring(0, 10) + LECTURE_TIME),
                 title: curr.name,
                 id: curr.id,
                 allDay: false,
@@ -257,6 +257,19 @@ function populateEvent(c_list, l_list, parentCalendar) {
 
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
+
+	// for(var i = 0; i < l_list.length; i++) {
+	// 	var curr = l_list[i];
+	// 	var newEvent = {
+ //                start: (curr.date.substring(0, 10) + LECTURE_TIME),
+ //                title: curr.name,
+ //                id: curr.id,
+ //                allDay: false,
+ //                url: curr.slidesLink
+ //            };
+
+	// 	parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
+	// }
 
 	return parentCalendar;
 }
