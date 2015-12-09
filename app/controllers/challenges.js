@@ -11,7 +11,6 @@ module.exports = function(app) {
 //get all challenges
 router.get('/api/challenges/all', function(req, res) {
 	db.challenges.findAll().then(function(challenges) {
-		console.log(challenges);
 		res.json(challenges);
 	})
 });
@@ -19,7 +18,6 @@ router.get('/api/challenges/all', function(req, res) {
 //get just the challenge with the ID requested
 router.get('/api/challenges/:id', function(req, res) {
 	db.challenges.findById(req.params.id).then(function(challenges) {
-		console.log(challenges);
 		res.json(challenges);
 	})
 });
