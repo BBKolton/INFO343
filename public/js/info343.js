@@ -3,6 +3,8 @@ var ROOT_API = 'https://info343.xyz/api/'
 var CHALLENGE_URL = ROOT_API + 'challenges/all';
 var LECTURE_URL = ROOT_API + 'lectures/all';
 
+var LECTURE_TIME = '08:30:00.000Z'
+
 mainApp.config(function($stateProvider) {
 
 	$stateProvider.state('default', {
