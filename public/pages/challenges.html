@@ -7,6 +7,9 @@
 			<table class="table table-bordered table-hover">
 				<thead>
 					<td>
+						<h4>Due Date</h4>
+					</td>
+					<td>
 						<h4>Challenges</h4>
 					</td>
 					<td>
@@ -16,19 +19,16 @@
 						<h4>Description</h4>
 					</td>
 					<td>
-						<h4>Due Date</h4>
-					</td>
-					<td>
 						<h4>Message Board</h4>
 					</td>
 				</thead>
 
 				<!-- needs a link to challenge and board for each of these, probably stored as a link in the database API thingy-->
 				<tr ng-repeat = 'challenge in challengeList'>
+					<td>{{challenge.dueDate.substring(5, 7) + '&#8209;' + challenge.dueDate.substring(8, 10) + '&#8209;' + challenge.dueDate.substring(0, 4)}}</td>
 					<td><a href=''>{{challenge.name}}</a></td>
 					<td>{{challenge.points}}</td>
 					<td>{{challenge.description}}</td>
-					<td>{{challenge.dueDate.substring(5, 10) + '-' + challenge.dueDate.substring(0, 4)}}</td>
 					<td><a href=''>placeholder</a></td>
 				</tr>
 			</table>

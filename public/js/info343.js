@@ -1,6 +1,7 @@
 var mainApp = angular.module('mainApp', ['ui.router']);
 var ROOT_API = 'https://info343.xyz/api/'
 var CHALLENGE_URL = ROOT_API + 'challenges/all';
+var LECTURE_URL = ROOT_API + 'lectures/all';
 
 mainApp.config(function($stateProvider) {
 
@@ -41,10 +42,12 @@ mainApp.config(function($stateProvider) {
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
-	$http.get(CHALLENGE_URL).success(function(result){
-		var weekView = calendarFeature(result);
-		weekView.fullCalendar('changeView', 'basicWeek');
-		weekView.fullCalendar('option', 'height', 222);
+    $http.get(CHALLENGE_URL).success(function(challenge_result){
+		$http.get(LECTURE_URL).success(function(lecture_result){
+			var weekView = calendarFeature(challenge_result, lecture_result);
+			weekView.fullCalendar('changeView', 'basicWeek');
+			weekView.fullCalendar('option', 'height', 222);
+    	});
     });
 })
 
@@ -67,10 +70,13 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 })
 
 .controller('calendarCtrl', function($scope, $http) {
-	$http.get(CHALLENGE_URL).success(function(result){
-		//$scope.challengeList = result;
-		calendarFeature(result);
+	$http.get(CHALLENGE_URL).success(function(challenge_result){
+		$http.get(LECTURE_URL).success(function(lecture_result){
+
+			calendarFeature(challenge_result, lecture_result);
+    	});
     });
+
 })
 
 .controller('challengesCtrl', function($scope, $http) {
@@ -211,7 +217,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 //     });
 // }
 
-function calendarFeature(list) {
+function calendarFeature(c_list, l_list) {
 	var parentCalendar = $('.calendar').fullCalendar(
 		{
         // put your options and callbacks here
@@ -220,20 +226,35 @@ function calendarFeature(list) {
     	}	
 	);
 
-    return populateEvent(list, parentCalendar);
+    return populateEvent(c_list, l_list, parentCalendar);
 }
 
-function populateEvent(list, parentCalendar) {
-	for(var i = 0; i < list.length; i++) {
-		var curr = list[i];
+function populateEvent(c_list, l_list, parentCalendar) {
+	for(var i = 0; i < c_list.length; i++) {
+		var curr = c_list[i];
 		var newEvent = {
                 start: curr.dueDate,
                 title: curr.name,
                 id: curr.id,
+                color: '#cc0000',
                 allDay: false
             };
 
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
+
+	for(var i = 0; i < l_list.length; i++) {
+		var curr = l_list[i];
+		var newEvent = {
+                start: curr.date,
+                title: curr.name,
+                id: curr.id,
+                allDay: false,
+                url: curr.slidesLink
+            };
+
+		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
+	}
+
 	return parentCalendar;
 }
