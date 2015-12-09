@@ -13,41 +13,24 @@ h3 {
 	font-size: 20px;
 }
 
+/* Index */
 #navbar a {
 	color: white;
 }
+/* Index */
 
-#syllabus_head {
-text-align: center;
-font-size: 30px;
-padding: 0px;
-margin-top: 0px;
-}
-
-.calendar, #chal-table {
-	padding: 5em;
-}
-
-#error404 {
-	max-height: 100%;
-	max-width: 100%;
-}
-
-#syllabus_table td { 
-     border: none !important; 
-}
 
 /* Home */
 #homeTitle {
-	font-size: 40px;
+	font-size: 25px;
 	font-weight: 100;
 	padding: 0px;
-	margin-top: 0px;
+	margin: 0px;
 	text-align: center;
 }
 #infoTitle {
 	font-weight: 200;
-	font-size: 50px;
+	font-size: 30px;
 }
 #classTimes {
 	text-align: center;
@@ -58,10 +41,44 @@ margin-top: 0px;
 #upcoming {
 	margin-top: 50px;
 }
+/* Home */
 
+
+/* Syllabus */
+#syllabus_table td { 
+     border: none !important; 
+}
+/* Syllabus */
+
+
+/* Challenges, Caldendar */
+.calendar, #chal-table {
+	padding: 5em;
+}
+/* Challenges, Caldendar */
+
+
+/* Error */
+#error404 {
+	max-height: 100%;
+	max-width: 100%;
+}
+/* Error */
+
+
+/* Message */
 .lol {
 	padding: 20px;
 	border: 4px solid red;
 	border-radius: 6px;
 	margin: 5px;
 }
+
+#messageSubmit {
+	margin-top: 20px;
+}
+
+#messageTitle {
+	margin-bottom: 10px;
+}
+/* Message */
