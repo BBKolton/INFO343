@@ -1,6 +1,9 @@
 var mainApp = angular.module('mainApp', ['ui.router']);
 var ROOT_API = 'https://info343.xyz/api/'
 var CHALLENGE_URL = ROOT_API + 'challenges/all';
+var LECTURE_URL = ROOT_API + 'lectures/all';
+
+var LECTURE_TIME = '08:30:00.000Z'
 
 mainApp.config(function($stateProvider) {
 
@@ -46,10 +49,12 @@ mainApp.config(function($stateProvider) {
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
-	$http.get(CHALLENGE_URL).success(function(result){
-		var weekView = calendarFeature(result);
-		weekView.fullCalendar('changeView', 'basicWeek');
-		weekView.fullCalendar('option', 'height', 222);
+    $http.get(CHALLENGE_URL).success(function(challenge_result){
+		$http.get(LECTURE_URL).success(function(lecture_result){
+			var weekView = calendarFeature(challenge_result, lecture_result);
+			weekView.fullCalendar('changeView', 'basicWeek');
+			weekView.fullCalendar('option', 'height', 222);
+    	});
     });
 })
 
@@ -75,6 +80,12 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
 		//$scope.challengeList = result;
 		calendarFeature(result);
+  });
+	$http.get(CHALLENGE_URL).success(function(challenge_result){
+		$http.get(LECTURE_URL).success(function(lecture_result){
+
+			calendarFeature(challenge_result, lecture_result);
+  	});
   });
 })
 
@@ -191,8 +202,12 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		})
 	}
 
+<<<<<<< HEAD
 })
 
+=======
+});
+>>>>>>> 19d8c20556bdaba99407eeff16cef09420e5b082
 
 // honestly don't know how to pull out an ajax request elegantly...
 // used by challenge, calendar, and homepage.
@@ -203,48 +218,44 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 //     });
 // }
 
-function calendarFeature(list) {
+function calendarFeature(c_list, l_list) {
 	var parentCalendar = $('.calendar').fullCalendar(
 		{
         // put your options and callbacks here
-        events: [
-	        {
-	            title:  'Testing; presentations',
-	            start:  '2015-12-03T08:30:00',
-	            allDay: false
-	        }
-        	// other events here...
-        	// will likely be reading from a json file or database to input values in here
-        	// will require some function to reduce redundancy as well
-    	],
+        
     	timeFormat: 'h(:mm)'
     	}	
 	);
 
-
-    return populateEvent(list, parentCalendar);
+    return populateEvent(c_list, l_list, parentCalendar);
 }
 
-function populateEvent(list, parentCalendar) {
-	console.log(list);
-	for(var i = 0; i < list.length; i++) {
-		var curr = list[i];
-		// var eventObj = {
-		// 	id: '' + curr.id,
-		// 	title: '' + curr.name,
-		// 	start: '' + curr.dueDate.substring(0, 10)
+function populateEvent(c_list, l_list, parentCalendar) {
+	for(var i = 0; i < c_list.length; i++) {
+		var curr = c_list[i];
+		var newEvent = {
+                start: curr.dueDate,
+                title: curr.name,
+                id: curr.id,
+                color: '#cc0000',
+                allDay: false
+            };
 
-		// }
-		// console.log(eventObj);
-		parentCalendar.fullCalendar('renderEvent',
-			{
-				id: '' + curr.id,
-				title: '' + curr.name,
-				start: '' + curr.dueDate.substring(0, 10),
-				allDay: true
-			},
-			true
-		);
+		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
+
+	for(var i = 0; i < l_list.length; i++) {
+		var curr = l_list[i];
+		var newEvent = {
+                start: curr.date,
+                title: curr.name,
+                id: curr.id,
+                allDay: false,
+                url: curr.slidesLink
+            };
+
+		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
+	}
+
 	return parentCalendar;
 }

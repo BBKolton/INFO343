@@ -7,21 +7,20 @@
 		<p>Messages go here, for staff-student communication</p>
 		<div class='group'>
 
-			<div ng-repeat="post in parents" ng-include="'message-board-post.html'"></div>
-			<button ng-show="0 != replyAt" class="btn btn-primary" ng-click="openReply(post.id)">Reply</button>
+			<button ng-show="0 != replyAt" class="btn btn-primary" ng-click="openReply(post.id)" id='messageReply'>Reply</button>
 			<div ng-show="0 == replyAt"><div ng-show="loggedIn" ng-include="'reply-form.html'"></div></div>
+			<div ng-repeat="post in parents" ng-include="'message-board-post.html'"></div>
 
 		</div>
 	</div>
 </div>
 
-
 <script type="text/ng-template" id='message-board-post.html'>
 	<div>
 		<div class='lol'>
-			<h2>{{post.title}} <h4 ng-show="post.votes > 0">{{post.votes}} upvote{{post.votes > 1 ? 's' : ''}}</h4></h2>
-			<p>By {{post.netId}}</p>
-			<p>{{post.text}}</p>
+			<h4 ng-show="post.votes > 0" id='upvote'><b>{{post.votes}} upvote{{post.votes > 1 ? 's' : ''}}</b></h4><h2 id='messageTitleInside'>Title: {{post.title}}</h2>
+			<p>From: {{post.netId}}</p>
+			<p>&nbsp;&nbsp;&nbsp; Text: {{post.text}}</p>
 
 			<button ng-show="post.netId != userNetId && loggedIn && !voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-warning"><span class='glyphicon glyphicon-plus'></span></button>
 			<button ng-show="post.netId != userNetId && loggedIn && voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-success"><span class='glyphicon glyphicon-ok'></span></button> 
@@ -36,8 +35,8 @@
 
 <script type="text/ng-template" id="reply-form.html">
 	<form id="form-{{post.id}}">
-		<input type='text' name='replyTitle' class='form-control' placeholder='Title'>
+		<input type='text' name='replyTitle' class='form-control' placeholder='Title' id='messageTitle'>
 		<input type='text' name='replyText' class='form-control' placeholder='Text'>
-		<button ng-click='postReply(replyAt)' type='button' class='btn btn-primary'>Submit</button>
+		<button ng-click='postReply(replyAt)' type='button' class='btn btn-primary' id='messageSubmit'>Submit</button>
 	</form>
 </script>
