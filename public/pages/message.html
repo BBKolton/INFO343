@@ -16,9 +16,12 @@
 <script type="text/ng-template" id='message-board-post.html'>
 	<div>
 		<div class='lol'>
-			<h4>{{post.title}}</h4>
+			<h2>{{post.title}} <h4 ng-show="post.votes > 0">{{post.votes}} upvote{{post.votes > 1 ? 's' : ''}}</h4></h2>
 			<p>By {{post.netId}}</p>
 			<p>{{post.text}}</p>
+
+			<button ng-show="post.netId != userNetId && loggedIn && !voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-warning"><span class='glyphicon glyphicon-plus'></span></button>
+			<button ng-show="post.netId != userNetId && loggedIn && voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-success"><span class='glyphicon glyphicon-ok'></span></button> 
 
 			<button ng-show="post.id != replyAt" class="btn btn-primary" ng-click="openReply(post.id)">Reply</button>
 			<div ng-show="post.id == replyAt"><div ng-show="loggedIn" ng-include="'reply-form.html'"></div></div>

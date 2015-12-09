@@ -8,7 +8,7 @@ module.exports = function(app) {
 	app.use('/', router);
 };
 
-router.post('/api/vote/:postId', shib.ensureAuth('/shib'), function(req, res) {
+router.post('/api/votes/:postId', shib.ensureAuth('/shib'), function(req, res) {
 	db.votes.find({
 		where: {
 			netId: req.user.netId,
@@ -22,16 +22,32 @@ router.post('/api/vote/:postId', shib.ensureAuth('/shib'), function(req, res) {
 					message: "This is your own post"
 				});
 			} else {
-				vote.upset({
-					netId: req.user.netId,
-					post: req.params.postId,
-					val: req.body['val']
-				}).then(function() {
+				if (!vote) {
+					db.votes.upsert({
+						netId: req.user.netId,
+						post: req.params.postId
+					}).then(function() {
+						res.json({
+							status: 1
+						});
+					});
+				} else {
+					vote.destroy();
 					res.json({
 						status: 1
-					});
-				});
+					})
+				}
 			}
 		});
 	});
 });
+
+router.get('/api/votes/my', shib.ensureAuth('/shib'), function(req, res) {
+	db.votes.findAll({
+		where: {
+			netId: req.user.netId
+		}
+	}).then(function(votes) {
+		res.json(votes);
+	})
+})

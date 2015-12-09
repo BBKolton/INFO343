@@ -10,14 +10,18 @@ module.exports = function(app) {
 
 //get all posts of a challenge
 router.get('/api/posts/:challenge', function(req, res) {
-	db.posts.findAll({
-		where: {
-			challenge: req.params.challenge
-		}, order: [['parent', 'ASC']]
-	}).then(function(posts) {
-		res.json(posts);
+	db.sequelize.query("SELECT p.id, p.netId, p.parent, p.challenge, p.title, p.text, count(v.post) as votes " +
+	                "FROM posts p " +
+	                "LEFT JOIN votes v ON p.id = v.post " +
+	                "WHERE p.challenge = ?" + 
+	                "GROUP BY p.id, v.post ", {replacements: [req.params.challenge]})
+	.then(function(posts) {
+		res.json(posts)
 	})
 });
+
+
+
 
 //write a new post to an existing thread
 router.post('/api/posts/challenge/:challenge', shib.ensureAuth('/shib'), function(req, res) {
@@ -37,4 +41,3 @@ function createPost(res, netId, title, text, parent, challenge) {
 		});
 	})
 }
-//lolol

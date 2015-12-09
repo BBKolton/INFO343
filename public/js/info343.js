@@ -85,9 +85,10 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 
 	function getMessages() {
 		$http.get(ROOT_API + "posts/" + $stateParams.board).then(function(posts) {
+			console.log(posts)
 			
 			var unsorted = [];
-			posts = posts.data;
+			posts = posts.data[0];
 			for (post in posts) {
 				unsorted[posts[post].id] = posts[post];
 			}
@@ -96,10 +97,8 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 
 			for (post in unsorted) {
 				if (unsorted[post].parent != 0) {
-					console.log(unsorted[unsorted[post].parent].children);
 					if (unsorted[unsorted[post].parent].children === undefined) {
 						unsorted[unsorted[post].parent].children = [];
-						console.log('lololol');
 					}
 					unsorted[unsorted[post].parent].children.push(unsorted[post]);
 				} else {
@@ -108,12 +107,35 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			}
 		
 		})
+
+		$http.get(ROOT_API + 'votes/my').then(function(votes) {
+			votes = votes.data;
+			console.log(votes)
+			$scope.voteButtonStatus = {};
+			for (vote in votes) {
+				console.log(votes[vote])
+				$scope.voteButtonStatus[votes[vote].post] = true;
+			}
+			console.log($scope.voteButtonStatus);
+		});
 	}
 
 	$scope.replyAt = null;
 	$scope.replyTitle = '';
 	$scope.replyText = '';
 	$scope.loggedIn = false;
+	$scope.userNetId = '';
+
+	$http.get(ROOT_API + 'user').then(function(user) {
+		console.log(user.data);
+		if (user.data.status && user.data.status == 2) {
+			$scope.loggedIn = false;
+		} else {
+			$scope.loggedIn = true;
+			$scope.userNetId = user.data.netId;
+			console.log($scope.userNetId)
+		}
+	});
 
 	getMessages();
 
@@ -137,8 +159,24 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 				$scope.loggedIn = false;
 			} else {
 				$scope.loggedIn = true;
+				$scope.userNetId = user.data.netId;
 				parent = (parent === undefined ? 0 : parent);
 				$scope.replyAt = parent;
+			}
+		})
+	}
+
+	$scope.upVote = function(id) {
+		console.log(id)
+		$http.get(ROOT_API + 'user').then(function(user) {
+			if (user.data.status && user.data.status == 2) {
+				window.location = "https://info343.xyz/login";
+				$scope.loggedIn = false;
+			} else {
+				$scope.loggedIn = true;
+				$http.post(ROOT_API + "votes/" + id).then(function() {
+					getMessages();
+				})
 			}
 		})
 	}
