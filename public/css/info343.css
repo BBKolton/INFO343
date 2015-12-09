@@ -55,6 +55,9 @@ h3 {
 .calendar, #chal-table {
 	padding: 5em;
 }
+
+#dueDate {
+}
 /* Challenges, Caldendar */
 
 
@@ -102,9 +105,5 @@ h3 {
 	font-size: 15px;
 	padding: 0px;
 	margin: 0px;
-}
-
-#test {
-	margin-bottom: 30px;
 }
 /* Message */
