@@ -189,25 +189,6 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		})
 	}
 
-})
-
-
-
-.controller('challenges-1Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/1').success(function(result){
-		$scope.challenges = result;
-		console.log(result);
-    });
-})
-.controller('challenges-2Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/2').success(function(result){
-		$scope.challengeInfo = result;
-    });
-})
-.controller('challenges-3Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/3').success(function(result){
-		$scope.challengeInfo = result;
-    });
 });
 
 // honestly don't know how to pull out an ajax request elegantly...
