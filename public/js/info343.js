@@ -30,7 +30,12 @@ mainApp.config(function($stateProvider) {
 	.state('challenges', {
 		url: '/challenges',
 		templateUrl: '../pages/challenges.html',
-		controller: 'challengesCtrl'
+		controller: 'challengesHomeCtrl'
+	})
+	.state('challengeView', {
+		url: '/challenge/:id',
+		templateUrl: '../pages/challengeview.html',
+		controller: 'challengeViewCtrl'
 	})
 	.state('message', {
 		url: '/message/:board',
@@ -72,21 +77,29 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 })
 
 .controller('calendarCtrl', function($scope, $http) {
+	$http.get(CHALLENGE_URL).success(function(result){
+		//$scope.challengeList = result;
+		calendarFeature(result);
+  });
 	$http.get(CHALLENGE_URL).success(function(challenge_result){
 		$http.get(LECTURE_URL).success(function(lecture_result){
 
 			calendarFeature(challenge_result, lecture_result);
-    	});
-    });
-
+  	});
+  });
 })
 
-.controller('challengesCtrl', function($scope, $http) {
+.controller('challengesHomeCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
 		$scope.challengeList = result;
-    });
+  });
 })
 
+.controller('challengeViewCtrl', function($scope, $http, $stateParams) {
+	$http.get('challenge/' + $stateParams.id).success(function(result) {
+		console.log(result);
+	})
+})
 
 
 .controller('messageCtrl', function($scope, $http, $stateParams) {
@@ -189,26 +202,12 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		})
 	}
 
+<<<<<<< HEAD
 })
 
-
-
-.controller('challenges-1Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/1').success(function(result){
-		$scope.challenges = result;
-		console.log(result);
-    });
-})
-.controller('challenges-2Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/2').success(function(result){
-		$scope.challengeInfo = result;
-    });
-})
-.controller('challenges-3Ctrl', function($scope, $http) {
-	$http.get(ROOT_API + 'challenges/3').success(function(result){
-		$scope.challengeInfo = result;
-    });
+=======
 });
+>>>>>>> 19d8c20556bdaba99407eeff16cef09420e5b082
 
 // honestly don't know how to pull out an ajax request elegantly...
 // used by challenge, calendar, and homepage.
