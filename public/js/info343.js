@@ -215,44 +215,25 @@ function calendarFeature(list) {
 	var parentCalendar = $('.calendar').fullCalendar(
 		{
         // put your options and callbacks here
-        events: [
-	        {
-	            title:  'Testing; presentations',
-	            start:  '2015-12-03T08:30:00',
-	            allDay: false
-	        }
-        	// other events here...
-        	// will likely be reading from a json file or database to input values in here
-        	// will require some function to reduce redundancy as well
-    	],
+        
     	timeFormat: 'h(:mm)'
     	}	
 	);
-
 
     return populateEvent(list, parentCalendar);
 }
 
 function populateEvent(list, parentCalendar) {
-	console.log(list);
 	for(var i = 0; i < list.length; i++) {
 		var curr = list[i];
-		// var eventObj = {
-		// 	id: '' + curr.id,
-		// 	title: '' + curr.name,
-		// 	start: '' + curr.dueDate.substring(0, 10)
+		var newEvent = {
+                start: curr.dueDate,
+                title: curr.name,
+                id: curr.id,
+                allDay: false
+            };
 
-		// }
-		// console.log(eventObj);
-		parentCalendar.fullCalendar('renderEvent',
-			{
-				id: '' + curr.id,
-				title: '' + curr.name,
-				start: '' + curr.dueDate.substring(0, 10),
-				allDay: true
-			},
-			true
-		);
+		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
 	return parentCalendar;
 }
