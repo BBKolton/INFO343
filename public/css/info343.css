@@ -74,6 +74,11 @@ h3 {
 .checklist h3 {
 	margin-left: 20px;
 }
+
+.check-button-area {
+	width: 40px;
+	margin-left: 10px;
+}
 /* Challenges */
 
 

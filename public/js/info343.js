@@ -48,13 +48,29 @@ mainApp.config(function($stateProvider) {
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
+
+	//takes only the events that are 7 days ahead of the current date.
+	function pruneEvent(list) {
+		var newList = [];
+		for(var i = 0; i < list.length; i++) {
+			var difference = moment().diff(list[i].dueDate || list[i].date, 'days');
+			if (difference <= 0 && difference >= -7) {
+				newList.push(list[i]);
+			}
+		}
+		return newList;
+	}
+
     $http.get(CHALLENGE_URL).success(function(challenge_result){
 		$http.get(LECTURE_URL).success(function(lecture_result){
+			$scope.challengeList = pruneEvent(challenge_result);
+			$scope.lectureList = pruneEvent(lecture_result);
+
 			var weekView = calendarFeature(challenge_result, lecture_result);
 			weekView.fullCalendar('changeView', 'basicWeek');
 			weekView.fullCalendar('option', 'height', 222);
+  		});
   	});
-  });
 })
 
 .controller('navCtrl', function($scope, $http) {
@@ -103,19 +119,35 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		$scope.items = items;
 	})
 
-	$http.get(ROOT_API + 'user').then(function(user) {
-		if (user.data.status != 2) {
-			$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
-				console.log(items);
-				items = items.data;
-				$scope.checked = {};
-				for (item in items) {
-					$scope.checked[items[item].id] = true;
-				}
-				console.log($scope.checked);
-			});
-		}
-	});
+	$scope.checkItem = function(placement) {
+		console.log("posting to: " + ROOT_API + 'checks/' + $stateParams.id + '/' + placement)
+		$http.post(ROOT_API + 'checks/' + $stateParams.id + '/' + placement).then(function() {
+			refreshChecks();
+		});
+	}
+	
+	$scope.loggedIn = false;
+	$scope.checked = {};
+
+	refreshChecks();
+
+	function refreshChecks() {
+		$http.get(ROOT_API + 'user').then(function(user) {
+			if (user.data.status != 2) {
+				$scope.loggedIn = true;
+				$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
+					console.log(items);
+					items = items.data;
+					$scope.checked = {};
+					for (item in items) {
+						$scope.checked[items[item].listNumber] = true;
+					}
+					console.log($scope.checked)
+				});
+			}
+		});
+	}
+
 })
 
 
@@ -241,38 +273,30 @@ var repeatingEvents = [{
     }],
 }];
 
+function officeHourEvent(string, repeatArray, eventColor) {
+	return {
+    	title: string,
+    	start: '2015-10-01T14:30:00.000Z',
+    	end: '2015-12-11T16:00:00.000Z',
+    	dow: repeatArray,
+    	color: eventColor,
+    	ranges: [
+	   		{
+		        start: moment('2015-10-01','YYYY-MM-DD'),
+		        end: moment('2015-12-11','YYYY-MM-DD')
+	    	}
+	    ]
+
+    }
+}
+
 function calendarFeature(c_list, l_list) {
 	var parentCalendar = $('.calendar').fullCalendar(
 		{
-	        events: [{
-	        	title: 'Professor Office Hour',
-	        	start: '2015-10-01T14:30:00.000Z',
-	        	end: '2015-12-09T16:00:00.000Z',
-	        	dow: [1, 2],
-	        	color: 'green',
-	        	ranges: [
-			   		{
-				        start: moment('2015-10-01','YYYY-MM-DD'), //all of february
-				        end: moment('2015-12-09','YYYY-MM-DD')
-			    	}
-			    ]
-
-	        }, 
-
-	        {
-	        	title: 'TA Office Hour',
-	        	start: '2015-10-01T10:30:00.000Z',
-	        	end: '2015-12-11T12:00:00.000Z',
-	        	dow: [2, 4],
-	        	color: '#e67300',
-	        	ranges: [
-			   		{
-				        start: moment('2015-10-01','YYYY-MM-DD'), //all of february
-				        end: moment('2015-12-11','YYYY-MM-DD')
-			    	}
-			    ]
-
-	        }],
+	        events: [
+	        	officeHourEvent('Professor Office Hour', [1, 2], 'green'),
+	        	officeHourEvent('TA Office Hour', [2, 4], '#9F81F7')
+	        ],
 
 	        // Determines whether or not to render the event
 		    eventRender: function(event, element, view){
@@ -299,7 +323,8 @@ function populateEvent(c_list, l_list, parentCalendar) {
                 title: curr.name + ' Due',
                 id: curr.id,
                 color: '#cc0000',
-                allDay: false
+                allDay: false,
+                url: 'https://info343.xyz/index.html#/challenge/' + (i + 1)
             };
 
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
