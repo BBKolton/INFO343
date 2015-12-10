@@ -22,10 +22,13 @@
 			<div class='message-inner'>
 				<h3 id='messageTitleInside'><b>{{post.title}}</b></h3>
 				<p><b>
-					<span ng-show="post.votes > 0" class='votes'>
-						<span>{{post.votes}} </span>
-						<span class='glyphicon glyphicon-arrow-up'></span>
-					</b>&nbsp; by<b> {{post.netId}}
+					<span ng-show="post.votes > 0">
+						<span class='votes'>
+							<span>{{post.votes}} </span>
+							<span class='glyphicon glyphicon-arrow-up'></span>
+						</span>&nbsp;
+					</span>
+					</b> by<b> {{post.netId}}
 				</b></p>
 				<p>{{post.text}}</p>
 
@@ -43,8 +46,8 @@
 
 <script type="text/ng-template" id="reply-form.html">
 	<form id="form-{{post.id}}">
-		<input type='text' name='replyTitle' class='form-control' placeholder='Title' id='messageTitle'>
-		<input type='text' name='replyText' class='form-control' placeholder='Text'>
+		<input type='text' name='replyTitle' class='form-control board-reply-title' placeholder='Title' id='messageTitle'>
+		<input type='text' name='replyText' class='form-control board-reply-text' placeholder='Text'>
 		<button ng-click='postReply(replyAt)' type='button' class='btn btn-primary' id='messageSubmit'>Submit</button>
 	</form>
 </script>
