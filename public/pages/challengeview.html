@@ -10,14 +10,17 @@
 	<div class='col-md-4'>
 		<div class='checklist' id='checklist'>
 			<h3>CHECKLIST</h3>
+			<div class="check-element animate-show" ng-show="visible" ng-click='collapse(visible)'>
+				<span class='glyphicon glyphicon-chevron-up'></span>
+			</div>
+				
+			<div class="check-element animate-show" ng-hide="visible" ng-click='collapse(visible)'>
+				<span class='glyphicon glyphicon-chevron-down'></span>
+			</div>
 			
 			<table id='check-table' class='table table-striped collapse in'>
-				<tr id='dropdown-row'>
-					<span id='dropdown' data-toggle='collapse' data-target='#check-table'>
-					</span>
-				</tr>
 
-				<tr ng-repeat='item in items'>
+				<tr ng-repeat='item in items' ng-show="visible">
 					<td ng-show='loggedIn' class='check-button-area'>
 						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-ok'></span></button>
 						<button ng-click='checkItem(item.placement)' ng-show='!checked[item.placement]' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span></button>
