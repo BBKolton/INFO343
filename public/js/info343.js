@@ -92,7 +92,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 .controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
 	//get teh challenge
 	$http.get('pages/challenges/' + $stateParams.id + '.html').success(function(result) {
-		console.log(result);
+		//console.log(result);
 		$scope.challenge = $sce.trustAsHtml(result);
 	})
 
@@ -218,10 +218,22 @@ function calendarFeature(c_list, l_list) {
 		{
 	        events: [{
 	        	title: 'Professor Office Hour',
-	        	start: 'T14:30:00.000Z',
-	        	end: 'T16:00:00.000Z',
+	        	start: '2015-10-01T14:30:00.000Z',
+	        	end: '2015-12-09T16:00:00.000Z',
 	        	dow: [1, 2],
-	        	color: 'green'
+	        	color: 'green',
+	        	ranges: [
+	        		{
+	        			start: moment().startOf('week'),
+	        			end: moment().endOf('week').add(7, 'd')
+	        		},
+
+			   		{
+				        start: moment('2015-10-01','YYYY-MM-DD'), //all of february
+				        end: moment('2015-12-09','YYYY-MM-DD').endOf('month')
+			    	}
+			    ]
+
 	        }],
 	        
 	    	timeFormat: 'h(:mm)'
