@@ -23,9 +23,6 @@ h4 {
 #navbar a {
 	color: white;
 }
-footer {
-	margin-top: 10px;
-}
 /* Index */
 
 
@@ -198,7 +195,8 @@ tbody {
 
 /* Message */
 
- /* Icon when the collapsible content is shown */
+
+/*
 #dropdown-row {
 	text-align: center;
 }
@@ -206,7 +204,9 @@ tbody {
 	font-family: "Glyphicons Halflings";
 	content: "\e113";
 }
-/* Icon when the collapsible content is hidden */
+
 #dropdown.collapsed:after {
 	content: "\e114";
 }
+*/
+

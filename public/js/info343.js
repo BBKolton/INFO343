@@ -118,6 +118,12 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 })
 
 .controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
+
+	$scope.visible = true;
+	$scope.collapse = function(visible) {
+		$scope.visible = !visible;
+	}
+
 	//get teh challenge
 	$http.get('pages/challenges/' + $stateParams.id + '.html').success(function(result) {
 		$scope.challenge = $sce.trustAsHtml(result);
