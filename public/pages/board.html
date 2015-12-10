@@ -4,10 +4,11 @@
 	</h1>
 	</br>
 	<div class='container-fluid'>	
-		<p>Messages go here, for staff-student communication</p>
+		<p>Welcome to the INFO 343 message board! Please make sure you're signed in.</p>
+		<p>You are viewing the board for challenge {{challenge.id}}, <a href='/index.html#/challenge/{{challenge.id}}'>{{challenge.name}}</a></p>
 		<div class='group'>
 
-			<button ng-show="0 != replyAt" class="btn btn-primary" ng-click="openReply(post.id)" id='messageReply'>Reply</button>
+			<button ng-show="0 != replyAt" class="btn btn-primary" ng-click="openReply(post.id)" id='messageReply'>Start New Thread</button>
 			<div ng-show="0 == replyAt"><div ng-show="loggedIn" ng-include="'reply-form.html'"></div></div>
 			<div ng-repeat="post in parents" ng-include="'message-board-post.html'"></div>
 
@@ -17,17 +18,24 @@
 
 <script type="text/ng-template" id='message-board-post.html'>
 	<div>
-		<div class='lol'>
-			<h4 ng-show="post.votes > 0" id='upvote'><b>{{post.votes}} upvote{{post.votes > 1 ? 's' : ''}}</b></h4><h2 id='messageTitleInside'>Title: {{post.title}}</h2>
-			<p>From: {{post.netId}}</p>
-			<p>&nbsp;&nbsp;&nbsp; Text: {{post.text}}</p>
+		<div class='message'>
+			<div class='message-inner'>
+				<h3 id='messageTitleInside'><b>{{post.title}}</b></h3>
+				<p><b>
+					<span ng-show="post.votes > 0" class='votes'>
+						<span>{{post.votes}} </span>
+						<span class='glyphicon glyphicon-arrow-up'></span>
+					</b>&nbsp; by<b> {{post.netId}}
+				</b></p>
+				<p>{{post.text}}</p>
 
-			<button ng-show="post.netId != userNetId && loggedIn && !voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-warning"><span class='glyphicon glyphicon-plus'></span></button>
-			<button ng-show="post.netId != userNetId && loggedIn && voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-success"><span class='glyphicon glyphicon-ok'></span></button> 
+				<button ng-show="post.netId != userNetId && loggedIn && !voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-warning"><span class='glyphicon glyphicon-plus'></span></button>
+				<button ng-show="post.netId != userNetId && loggedIn && voteButtonStatus[post.id]" ng-click="upVote(post.id)" class="btn btn-success"><span class='glyphicon glyphicon-ok'></span></button> 
 
-			<button ng-show="post.id != replyAt" class="btn btn-primary" ng-click="openReply(post.id)">Reply</button>
-			<div ng-show="post.id == replyAt"><div ng-show="loggedIn" ng-include="'reply-form.html'"></div></div>
-			
+				<button ng-show="post.id != replyAt" class="btn btn-primary" ng-click="openReply(post.id)">Reply</button>
+				<div ng-show="post.id == replyAt"><div ng-show="loggedIn" ng-include="'reply-form.html'"></div></div>
+			</div>
+
 			<div ng-repeat='post in post.children' ng-include="'message-board-post.html'"></div>
 		</div>
 	</div>
