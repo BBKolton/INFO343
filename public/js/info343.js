@@ -4,7 +4,6 @@ var CHALLENGE_URL = ROOT_API + 'challenges/all';
 var LECTURE_URL = ROOT_API + 'lectures/all';
 
 var LECTURE_TIME = 'T08:30:00.000Z';
-var OFFICE_HOUR_TIME = 'T08:30:00.000Z';
 
 mainApp.config(function($stateProvider) {
 
@@ -253,22 +252,6 @@ function populateEvent(c_list, l_list, parentCalendar) {
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
 
-	var start = 20151001;
-	var end =   20151209;
-	var startStr = start.toString();
-	var endStr = end.toString();
-
-	for(var i = start; i < end; i++) {
-		var newEvent = {
-                start: startStr.substring(0, 4) + '-' + startStr(4)
-                title: curr.name,
-                id: curr.id,
-                allDay: false,
-                url: curr.slidesLink
-            };
-
-		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
-	}
 
 	return parentCalendar;
 }
