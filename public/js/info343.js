@@ -241,38 +241,30 @@ var repeatingEvents = [{
     }],
 }];
 
+function officeHourEvent(string, repeatArray, eventColor) {
+	return {
+    	title: string,
+    	start: '2015-10-01T14:30:00.000Z',
+    	end: '2015-12-09T16:00:00.000Z',
+    	dow: repeatArray,
+    	color: eventColor,
+    	ranges: [
+	   		{
+		        start: moment('2015-10-01','YYYY-MM-DD'),
+		        end: moment('2015-12-09','YYYY-MM-DD')
+	    	}
+	    ]
+
+    }
+}
+
 function calendarFeature(c_list, l_list) {
 	var parentCalendar = $('.calendar').fullCalendar(
 		{
-	        events: [{
-	        	title: 'Professor Office Hour',
-	        	start: '2015-10-01T14:30:00.000Z',
-	        	end: '2015-12-09T16:00:00.000Z',
-	        	dow: [1, 2],
-	        	color: 'green',
-	        	ranges: [
-			   		{
-				        start: moment('2015-10-01','YYYY-MM-DD'), //all of february
-				        end: moment('2015-12-09','YYYY-MM-DD')
-			    	}
-			    ]
-
-	        }, 
-
-	        {
-	        	title: 'TA Office Hour',
-	        	start: '2015-10-01T10:30:00.000Z',
-	        	end: '2015-12-11T12:00:00.000Z',
-	        	dow: [2, 4],
-	        	color: '#e67300',
-	        	ranges: [
-			   		{
-				        start: moment('2015-10-01','YYYY-MM-DD'), //all of february
-				        end: moment('2015-12-11','YYYY-MM-DD')
-			    	}
-			    ]
-
-	        }],
+	        events: [
+	        	officeHourEvent('Professor Office Hour', [1, 2], 'green'),
+	        	officeHourEvent('TA Office Hour', [2, 4], '#D9DD00')
+	        ],
 
 	        // Determines whether or not to render the event
 		    eventRender: function(event, element, view){
