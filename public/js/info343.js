@@ -245,13 +245,13 @@ function officeHourEvent(string, repeatArray, eventColor) {
 	return {
     	title: string,
     	start: '2015-10-01T14:30:00.000Z',
-    	end: '2015-12-09T16:00:00.000Z',
+    	end: '2015-12-11T16:00:00.000Z',
     	dow: repeatArray,
     	color: eventColor,
     	ranges: [
 	   		{
 		        start: moment('2015-10-01','YYYY-MM-DD'),
-		        end: moment('2015-12-09','YYYY-MM-DD')
+		        end: moment('2015-12-11','YYYY-MM-DD')
 	    	}
 	    ]
 
