@@ -10,8 +10,8 @@
 			<table class='table table-striped'>
 				<tr ng-repeat='item in items'>
 					<td ng-show='loggedIn' class='check-button-area'>
-						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span></button>
-						<button ng-click='checkItem(item.placement)' ng-show='!checked[item.placement]' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span></button>
+						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-ok'></span></button>
+						<button ng-click='checkItem(item.placement)' ng-show='!checked[item.placement]' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span></button>
 					</td>
 					<td>{{item.description}}</td>
 				</tr>
