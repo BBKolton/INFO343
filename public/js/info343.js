@@ -43,8 +43,7 @@ mainApp.config(function($stateProvider) {
 		controller: 'messageCtrl'
 	}).state('error', {
 		url: '*path',
-		templateUrl: '../pages/error.html',
-		controller: 'errorCtrl'
+		templateUrl: '../pages/error.html'
 	})
 });
 
@@ -95,9 +94,10 @@ mainApp.controller('homeCtrl', function($scope, $http) {
   });
 })
 
-.controller('challengeViewCtrl', function($scope, $http, $stateParams) {
-	$http.get('challenge/' + $stateParams.id).success(function(result) {
+.controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
+	$http.get('pages/challenges/' + $stateParams.id + '.html').success(function(result) {
 		console.log(result);
+		$scope.challenge = $sce.trustAsHtml(result);
 	})
 })
 
@@ -201,13 +201,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			}
 		})
 	}
-
-<<<<<<< HEAD
-})
-
-=======
 });
->>>>>>> 19d8c20556bdaba99407eeff16cef09420e5b082
 
 // honestly don't know how to pull out an ajax request elegantly...
 // used by challenge, calendar, and homepage.
