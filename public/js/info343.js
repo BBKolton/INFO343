@@ -128,6 +128,7 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 		items = items.data;
 		//console.log(items);
 		$scope.items = items;
+		//console.log($scope.items.length);
 	})
 
 	$http.get(ROOT_API + 'posts/' + $stateParams.id + '/top').then(function(post) {
