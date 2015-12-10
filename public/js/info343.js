@@ -291,7 +291,8 @@ function populateEvent(c_list, l_list, parentCalendar) {
                 title: curr.name + ' Due',
                 id: curr.id,
                 color: '#cc0000',
-                allDay: false
+                allDay: false,
+                url: 'https://info343.xyz/index.html#/challenge/' + (i + 1)
             };
 
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
