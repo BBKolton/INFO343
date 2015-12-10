@@ -13,7 +13,7 @@ router.get('/api/items/:challenge', function(req, res) {
 	db.items.findAll({
 		where: {
 			challenge: req.params.challenge
-		}
+		}, order: [['placement', 'ASC']]
 	}).then(function(items) {
 		console.log(items);
 		res.json(items);

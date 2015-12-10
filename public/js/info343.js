@@ -95,9 +95,17 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 })
 
 .controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
+	//get teh challenge
 	$http.get('pages/challenges/' + $stateParams.id + '.html').success(function(result) {
 		console.log(result);
 		$scope.challenge = $sce.trustAsHtml(result);
+	})
+
+	//get eh challenbge checklist
+	$http.get(ROOT_API + 'items/' + $stateParams.id).then(function(items) {
+		items = items.data;
+		console.log(items);
+		$scope.items = items;
 	})
 })
 
