@@ -2,23 +2,21 @@
 
 <div class='container'>
 	<!--work in progress, if I don't finish, prob won't implement it ;-; -->
-	<div class='col-md-1'>
-	<ul class='section-nav'>
-	  <li><a href="">Summary</a></li>
-	  <li><a href="">Objective</a></li>
-	  <li><a href="">Resources</a></li>
-	  <li><a href="">Testing</a></li>
-	</ul>
-	</div>
 
-	<div class='col-md-7 bottom'>
+	<div class='col-md-8 bottom'>
 		<div ng-bind-html="challenge"></div>
 	</div>
+
 	<div class='col-md-4'>
 		<div class='checklist' id='checklist'>
 			<h3>CHECKLIST</h3>
 			
-			<table class='table table-striped'>
+			<table id='check-table' class='table table-striped collapse in'>
+				<tr id='dropdown-row'>
+					<span id='dropdown' data-toggle='collapse' data-target='#check-table'>
+					</span>
+				</tr>
+
 				<tr ng-repeat='item in items'>
 					<td ng-show='loggedIn' class='check-button-area'>
 						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-ok'></span></button>
@@ -27,6 +25,8 @@
 					<td>{{item.description}}</td>
 				</tr>
 			</table>
+
+			<hr class='sub-chapters'>
 
 			<h3>TOP POST</h3>
 			<div class='challenge-top-post'>
@@ -41,7 +41,7 @@
 				<p>{{topPost.text}}</p>
 				<p><a href='index.html#/board/{{topPost.challenge}}'><button class='btn btn-xs btn-primary' id='challengesMessageBoard'><i class="fa fa-weixin"></i></button>&nbsp;Join the discussion!</a></p>
 			</div>
-
 		</div>
 	</div>
+
 </div>
