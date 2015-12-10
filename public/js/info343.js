@@ -5,6 +5,7 @@ var LECTURE_URL = ROOT_API + 'lectures/all';
 
 var LECTURE_TIME = 'T08:30:00.000Z';
 
+
 mainApp.config(function($stateProvider) {
 
 	$stateProvider.state('default', {
@@ -113,10 +114,16 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 .controller('challengesHomeCtrl', function($scope, $http) {
 	$http.get(CHALLENGE_URL).success(function(result){
 		$scope.challengeList = result;
-  });
+  	});
 })
 
 .controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
+
+	$scope.visible = true;
+	$scope.collapse = function(visible) {
+		$scope.visible = !visible;
+	}
+
 	//get teh challenge
 	$http.get('pages/challenges/' + $stateParams.id + '.html').success(function(result) {
 		$scope.challenge = $sce.trustAsHtml(result);
@@ -151,20 +158,19 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 			if (user.data.status != 2) {
 				$scope.loggedIn = true;
 				$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
-					console.log(items);
+					//console.log(items);
 					items = items.data;
 					$scope.checked = {};
 					for (item in items) {
 						$scope.checked[items[item].listNumber] = true;
 					}
-					console.log($scope.checked)
+					//console.log($scope.checked)
 				});
 			}
 		});
 	}
 
 })
-
 
 .controller('messageCtrl', function($scope, $http, $stateParams) {
 
@@ -273,21 +279,6 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 	}
 });
 
-var repeatingEvents = [{
-    title:"My repeating event",
-    id: 1,
-    start: '10:00', // a start time (10am in this example)
-    end: '14:00', // an end time (6pm in this example)
-    dow: [ 1, 4 ], // Repeat monday and thursday
-    ranges: [{ //repeating events are only displayed if they are within one of the following ranges.
-        start: moment().startOf('week'), //next two weeks
-        end: moment().endOf('week').add(7,'d')
-    },{
-        start: moment('2015-02-01','YYYY-MM-DD'), //all of february
-        end: moment('2015-02-01','YYYY-MM-DD').endOf('month')
-    }],
-}];
-
 function officeHourEvent(string, repeatArray, eventColor) {
 	return {
     	title: string,
@@ -339,7 +330,7 @@ function populateEvent(c_list, l_list, parentCalendar) {
                 id: curr.id,
                 color: '#cc0000',
                 allDay: false,
-                url: 'https://info343.xyz/index.html#/challenge/' + (i + 1)
+                url: 'https://info343.xyz/index.html#/challenge/' + curr.id
             };
 
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');

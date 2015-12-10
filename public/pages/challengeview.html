@@ -1,31 +1,50 @@
 <script src='js/checklist.js'></script>
+
 <div class='container'>
-	<div class='col-md-8'>
+	<!--work in progress, if I don't finish, prob won't implement it ;-; -->
+
+	<div class='col-md-8 bottom'>
 		<div ng-bind-html="challenge"></div>
 	</div>
+
 	<div class='col-md-4'>
-		<div class='checklist'>
-			<h3>Checklist</h3>
+		<div class='checklist' id='checklist'>
+			<h3>CHECKLIST</h3>
+			<div class="check-element animate-show" ng-show="visible" ng-click='collapse(visible)'>
+				<span class='glyphicon glyphicon-chevron-up'></span>
+			</div>
+				
+			<div class="check-element animate-show" ng-hide="visible" ng-click='collapse(visible)'>
+				<span class='glyphicon glyphicon-chevron-down'></span>
+			</div>
 			
-			<table class='table table-striped'>
-				<tr ng-repeat='item in items'>
+			<table id='check-table' class='table table-striped collapse in'>
+
+				<tr ng-repeat='item in items' ng-show="visible">
 					<td ng-show='loggedIn' class='check-button-area'>
-						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success'><span class='glyphicon glyphicon-ok'></span></button>
-						<button ng-click='checkItem(item.placement)' ng-show='!checked[item.placement]' class='btn btn-danger'><span class='glyphicon glyphicon-remove'></span></button>
+						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-ok'></span></button>
+						<button ng-click='checkItem(item.placement)' ng-show='!checked[item.placement]' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span></button>
 					</td>
 					<td>{{item.description}}</td>
 				</tr>
 			</table>
 
-			<h3>Top Post</h3>
+			<hr class='sub-chapters'>
+
+			<h3>TOP POST</h3>
 			<div class='challenge-top-post'>
 				<h4>{{topPost.title}}</h4>
-				<p>{{topPost.votes}} points <span style="color: red">MAKE THIS PRETTY LIKE THE BOARDS, ADD BUTTONS AND SHIT IDK, MAKE THE LAST CHECKLIST ITEM NOT EH SAME COLOR AS THIS BACKGROUND?? IM TIRED -Brucey</span></p>
-				<p>by {{topPost.netId}}</p>
+				<p>
+					<span class='votes'>
+						<span>{{topPost.votes}} </span>
+						<span class='glyphicon glyphicon-arrow-up'></span>
+					</span>&nbsp;
+					<b>by {{topPost.netId}}</b>
+				</p>
 				<p>{{topPost.text}}</p>
-				<p><a href='index.html#/board/{{topPost.challenge}}'>Join the discussion!</a></p>
+				<p><a href='index.html#/board/{{topPost.challenge}}'><button class='btn btn-xs btn-primary' id='challengesMessageBoard'><i class="fa fa-weixin"></i></button>&nbsp;Join the discussion!</a></p>
 			</div>
-
 		</div>
 	</div>
+
 </div>

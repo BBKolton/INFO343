@@ -1,13 +1,23 @@
 <div>
-	<h1 id='challengeTitle'>Core HTML and CSS Concepts &minus; Challenge Two</h1>
+	<h4><a ng-href="#c/challenges" href='/index.html#/challenges'><i class="fa fa-angle-double-left"></i> Back</a></h4>
+    <div class='challengeTitle'>
+        <h3>CHALLENGE 2:</h3>
+        <h1>Core HTML and CSS Concepts</h1>
+    </div>
 
-	<h2><a ng-href="#c/challenges" href='/index.html#/challenges'>← Back to challenges</a></h2>
 		<div>
             <img class="landing-icon" src="../img/challenge2/landing-icon.png">
         </div>
         <h3 class="challenge-subtitle ng-binding" id='challengeDue'>Due: 10/13/15 <span style="text-decoration:underline">before</span> class, 200 points</h3>
+
+        <hr class='chapters'>
+
+        <h2 class="ng-scope">Summary</h2>
+
 		<div class="challenge-description ng-scope">
 			<p class="ng-scope">One of the most common web development projects is a homepage for an organization or product. Most every organization and product has one, and it's amazing how many of them are really terrible, especially on small mobile device screens. This is a shame because it's just not that hard to build a well-designed, responsive marketing site. In this challenge you will build one of these sites for a fictitious coffee shop named Dawg Coffee. This site will respond to the size of screen it is rendered on, and adjust its layout and styling accordingly.</p>
+
+		<hr class='chapters'>
 
 		<h2 class="ng-scope">Objectives</h2>
 	<p class="ng-scope">The purpose of this challenge is to expose you to many of the built-in functionalities associated with HTML elements and CSS styles.  While making this volume of specifications may seem tedious, it is an opportunity to explore the fun and flexible components of web development.  By completing this challenge you will practice and demonstrate the following skills</p>
@@ -26,6 +36,8 @@
 	    <li>Implementing a page based on screenshots you would get from a graphic designer</li>
 	</ul>
 
+	<hr class='chapters'>
+		
 	<h2 class="ng-scope">Resources</h2>
 
 	<dl class="ng-scope">
@@ -48,6 +60,8 @@
 	    <dd>Short reference of the various unit measurements supported in CSS and their suffixes.</dd>
 	</dl>
 
+	<hr class='chapters'>
+
 	<h2 class="ng-scope">Required Steps</h2>
 	<p class="ng-scope">To complete this challenge, follow these steps. If you get stuck, consult the resources above, Q&amp;A sites like <a target="_blank" href="http://stackoverflow.com/">StackOverflow</a>, or ask <a target="_blank" href="mailto:jkoseff@uw.edu?subject=INFO343: Help on dawg coffee challenge">your TA</a> or <a ng-href="mailto:mikefree@uw.edu?subject=INFO343: Help on dawg coffee challenge" href="mailto:mikefree@uw.edu?subject=INFO343: Help on dawg coffee challenge">instructor</a> for help.</p>
 
@@ -64,6 +78,8 @@
 
 	<p class="alert alert-warning ng-scope">You don't have to do a pixel-perfect reproduction of these screen shots, but your version should be very close. I will provide all the various formatting values you need to know, but you may have to make a few adjustments to get it looking just right. In many projects you will get screen shots like these from a graphic designer, and it's your job to create a page that looks as close to those as possible.</p>
 
+	<hr class='sub-chapters'>
+
 	<h3 class="ng-scope">Fork and Clone the Repo</h3>
 
 	<p class="ng-scope">You should now be comfortable forking and cloning a repository using Gitub. The following repository contains file stubs and the various assets you will need to complete the challenge.</p>
@@ -79,6 +95,7 @@
 	    <li>Clone the repository to your local machine, just like you've done before.</li>
 	</ol>
 
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Basic Page Structure</h3>
 	<p class="ng-scope">Open <code>index.html</code> in your editor and add the elements for a basic web page. Remember to include the following:</p>
@@ -93,6 +110,8 @@
 	</ul>
 
 	<p class="ng-scope">Now that you have the basic skeleton, you can go on to create and style each portion of the page.</p>
+
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Base Page Styles</h3>
 
@@ -122,6 +141,8 @@
 	    <li>On screens <code>768</code> pixels and wider, all second-level headings should be center aligned, and have a blank space below them equal to the <a target="_blank" href="http://www.sitepoint.com/power-em-units-css/">height of the current font</a>.</li>
 	    <li>All <code>&lt;svg&gt;</code> elements should be the same height as the current font.</li>
 	</ul>
+
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Navigation Bar</h3>
 
@@ -164,6 +185,8 @@
 	    <li>When the links in this navigation bar get focus, or when you hover over them with the mouse, they should not have an underline, and their color should change to <code>#D87E28</code>. This should also occur for the SVG icon—note the CSS property that controls <a target="_blank" href="https://css-tricks.com/cascading-svg-fill-color/">the fill color for SVG elements</a> is different from the one that controls text color! 😣</li>
 	</ul>
 
+	<hr class='sub-chapters'>
+
 	<h3 class="ng-scope">Header Area</h3>
 	<figure class="ng-scope">
 	    <img class="img-responsive screenshot" src="../img/challenge2/header-sm.png" alt="screenshot of header area on small screens">
@@ -189,6 +212,8 @@
 	    <li>The motto should not be displayed by default, but should appear on screens <code>768</code> pixels and wider.</li>
 	</ul>
 
+	<hr class='sub-chapters'>
+
 	<h3 class="ng-scope">Headline Section</h3>
 	<figure class="ng-scope">
 	    <img class="img-responsive screenshot" src="../img/challenge2/headline-sm.png" alt="headline section on small screens">
@@ -209,6 +234,8 @@
 	    <li>The SVG icon should be hidden by default, but should appear on screen sizes of <code>768</code> pixels and wider. When it is shown, it's height should be <code>1.5em</code> and there should be <code>1em</code> of space between it and the text below it.</li>
 	    <li>Also on screen sizes of <code>768</code> pixels and wider, the font size used for the text should grow to <code>1.25em</code>, the text should be center aligned, and the blank space on top and bottom should increase to <code>3em</code>. This will give it a more spacious feeling, drawing the eye towards it.</li>
 	</ul>
+
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Cafe Information Section</h3>
 	<figure class="ng-scope">
@@ -241,6 +268,8 @@
 	    <li>The map image should have <a target="_blank" href="http://www.w3schools.com/cssref/css3_pr_border-radius.asp">rounded corners</a> with a radius of <code>5</code> pixels.</li>
 	</ul>
 
+	<hr class='sub-chapters'>
+
 	<h3 class="ng-scope">Menu Section</h3>
 	<figure class="ng-scope">
 	    <img class="img-responsive screenshot" src="../img/challenge2/menu-sm.png" alt="menu section on small screens">
@@ -262,6 +291,8 @@
 	<ul class="ng-scope">
 	    <li>The descriptions of each menu item should be in italics, and should be shifted right by <code>1em</code>.</li>
 	</ul>
+
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Our Story Section</h3>
 	<figure class="ng-scope">
@@ -285,6 +316,8 @@
 	    <li>On screens <code>769</code> pixels and wider, the maximum height for the image should increase to <code>400px</code>.</li>
 	    <li>The background color of this section should be <code>#dbdce3</code>.</li>
 	</ul>
+
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Footer</h3>
 	<figure class="ng-scope">
@@ -326,6 +359,8 @@
 	    <li>The footer element should <a target="_blank" href="http://www.w3schools.com/cssref/pr_class_clear.asp">clear</a> any floats from above. This will stop the floated image from extending down into the footer if the content next to the image ends up taking up less vertical height than the image itself.</li>
 	</ul>
 
+	<hr class='sub-chapters'>
+
 	<h3 class="ng-scope">Build and Style the Orders Page</h3>
 	<figure class="ng-scope">
 	    <img class="img-responsive screenshot" src="../img/challenge2/order-sm.png" alt="order section on small screens">
@@ -341,15 +376,21 @@
 
 	<p class="ng-scope">Note that the links in the navigation bar need to be adjusted so that all besides the 'order' link refer back to the <code>index.html</code> page, or the appropriate section within it. Clicking the 'order' link should scroll to the top of the current page.</p>
 
+	<hr class='chapters'>
+
 	<h2 class="ng-scope">Add, Commit, Push, and Publish</h2>
 
 	<p class="ng-scope">Before you commit yout changes, please fill out the questions listed in the <code>Readme.md</code> file.  Editting your <code>Readme.md</code> file is a good habit to get into, and the questions listed there will help us improve this challenge moving forward.</p>
 
 	<p class="ng-scope">When you are finished with these core steps, remember to add all your changes to the git staging area, commit them to your local repository, push those commits to GitHub, and then publish your site to your student web server using ssh and git. When submitting your solution via Canvas, please submit the link to your github repo (which should have a link to your hosted project in the <code>Readme.md</code> file).</p>
 
+	<hr class='chapters'>
+
 	<h2 class="ng-scope">Advanced Extra-Credit Steps <img class="pull-right" src="../img/challenge2/double-black-diamond.png" alt="double-black-diamond sign"></h2>
 
 	<p class="ng-scope">If you found the required steps easy, or if you're wanting some extra challenge, try one or more of these optional advanced steps. You will receive extra credit for these based on the difficulty of the step and quality of your implementation (see <a ng-href="">rubric</a> for details).</p>
+
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Generate Your CSS Using Sass</h3>
 	<p class="ng-scope">You may have noticed several things that were repeated in a few different style rules, especially color values. In larger projects this repetition can become extreme, and changing your colors can become quite a chore. To make this more tolerable, most professional developers use a CSS preprocessor tool, the most popular of which is known as <a target="_blank" href="http://sass-lang.com/">Sass</a>.</p>
@@ -361,6 +402,8 @@
 	<p class="ng-scope">Also use a variable for the set of fall-back fonts that are used if Lato and Raleway cannot be downloaded from the Google fonts server.</p>
 
 	<p class="alert alert-warning ng-scope">Note that Sass will create a hidden directory name <code>.sass-cache</code> in your project that should not be added to your repository. To keep this out of your repository, remember to add <code>.sass-cache</code> to your <code>.gitignore</code> file!</p>
+
+	<hr class='sub-chapters'>
 
 	<h3 class="ng-scope">Add the Medium Scroll Effect to the Header Image</h3>
 
@@ -392,6 +435,8 @@
 
 	    </div>
 	    	 <div>
+	    	 	<hr class='chapters'>
+	    	 	
 	            <h2>Submit your attempt</h2>
 	            <p>Your attempt will be graded using the following rubric:</p>
 	            <table class="table">
@@ -428,13 +473,4 @@
 
 	</main></div>
 		</main>
-		<footer>
-			<div id="footer-background">
-			</div>
-			<div class="copyright">
-	           © 2015,
-	            <a target="_blank" href="https://ischool.uw.edu/people/faculty/mikefree">Michael Freeman</a>,
-	            <a target="_blank" href="https://ischool.uw.edu/">University of Washington Information School</a><p></p>                        
-	        </div>
-		</footer>
 </div>

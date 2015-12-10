@@ -31,14 +31,14 @@
 				<div class='col-md-6 panel panel-default'>
 					<h3 class='panel-heading'>Upcoming Lectures</h3>
 					<div class='panel-body'>
-						<p ng-repeat='lecture in lectureList'>{{lecture.name}}</p>
+						<p ng-repeat='lecture in lectureList'><a href='{{lecture.slidesLink}}'>{{lecture.name}}</a></p>
 					</div>
 				</div>
 
 				<div class='col-md-6 panel panel-default'>
 					<h3 class='panel-heading'>Upcoming Assignment</h3>
 					<div class='panel-body'>
-						<p ng-repeat='challenge in challengeList'>{{challenge.name}}</p>
+						<p ng-repeat='challenge in challengeList'><a href='/index.html#/challenge/{{challenge.id}}'>{{challenge.name}}</a></p>
 					</div>
 				</div>
 			</div>
