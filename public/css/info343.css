@@ -98,9 +98,8 @@ footer {
 	border: 1px solid #ddd;
 }
 
-.checklist h3 {
-	font-weight: 400;
-	text-align: center;
+hr {
+	border-color: #bbb;
 }
 
 .check-button-area {
