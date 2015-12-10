@@ -58,7 +58,10 @@ h3 {
 }
 
 #dueDate {
+}#messageIcon {
+	text-align: center;
 }
+
 /* Caldendar */
 
 
@@ -74,6 +77,7 @@ h3 {
 	margin-left: 20px;
 }
 /* Challenges */
+
 
 
 /* Error */

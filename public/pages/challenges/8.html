@@ -1,120 +1,99 @@
-<div class="container">
+<div>
 	<h1>Challenge Eight</h1>
 
+	<h2><a ng-href="#c/challenges" href='/index.html#/challenges'>← Back to challenges</a></h2>
+    <div>
+        <img > <!--Image goes here -->
+    </div>
 
+    <!-- Hopefully get this information fro the database! -->
+    <h1 class="challenge-title ng-binding">Teaching presentation</h1>
+    <h3 class="challenge-subtitle ng-binding">Due: 12/8/15 <span style="text-decoration:underline">before</span> class, 400 points</h3>
 
+	<div class="challenge-description ng-scope">
+		<h2 class="ng-scope">Summary</h2>
+		<p class="ng-scope">For the first several weeks of class, you've been led through interactive lectures about how to use different JavaScript libraries and packages -- now it's your turn to do the teaching.  To truly master a topic, you must be able to both implement it, and explain it to others.  In this challenge, you'll identify a new skill of your choice, and give a 25 minute presentation on it, including an interactive exercise.</p>
+		<p class="ng-scope">The beauty of the open-source community is that there are millions of people building tools that you can use to solve your problems.  In your teaching presentation, you should identify a robust, well documented, and useful set of code to share with your peers. Here are some ideas:</p>
+		<ul class="ng-scope">
+	        <li>Introduce a new JavaScript library (<a href="http://danieltao.com/lazy.js/">Lazy.js</a>)
+	        </li><li>Teach a new angular module (<a href="https://github.com/angular-translate/angular-translate" target="_blank">translation</a>, <a href="https://github.com/wealthbar/angular-d3" target="_blank">D3 in Angular</a>)</li>
+	        <li>Introduce the class to a new framework (<a href="http://facebook.github.io/react/" target="_blank">react.js</a>, <a href="http://backbonejs.org/" target="_blank">backbone.js</a>, <a href="http://knockoutjs.com/" target="_blank">knockout.js</a>, etc.)</li>
+	        <li>Introcude a new skill such as server-side scripting with <a href="https://nodejs.org/en/" target="_blank">Node.js</a></li>
+	    </ul>
+	    <span class="ng-scope">Note, you </span>
+		<strong class="ng-scope">should not</strong>
+		<span class="ng-scope"> present a library that solves a </span>
+		<a href="http://bigspaceship.github.io/shine.js/" target="_blank" class="ng-scope">single problem</a>
+		<span class="ng-scope">. Instead, find a tool that people can use in a variety of contexts.   Twenty-five minutes goes fast, so you'll have to be concise.  </span>
+		<p class="ng-scope"></p>
 
-<div ng-view="" class="ng-scope"><main ng-controller="ChallengeController" class="ng-scope">		
-	<!-- ngIf: !currentChallengeId -->
-	<!-- ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges --><!-- ngIf: !currentChallengeId --><!-- end ngRepeat: challenge in challenges -->    
-    <!-- ngIf: currentChallengeId --><div class="challenge ng-scope" ng-if="currentChallengeId">        
-        <h2><a ng-href="#c/challenges" href='/index.html#/challenges'>← Back to challenges</a></h2>
-        <div>
-            <img class="landing-icon" ng-src="img/challenges/presentation/landing-icon.png" src="img/challenges/presentation/landing-icon.png">
-        </div>
-        <h1 class="challenge-title ng-binding">Teaching presentation</h1>
-        <h3 class="challenge-subtitle ng-binding">Due: 12/8/15 <span style="text-decoration:underline">before</span> class, 400 points</h3>
-    	<!-- ngInclude: 'challenges/' + currentChallengeId + '.html' --><div class="challenge-description ng-scope" ng-include="'challenges/' + currentChallengeId + '.html'"><h2 class="ng-scope">Summary</h2>
+		<h2 class="ng-scope">Objectives</h2>
+		<p class="ng-scope">By completing this challenge, you will practice and demonstrate mastery of the following skills:</p>
+		<ul class="ng-scope">
+		    <li>Identify and teach yourself a new JavaScript library</li>
+		    <li>Develop teaching materials for explaining a topic</li>
+		    <li>Evaluate the limitations of a library</li>
+		    <li>Code up an exercise that both highlights the functionality of a library, and teaches it</li>
+		</ul>
 
-<p class="ng-scope">For the first several weeks of class, you've been led through interactive lectures about how to use different JavaScript libraries and packages -- now it's your turn to do the teaching.  To truly master a topic, you must be able to both implement it, and explain it to others.  In this challenge, you'll identify a new skill of your choice, and give a 25 minute presentation on it, including an interactive exercise.</p>
+		<h2 class="ng-scope">Resources</h2>
+		<p class="ng-scope">This challenge is really about going out there and finding a library that <strong>you</strong> find interesting/fun/useful.  Try and find a solution that someone else has made to a problem you've encountered, or build a creative application using the tools that you find!</p>
+		<h3 class="ng-scope">Resources on the Web</h3>
+		<ul class="resources ng-scope">
+		    <li class="resource reading"><a target="_blank" href="http://jsbin.com">JS Bin</a>: for coding interactive tutorials</li>
+		    <li class="resource slides"><a target="_blank" href="http://slides.com">Slides.com</a>: for building interactive presentations</li>
+		</ul>
 
-<p class="ng-scope">The beauty of the open-source community is that there are millions of people building tools that you can use to solve your problems.  In your teaching presentation, you should identify a robust, well documented, and useful set of code to share with your peers. Here are some ideas:
-    </p><ul class="ng-scope">
-        <li>Introduce a new JavaScript library (<a href="http://danieltao.com/lazy.js/">Lazy.js</a>)
-        </li><li>Teach a new angular module (<a href="https://github.com/angular-translate/angular-translate" target="_blank">translation</a>, <a href="https://github.com/wealthbar/angular-d3" target="_blank">D3 in Angular</a>)</li>
-        <li>Introduce the class to a new framework (<a href="http://facebook.github.io/react/" target="_blank">react.js</a>, <a href="http://backbonejs.org/" target="_blank">backbone.js</a>, <a href="http://knockoutjs.com/" target="_blank">knockout.js</a>, etc.)</li>
-        <li>Introcude a new skill such as server-side scripting with <a href="https://nodejs.org/en/" target="_blank">Node.js</a></li>
-    </ul><span class="ng-scope">
+		<h2 class="ng-scope">Required Features</h2>
+		<p class="ng-scope">Depending on the specifics of the library you choose, your presentation may take on different formats.  Make sure to pick a moderately sophisticated library or package that is actually worth learning for you and others.  Regardless of the platform you use, you must cover the following information</p>
+		<ul class="ng-scope">
+		    <li>What does the package do (i.e., why would you use it)?</li>
+		    <li>Explain the syntax of the package (i.e., how does it work)?</li>
+		    <li>What challenges did you encounter in using the package, and/or why would you <strong>not</strong> use it?</li>
+		</ul>
+		<p class="ng-scope">In addition to communicating the information above to your fellow classmates, you must include an interactive exercise that allows students to explore the implementation of the package.  Feel free to use the approach in class (<a href="http://jsbin.com" target="_blank">jsBin</a>), or another method, such as coding together, or providing a coding challenge.  This exercise should demonstrate how to use the package, and in doing so, highlight its functionality</p>
 
-Note, you </span><strong class="ng-scope">should not</strong><span class="ng-scope"> present a library that solves a </span><a href="http://bigspaceship.github.io/shine.js/" target="_blank" class="ng-scope">single problem</a><span class="ng-scope">. Instead, find a tool that people can use in a variety of contexts.   Twenty-five minutes goes fast, so you'll have to be concise.  
-</span><p class="ng-scope"></p>
+		<p class="ng-scope">You may choose to divide your time (25 minutes, total) as you see fit.  If you believe more explanation is needed, spend more time on describing how the package works.  If you would rather create an involved and well documented exercise for your classmates, allocate more time to the interactive component of your assignment.</p>
 
+		<p class="ng-scope">All group members must participate in presenting the material to the classroom, as well as in the preparation of the materials.  If there are any concerns with the distribution of work, try to work it out with your fellow group members, or involve Mike or you TA if necessary.</p>
+	</div>
+	<div>
+        <h2>Submit your attempt</h2>
+        <p>Your attempt will be graded using the following rubric:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Criterion</th>
+                    <th>Weight</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Library selection</td>
+                    <td class="ng-binding">10%</td>
+                    <td class="ng-binding">Did the group select a useful JavaScript library, and articulate that usefulness to the class?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Clarity</td>
+                    <td class="ng-binding">40%</td>
+                    <td class="ng-binding">Did the group clearly communicate the purpose of the package, as well as how to implement it?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Exercise</td>
+                    <td class="ng-binding">40%</td>
+                    <td class="ng-binding">Did the group create an exercise that demonstrated how to use the package?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Group work</td>
+                    <td class="ng-binding">10%</td>
+                    <td class="ng-binding">Did all members of the group contribute to creating and presenting the materials?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric -->
+            </tbody>
+        </table>
+	</div>
+    <div ng-if="section" class="ng-scope">
+    	<a target="_blank" href="https://canvas.uw.edu/courses/990525/assignments/2974085"><button type="button" class="btn btn-success">Submit</button></a>
+    </div>
 
-<h2 class="ng-scope">Objectives</h2>
-
-<p class="ng-scope">By completing this challenge, you will practice and demonstrate mastery of the following skills:</p>
-
-<ul class="ng-scope">
-    <li>Identify and teach yourself a new JavaScript library</li>
-    <li>Develop teaching materials for explaining a topic</li>
-    <li>Evaluate the limitations of a library</li>
-    <li>Code up an exercise that both highlights the functionality of a library, and teaches it</li>
-</ul>
-
-<h2 class="ng-scope">Resources</h2>
-
-<p class="ng-scope">This challenge is really about going out there and finding a library that <strong>you</strong> find interesting/fun/useful.  Try and find a solution that someone else has made to a problem you've encountered, or build a creative application using the tools that you find!</p>
-<h3 class="ng-scope">Resources on the Web</h3>
-
-
-<ul class="resources ng-scope">
-    <li class="resource reading"><a target="_blank" href="http://jsbin.com">JS Bin</a>: for coding interactive tutorials</li>
-    <li class="resource slides"><a target="_blank" href="http://slides.com">Slides.com</a>: for building interactive presentations</li>
-</ul>
-
-<h2 class="ng-scope">Required Features</h2>
-
-<p class="ng-scope">Depending on the specifics of the library you choose, your presentation may take on different formats.  Make sure to pick a moderately sophisticated library or package that is actually worth learning for you and others.  Regardless of the platform you use, you must cover the following information</p>
-<ul class="ng-scope">
-    <li>What does the package do (i.e., why would you use it)?</li>
-    <li>Explain the syntax of the package (i.e., how does it work)?</li>
-    <li>What challenges did you encounter in using the package, and/or why would you <strong>not</strong> use it?</li>
-</ul>
-<p class="ng-scope">In addition to communicating the information above to your fellow classmates, you must include an interactive exercise that allows students to explore the implementation of the package.  Feel free to use the approach in class (<a href="http://jsbin.com" target="_blank">jsBin</a>), or another method, such as coding together, or providing a coding challenge.  This exercise should demonstrate how to use the package, and in doing so, highlight its functionality</p>
-
-<p class="ng-scope">You may choose to divide your time (25 minutes, total) as you see fit.  If you believe more explanation is needed, spend more time on describing how the package works.  If you would rather create an involved and well documented exercise for your classmates, allocate more time to the interactive component of your assignment.</p>
-
-<p class="ng-scope">All group members must participate in presenting the material to the classroom, as well as in the preparation of the materials.  If there are any concerns with the distribution of work, try to work it out with your fellow group members, or involve Mike or you TA if necessary.</p></div>
-    	 <div>
-            <h2>Submit your attempt</h2>
-            <p>Your attempt will be graded using the following rubric:</p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Criterion</th>
-                        <th>Weight</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
-                        <td class="ng-binding">Library selection</td>
-                        <td class="ng-binding">10%</td>
-                        <td class="ng-binding">Did the group select a useful JavaScript library, and articulate that usefulness to the class?</td>
-                    </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
-                        <td class="ng-binding">Clarity</td>
-                        <td class="ng-binding">40%</td>
-                        <td class="ng-binding">Did the group clearly communicate the purpose of the package, as well as how to implement it?</td>
-                    </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
-                        <td class="ng-binding">Exercise</td>
-                        <td class="ng-binding">40%</td>
-                        <td class="ng-binding">Did the group create an exercise that demonstrated how to use the package?</td>
-                    </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
-                        <td class="ng-binding">Group work</td>
-                        <td class="ng-binding">10%</td>
-                        <td class="ng-binding">Did all members of the group contribute to creating and presenting the materials?</td>
-                    </tr><!-- end ngRepeat: crit in currentRubric -->
-                </tbody>
-            </table>
-            <div>
-            	<p>Select your section for submission:</p>
-				<div class="btn-group" role="group" aria-label="...">			
-				  <button ng-class="{'active':section == 'a'}" ng-click="changeSections('a')" type="button" class="btn btn-default">Section A</button>
-				  <button ng-class="{'active':section == 'c'}" ng-click="changeSections('c')" type="button" class="btn btn-default active">Section C</button>				  
-				</div>
-              	
-            </div>
-            <!-- ngIf: section --><div ng-if="section" class="ng-scope">
-            	<a target="_blank" href="https://canvas.uw.edu/courses/990525/assignments/2974085"><button type="button" class="btn btn-success">Submit</button></a>
-            </div><!-- end ngIf: section -->
-            
-        </div>
-    </div><!-- end ngIf: currentChallengeId -->
-</div>
-
-
-
-<footer>
+	<footer>
 		<div id="footer-background">
 		</div>
 		<div class="copyright">
@@ -123,10 +102,4 @@ Note, you </span><strong class="ng-scope">should not</strong><span class="ng-sco
             <a target="_blank" href="https://ischool.uw.edu/">University of Washington Information School</a><p></p>                        
         </div>
 	</footer>
-
-
-
-
-
-
 </div>
