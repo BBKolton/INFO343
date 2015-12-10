@@ -149,6 +149,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 	$scope.replyText = '';
 	$scope.loggedIn = false;
 	$scope.userNetId = '';
+	$scope.challenge = {};
 
 	$http.get(ROOT_API + 'user').then(function(user) {
 		console.log(user.data);
@@ -159,6 +160,11 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			$scope.userNetId = user.data.netId;
 			console.log($scope.userNetId)
 		}
+	});
+
+	$http.get(ROOT_API + 'challenges/' + $stateParams.board).then(function(challenge) {
+		$scope.challenge = challenge.data;
+		console.log($scope.challenge)
 	});
 
 	getMessages();
