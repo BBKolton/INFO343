@@ -22,7 +22,7 @@ router.get('/api/posts/:challenge', function(req, res) {
 
 
 router.get('/api/posts/:challenge/top', function(req, res) {
-	db.sequelize.query("SELECT p.id, p.netId, p.title, p.text, count(v.post) as votes " +
+	db.sequelize.query("SELECT p.id, p.netId, p.title, p.text, p.challenge, count(v.post) as votes " +
                      "FROM posts p " +
                      "LEFT JOIN votes v on p.id = v.post " +
                      "WHERE p.challenge = ? " +

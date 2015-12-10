@@ -138,7 +138,7 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 
 	$http.get(ROOT_API + 'posts/' + $stateParams.id + '/top').then(function(post) {
 		$scope.topPost = post.data[0][0];
-		//console.log($scope.topPost);
+		console.log($scope.topPost);
 	})
 
 	$scope.checkItem = function(placement) {

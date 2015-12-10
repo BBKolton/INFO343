@@ -9,7 +9,7 @@
 
 	<div class='col-md-4'>
 		<div class='checklist' id='checklist'>
-			<h3>CHECKLIST</h3>
+			<h3 class='text-center'>CHECKLIST</h3>
 			<div class="check-element animate-show" ng-show="visible" ng-click='collapse(visible)'>
 				<span class='glyphicon glyphicon-chevron-up'></span>
 			</div>
@@ -25,13 +25,11 @@
 						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-ok'></span></button>
 						<button ng-click='checkItem(item.placement)' ng-show='!checked[item.placement]' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span></button>
 					</td>
-					<td>{{item.description}}</td>
+					<td class='item'>{{item.description}}</td>
 				</tr>
 			</table>
 
-			<hr class='sub-chapters'>
-
-			<h3>TOP POST</h3>
+			<h3 class='text-center'>TOP POST</h3>
 			<div class='challenge-top-post'>
 				<h4>{{topPost.title}}</h4>
 				<p>

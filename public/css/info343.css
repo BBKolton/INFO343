@@ -1,0 +1,212 @@
+/*css used by the whole website*/
+
+body {
+	font-size: 15px;
+}
+
+h1 {
+	font-size: 25px;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+h3 {
+	font-size: 20px;
+}
+
+h4 {
+	font-weight: 400;
+	font-size: 17px;
+}
+
+/* Index */
+#navbar a {
+	color: white;
+}
+/* Index */
+
+
+/* Home */
+#homeTitle {
+	font-size: 30px;
+	font-weight: 100;
+	padding-bottom: 1em;
+	margin: 0px;
+	text-align: center;
+}
+#infoTitle {
+	font-weight: 200;
+}
+#classTimes {
+	text-align: center;
+}
+#classInfo {
+	margin-bottom: 50px;
+}
+
+#upcoming {
+	margin-top: 50px;
+	padding-left: 5em;
+	padding-right: 5em;
+}
+
+@media screen and (min-width: 768px) {
+	#homeTitle {
+		font-size: 40px;
+		padding-bottom: 1em;
+		margin: 0px;
+	}
+}
+@media screen and (min-width: 992px) {
+	#homeTitle {
+		font-size: 50px;
+		padding-bottom: 1em;
+		margin: 0px;
+	}
+}
+/* Home */
+
+
+/* Syllabus */
+#syllabus_table td { 
+     border: none !important; 
+}
+/* Syllabus */
+
+
+/* Caldendar */
+.calendar, #chal-table {
+	padding: 5em;
+}
+
+
+
+}#messageIcon {
+	text-align: center;
+}
+/* Caldendar */
+
+
+/* Challenges */
+.checklist {
+	background-color: #eee;
+	padding: 0px;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+}
+
+td.item {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+tbody {
+	border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.check-button-area {
+	width: 40px;
+	margin-left: 10px;
+}
+
+#checklist td {
+	font-size: 12px;
+	padding: 2px;
+	vertical-align: middle;
+}
+
+.press-icon {
+	text-align: center;
+}
+
+.challengeTitle h1 {
+	padding: 0px;
+	margin-top: 0px;
+	font-size: 35px;
+}
+.challengeTitle h3 {
+	margin-bottom: 5px;
+}
+
+#challengeDue {
+	color: rgb(220,20,60);
+}
+
+.challenge-top-post {
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 12px;
+}
+
+.chapters {
+	border-color: rgb(100, 100, 100);
+}
+
+.sub-chapters {
+	border-color: rgb(200, 200, 200);
+}
+/* Challenges */
+
+
+
+/* Error */
+#error404 {
+	max-height: 100%;
+	max-width: 100%;
+}
+/* Error */
+
+
+/* Message */
+.message {
+	padding: 0px;
+	padding-top: 5px;
+	padding-left: 18px;
+	padding-right: 18px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	margin-top: 18px;
+	margin-bottom: 18px;
+	background-color: rgba(0, 0, 0, .02);
+}
+
+.message-inner {
+	margin-bottom: 18px;
+}
+
+.board-reply-text {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	height: 50px;
+}
+
+.board-reply-title {
+	margin-top: 5px;
+}
+
+.votes {
+	background-color: #ff6600;
+	padding: 2px;
+	border-radius: 3px;
+	border: 1px solid #cc7755;
+	color: white;
+}
+
+
+/* Message */
+
+
+/*
+#dropdown-row {
+	text-align: center;
+}
+#dropdown:after {
+	font-family: "Glyphicons Halflings";
+	content: "\e113";
+}
+
+#dropdown.collapsed:after {
+	content: "\e114";
+}
+*/
+
