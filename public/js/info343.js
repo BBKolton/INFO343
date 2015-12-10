@@ -3,7 +3,8 @@ var ROOT_API = 'https://info343.xyz/api/'
 var CHALLENGE_URL = ROOT_API + 'challenges/all';
 var LECTURE_URL = ROOT_API + 'lectures/all';
 
-var LECTURE_TIME = 'T08:30:00.000Z'
+var LECTURE_TIME = 'T08:30:00.000Z';
+var OFFICE_HOUR_TIME = 'T08:30:00.000Z';
 
 mainApp.config(function($stateProvider) {
 
@@ -212,14 +213,6 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 	}
 });
 
-// honestly don't know how to pull out an ajax request elegantly...
-// used by challenge, calendar, and homepage.
-
-// function requestChallenges(scope, http) {
-// 	http.get(CHALLENGE_URL).success(function(result){
-// 		scope = result;
-//     });
-// }
 
 function calendarFeature(c_list, l_list) {
 	var parentCalendar = $('.calendar').fullCalendar(
@@ -260,18 +253,22 @@ function populateEvent(c_list, l_list, parentCalendar) {
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
 
-	// for(var i = 0; i < l_list.length; i++) {
-	// 	var curr = l_list[i];
-	// 	var newEvent = {
- //                start: (curr.date.substring(0, 10) + LECTURE_TIME),
- //                title: curr.name,
- //                id: curr.id,
- //                allDay: false,
- //                url: curr.slidesLink
- //            };
+	var start = 20151001;
+	var end =   20151209;
+	var startStr = start.toString();
+	var endStr = end.toString();
 
-	// 	parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
-	// }
+	for(var i = start; i < end; i++) {
+		var newEvent = {
+                start: startStr.substring(0, 4) + '-' + startStr(4)
+                title: curr.name,
+                id: curr.id,
+                allDay: false,
+                url: curr.slidesLink
+            };
+
+		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
+	}
 
 	return parentCalendar;
 }
