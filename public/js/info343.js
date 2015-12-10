@@ -130,6 +130,11 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		$scope.items = items;
 	})
 
+	$http.get(ROOT_API + 'posts/' + $stateParams.id + '/top').then(function(post) {
+		$scope.topPost = post.data[0][0];
+		console.log($scope.topPost);
+	})
+
 	$scope.checkItem = function(placement) {
 		console.log("posting to: " + ROOT_API + 'checks/' + $stateParams.id + '/' + placement)
 		$http.post(ROOT_API + 'checks/' + $stateParams.id + '/' + placement).then(function() {
