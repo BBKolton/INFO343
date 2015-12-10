@@ -65,6 +65,8 @@
 
 	        <p>But where git really comes in handy is in team development. Almost all professional web development work is done in teams, which involves multiple people working on the same set of files at the same time. Git helps the team coordinate all these changes, and provides a record so that anyone can see how a given file ended up the way it did.</p>
 
+	        <hr class='sub-chapters'>
+
 	        <h3>Git Core Concepts</h3>
 
 	        <p>To understand how git works, you need to understand its core concepts. Read this section carefully, and come back to it if you forget what these terms mean. We'll also review these ideas during lecture.</p>
@@ -84,6 +86,9 @@
 	            <dt>merge conflict</dt>
 	            <dd>A condition that occurs when you merge commits pulled from another branch or repository that include changes to the same lines that you've already changed locally. In this case, git doesn't know which which version is correct, so you must resolve the conflict by choosing a winner, or manually combining the changes.</dd>
 	        </dl>
+
+
+	        <hr class='sub-chapters'>
 
 	        <h3>Git Core Commands</h3>
 
@@ -112,8 +117,12 @@
 
 	        <p>Also check out this handy <a href="https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf">Cheat Sheet</a>, as well as documentation on <a href="https://git-scm.com/docs">the complete set of git commands</a>.</p>
 
+	        <hr class='sub-chapters'>
+
 	        <h3>Try out git!</h3>
 	        <p>A great way to get a feel for these commands and how it works is to run through an example or tutorial. You should complete the <a href="https://try.github.io/levels/1/challenges/1">Try Git Interactive Tutorial</a> before moving on in the challenge to see the above commands in action!</p>
+
+	        <hr class='sub-chapters'>
 
 	        <h3>Wait, but what is GitHub then?</h3>
 
@@ -133,10 +142,14 @@
 
 		    <p class="alert alert-warning">Note that I won't typically tell you exactly how to do every step. Instead, I will provide links to resources that will help you figure out how to do that step. This will not only help you learn the skills, but also train you how to learn new skills in the future. Since web programming is always changing, you need to develop the ability to find out how to do new things by reading or watching resources on the Web.</p>
 
+	        <hr class='sub-chapters'>
+
 		    <h3 id="step0">Step 0: Sign up for GitHub!</h3>
 		    <p>The very first thing you need to do is create a free <a href="https://github.com/">GitHub</a> account, if you don't already have one. You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for us to collaborate and for the professor to figure out who submitted what, rather than needing to figure out who 'LeetCoder2015' is. This can be the start of a professional account you may use for the rest of your career!</p>
 		    <p>
  
+	        <hr class='sub-chapters'>
+
 		    </p><h3>Step 1: Installation and Setup</h3>
 		    <p>You'll need to have the git command-line tools installed on your machine in order to complete this assignment. The git command line tools are already installed on the iSchool lab machines, but you can also <a href="http://git-scm.com/downloads">install them on your own computer</a> for free (Mac, Windows, or Linux). We will use git throughout this course, so if you plan to use your own machine at some point, you should just install them now. If you are afraid of the command line, you can also install the GitHub graphical tool (<a href="https://mac.github.com/">Mac</a> or <a href="https://windows.github.com/">Windows</a>), though you will still need to use the command line tools when deploying your web site to your web server. Note that we only offer support for the command-line though; that's how you should learn the system!</p>
 
@@ -155,6 +168,8 @@
 		    <p class="alert alert-info">Note that the email address should be the same one associated with your GitHub account!</p>
 
 		    <p>If you're doing this on a lab machine, don't worry—these settings will be erased when you log out and reboot the lab machine.</p>
+
+	        <hr class='sub-chapters'>
 
 		    <h3>Step 3: Fork and Clone my Repository</h3>
 		    <ol class="steps">
@@ -189,7 +204,8 @@
 		        </li>
 		    </ol>
 
-		  
+	        <hr class='sub-chapters'>
+
 		    <h3>Add and Change Files</h3>
 
 		    <p>Now let's create some new files and add them to the repository.</p>
@@ -232,6 +248,8 @@
 
 		    <p class="alert alert-warning">Also, please add the URL of your where your student webserver is hosted to your <code>README.md</code> file (i.e., <code>http://students.washington.edu/<span class="token">your-net-id</span>/info343/git-started</code>).</p>
 
+	        <hr class='sub-chapters'>
+
 		    <h3>Add and Commit Changes</h3>
 
 		    <p>You've now added a few files and changed one existing file. To see all the files that have changed, open a terminal window, change to your project directory, and enter the following command:</p>
@@ -240,11 +258,15 @@
 
 		    <p>At this point, you should <a target="_blank" href="http://git-scm.com/book/en/Git-Basics-Recording-Changes-to-the-Repository">add the new files and commit all of your changes</a> to your local repository. Each commit records a version of the files that you can get back to if something goes wrong. It also allows you to see exactly what was changed during each commit, which can be helpful when tracking down how an error was introduced.</p>
 
+	        <hr class='sub-chapters'>
+
 		    <h3>Push Changes to GitHub</h3>
 
 		    <p>The previous step recorded a set of changes to your local repository on your local machine, but in order for others to see those changes, and to ensure that they are backed up, you now need to <a target="_blank" href="http://git-scm.com/book/en/Git-Basics-Working-with-Remotes#Pushing-to-Your-Remotes">push them up to GitHub</a>.</p>
 
 		    <p>After pushing these changes, you should now be able to go to <a target="_blank" href="https://github.com/">your repository on GitHub</a> and see the new files, as well as the change you made to the <code>README.md</code> file.</p>
+
+	        <hr class='sub-chapters'>
 
 		    <h3>Make a Mistake and Revert Changes</h3>
 
@@ -260,6 +282,8 @@
 
 		    <p>Go back to your text editor and verify that the changes have been reverted. Most text editors will automatically reload a file changed by another process, but you might need to activate the editor window before it will do that. If your text editor doesn't auto-reload, close the file and reload it.</p>
 
+	        <hr class='sub-chapters'>
+	        
 		    <h3>Deploy Site to Your Student Web Server</h3>
 
 		    <p>"Deploying" a site involves copying the most recent versions of all files to the web server. The easiest way to do that is to use git. Deploying is done by cloning (or later pulling changes from) your repository on GitHub.</p>
