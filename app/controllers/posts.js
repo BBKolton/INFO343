@@ -30,7 +30,12 @@ router.get('/api/posts/:challenge/top', function(req, res) {
                      "ORDER BY count(v.post) DESC " +
                      "LIMIT 1", {replacements: [req.params.challenge]})
 	.then(function(post) {
-		res.json(post);
+
+		if (post[0].length == 0) {
+			res.json({status: 2});
+		} else {
+			res.json(post);
+		}
 	})
 })
 

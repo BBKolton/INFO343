@@ -9,14 +9,15 @@
 
 	<div class='col-md-4'>
 		<div class='checklist' id='checklist'>
-			<h3 class='text-center'>CHECKLIST</h3>
-			<div class="check-element animate-show" ng-show="visible" ng-click='collapse(visible)'>
-				<span class='glyphicon glyphicon-chevron-up'></span>
-			</div>
-				
-			<div class="check-element animate-show" ng-hide="visible" ng-click='collapse(visible)'>
-				<span class='glyphicon glyphicon-chevron-down'></span>
-			</div>
+			<h3 class='text-center'><b>CHECKLIST</b>
+				<div class="check-element animate-show btn btn-primary" ng-show="visible" ng-click='collapse(visible)'>
+					<span class='glyphicon glyphicon-chevron-up'></span>
+				</div>
+					
+				<div class="check-element animate-show btn btn-primary" ng-hide="visible" ng-click='collapse(visible)'>
+					<span class='glyphicon glyphicon-chevron-down'></span>
+				</div>
+			</h3>
 			
 			<table id='check-table' class='table table-striped collapse in'>
 
@@ -29,17 +30,22 @@
 				</tr>
 			</table>
 
-			<h3 class='text-center'>TOP POST</h3>
+			<h3 class='text-center t<b>op-post'><b>TOP POST</b></h3>
 			<div class='challenge-top-post'>
-				<h4>{{topPost.title}}</h4>
-				<p>
-					<span class='votes'>
-						<span>{{topPost.votes}} </span>
-						<span class='glyphicon glyphicon-arrow-up'></span>
-					</span>&nbsp;
-					<b>by {{topPost.netId}}</b>
-				</p>
-				<p>{{topPost.text}}</p>
+				<div ng-show='topVisible'>
+					<h4>{{topPost.title}}</h4>
+					<p>
+						<span class='votes'>
+							<span>{{topPost.votes}} </span>
+							<span class='glyphicon glyphicon-arrow-up'></span>
+						</span>&nbsp;
+						<b>by {{topPost.netId}}</b>
+					</p>
+					<p>{{topPost.text}}</p>
+				</div>
+				<div ng-show='!topVisible'>
+					<p>There are no posts yet</p>
+				</div>
 				<p><a href='index.html#/board/{{topPost.challenge}}'><button class='btn btn-xs btn-primary' id='challengesMessageBoard'><i class="fa fa-weixin"></i></button>&nbsp;Join the discussion!</a></p>
 			</div>
 		</div>

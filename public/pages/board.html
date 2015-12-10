@@ -47,7 +47,7 @@
 <script type="text/ng-template" id="reply-form.html">
 	<form id="form-{{post.id}}">
 		<input type='text' name='replyTitle' class='form-control board-reply-title' placeholder='Title' id='messageTitle'>
-		<input type='text' name='replyText' class='form-control board-reply-text' placeholder='Text'>
+		<textarea type='text' name='replyText' class='form-control board-reply-text' placeholder='Text'></textarea>
 		<button ng-click='postReply(replyAt)' type='button' class='btn btn-primary' id='messageSubmit'>Submit</button>
 	</form>
 </script>

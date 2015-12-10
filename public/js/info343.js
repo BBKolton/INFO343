@@ -119,7 +119,7 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 
 .controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
 
-	$scope.visible = true;
+	$scope.visible = false;
 	$scope.collapse = function(visible) {
 		$scope.visible = !visible;
 	}
@@ -137,6 +137,11 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 	})
 
 	$http.get(ROOT_API + 'posts/' + $stateParams.id + '/top').then(function(post) {
+		if (post.data.status == 2) {
+			$scope.topVisible = false;
+		} else {
+			$scope.topVisible = true;
+		}
 		$scope.topPost = post.data[0][0];
 		console.log($scope.topPost);
 	})
@@ -156,6 +161,7 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 	function refreshChecks() {
 		$http.get(ROOT_API + 'user').then(function(user) {
 			if (user.data.status != 2) {
+				$scope.visible = true;
 				$scope.loggedIn = true;
 				$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
 					//console.log(items);

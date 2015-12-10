@@ -19,6 +19,10 @@ h4 {
 	font-size: 17px;
 }
 
+.copyright {
+	margin-top: 40px;
+}
+
 /* Index */
 #navbar a {
 	color: white;
@@ -100,13 +104,28 @@ td.item {
 	padding-bottom: 3px;
 }
 
-tbody {
+.top-post {
+	margin-top: 20px;
+}
+
+table {
+	margin-bottom: 0px;
 	border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .check-button-area {
 	width: 40px;
 	margin-left: 10px;
+}
+
+.check-element {
+	display: inline;
+	padding: 0px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	min-height: 100%;
+	background-color: black;
+	border: 0px;
 }
 
 #checklist td {
@@ -177,7 +196,7 @@ tbody {
 .board-reply-text {
 	margin-top: 5px;
 	margin-bottom: 10px;
-	height: 50px;
+	height: 100px;
 }
 
 .board-reply-title {
