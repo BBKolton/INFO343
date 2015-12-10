@@ -30,12 +30,12 @@
 			<div class='row' id="upcoming">
 				<div class='col-md-6'>
 					<h3>Upcoming Lectures</h3>
-					<p>(Input will come out of database)</p>
+					<p ng-repeat='lecture in lectureList'>{{lecture.name}}</p>
 				</div>
 				
 				<div class='col-md-6'>
 					<h3>Upcoming Assignment</h3>
-					<p>(Input will come out of database)</p>
+					<p ng-repeat='challenge in challengeList'>{{challenge.name}}</p>
 				</div>
 			</div>
 		</div>

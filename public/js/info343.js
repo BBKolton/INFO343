@@ -48,13 +48,29 @@ mainApp.config(function($stateProvider) {
 });
 
 mainApp.controller('homeCtrl', function($scope, $http) {
+
+	//takes only the events that are 7 days ahead of the current date.
+	function pruneEvent(list) {
+		var newList = [];
+		for(var i = 0; i < list.length; i++) {
+			var difference = moment().diff(list[i].dueDate || list[i].date, 'days');
+			if (difference <= 0 && difference >= -7) {
+				newList.push(list[i]);
+			}
+		}
+		return newList;
+	}
+
     $http.get(CHALLENGE_URL).success(function(challenge_result){
 		$http.get(LECTURE_URL).success(function(lecture_result){
+			$scope.challengeList = pruneEvent(challenge_result);
+			$scope.lectureList = pruneEvent(lecture_result);
+
 			var weekView = calendarFeature(challenge_result, lecture_result);
 			weekView.fullCalendar('changeView', 'basicWeek');
 			weekView.fullCalendar('option', 'height', 222);
+  		});
   	});
-  });
 })
 
 .controller('navCtrl', function($scope, $http) {
