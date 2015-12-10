@@ -5,9 +5,13 @@
 	<div>
         <img class="landing-icon" src="../img/challenge1/landing-icon.png">
     </div>
+
     <h3 class="challenge-subtitle ng-binding" id='challengeDue'>Due: 10/8/15 <span style="text-decoration:underline">before</span> class, 100 points</h3>
+
     <div>
     	<section class="separated ng-scope">
+    		<hr class='chapters'>
+
 	    	<h2>Summary</h2>
 
 		    <p>One thing you will quickly discover is that a typical web site involves <em>a ton</em> of files. Every HTML page, every CSS stylesheet, every module of JavaScript, and every multimedia asset is a separate file, organized into a folder hierarchy. Even simple sites will typically have a dozen or more files, and large complex sites typically involve hundreds.</p>
@@ -17,6 +21,8 @@
 		    <p>Thankfully, there are a class of tools that are designed especially to make managing all these files much easier. They are called <span class="term">version control systems</span>, and the most popular of these in the open-source community is known as <a target="_blank" href="http://git-scm.com/">git</a>. Although git can be used to manage files on your local machine, it is commonly used with the collaborative, cloud-based repository service <a target="_blank" href="https://github.com/">GitHub</a>, which maintains a copy of your files in a central, secure, and backed-up location.</p>
 
 	    	<p>During this challenge, you will create a repository on GitHub, clone it to your local machine, add files, commit those changes, push them back to GitHub, and then deploy your web site to your student web server. If you complete all the steps, you will have learned the techniques necessary for managing and deploying a web site!</p>
+
+	    	<hr class='chapters'>
 
 	    	<h2>Objectives</h2>
 	    	
@@ -30,6 +36,8 @@
 		        <li>Deploy a web site to a web server using git</li>
 		    </ul>
 
+		    <hr class='chapters'>
+
 		    <h2>Resources</h2>
 		    <dl>
 		        <dt><a href="http://git-scm.com/videos">Git Introductory Videos</a></dt>
@@ -40,7 +48,10 @@
 		        <dd>Lots of readable FAQs about how to use git and GitHub. If you get stuck or have a problem, this is a good place to look.</dd>
 		    </dl>
 		</section>
+
 		<section class="separated ng-scope">
+			<hr class='chapters'>
+
 	        <h2>So what is this <i class="term">git</i> thing anyway?</h2>
 
 	        <p>Git is a system that can store, retrieve, and merge various versions of your files. It's kind of like Dropbox and Google Docs, but with two big differences:</p>
@@ -113,7 +124,10 @@
 
 	        <p>In short: GitHub is a site that provides as a central authority (or clearing-house) for multiple people collaborating with git. Git is what you use to do version control; Github is one possible place where repositories can be stored.</p>
 	    </section>
+
 		<section class="separated ng-scope">
+			<hr class='chapters'>
+
     		<h2>Required Steps</h2>
 
 		    <p>To complete this challenge, follow these steps. If you get stuck, consult the resources above, <!-- ngIf: tas.length > 0 --> or <a href="mailto:mikefree@uw.edu">ask Mike</a>.</p>
@@ -123,7 +137,7 @@
 		    <h3 id="step0">Step 0: Sign up for GitHub!</h3>
 		    <p>The very first thing you need to do is create a free <a href="https://github.com/">GitHub</a> account, if you don't already have one. You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for us to collaborate and for the professor to figure out who submitted what, rather than needing to figure out who 'LeetCoder2015' is. This can be the start of a professional account you may use for the rest of your career!</p>
 		    <p>
-
+ 
 		    </p><h3>Step 1: Installation and Setup</h3>
 		    <p>You'll need to have the git command-line tools installed on your machine in order to complete this assignment. The git command line tools are already installed on the iSchool lab machines, but you can also <a href="http://git-scm.com/downloads">install them on your own computer</a> for free (Mac, Windows, or Linux). We will use git throughout this course, so if you plan to use your own machine at some point, you should just install them now. If you are afraid of the command line, you can also install the GitHub graphical tool (<a href="https://mac.github.com/">Mac</a> or <a href="https://windows.github.com/">Windows</a>), though you will still need to use the command line tools when deploying your web site to your web server. Note that we only offer support for the command-line though; that's how you should learn the system!</p>
 
@@ -281,6 +295,8 @@
 
 		    <p>Once you've verified that everything is working, you can submit your GitHub repository URL via the Submit button on this page.</p>
 
+		    <hr class='chapters'>
+
 		    <h2>Keep Practicing</h2>
 
 		    <p>Now that you've gone through the process once, try making some more changes to the files in your local repository, commit them, pushing them to GitHub, and then pulling them to your web server. Because you've already cloned the repository to your web server, updating the server to the most recent versions of all the files can be done with one simple command, executed from within the repository directory on the server:</p>
@@ -291,6 +307,8 @@
 		</section>
 	</div>
     	<div>
+    		<hr class='chapters'>
+    		
             <h2>Submit your attempt</h2>
             <p>Your attempt will be graded using the following rubric:</p>
             <table class="table">
