@@ -6,11 +6,17 @@
             <img class="landing-icon" src="../img/challenge3/landing-icon.png">
         </div>
         <h3 class="challenge-subtitle ng-binding" id='challengeDue'>Due: 10/20/15 <span style="text-decoration:underline">before</span> class, 300 points</h3>
-    	<!-- ngInclude: 'challenges/' + currentChallengeId + '.html' --><div class="challenge-description ng-scope" ng-include="'challenges/' + currentChallengeId + '.html'"><h2 class="ng-scope">Summary</h2>
+    	<!-- ngInclude: 'challenges/' + currentChallengeId + '.html' --><div class="challenge-description ng-scope" ng-include="'challenges/' + currentChallengeId + '.html'">
+
+        <hr class='chapters'>
+        
+        <h2 class="ng-scope">Summary</h2>
 
 <p class="ng-scope">Web development skills don't just allow you to create slick web pages -- they enable you to communicate important information to broad audiences.  In this exercise, you'll create an interactive map of the crowdsourced police shootings <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202" target="_blank">data</a>  that was <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202" target="_blank">crowdsourced from Deadspin</a> last fall.  This project will challenge you to stretch your functional programming skills, as well as independently learn a new library, so I suggest getting started early.</p>
 
 <p class="ng-scope"></p>
+
+<hr class='chapters'>
 
 <h2 class="ng-scope">Objectives</h2>
 <p class="ng-scope">By completing this challenge, you will practice and demonstrate mastery of the following skills:</p>
@@ -23,9 +29,13 @@
     <li>Deploy a web site to a web server using git</li>
 </ul>
 
+<hr class='chapters'>
+
 <h2 class="ng-scope">Resources</h2>
 
 <p class="ng-scope">Prior to this challenge, we'll cover the necessary JavaScript skills for data manipulation.  However, this challenge requires you to go out and learn how to use a new library (Leaflet.js).  The base repository has the necessary skeleton to get started, but you'll have to go out and learn the syntax for using the library.</p>
+
+<hr class='sub-chapters'>
 
 <h3 class="ng-scope">Relevant Slides from Class</h3>
 
@@ -35,6 +45,8 @@
 
 </ul>
 
+<hr class='sub-chapters'>
+
 <h3 class="ng-scope">Resources on the Web</h3>
 
 <ul class="resources ng-scope">
@@ -43,9 +55,14 @@
 </ul>
 <p class="ng-scope">To give you an idea of what you will build, here's a screenshot of one implementation (you may choose different colors, maptiles, layers, labels, etc.)</p><span class="ng-scope">.
 </span><p class="ng-scope"><img class="img-responsive screenshot" src="../img/challenge3/final.png" alt="Screenshot of page" style="border:1px solid black;padding:5px"></p>
+
+<hr class='chapters'>
+
 <h2 class="ng-scope">Required Steps</h2>
 
 <p class="ng-scope">This challenge begins by providing you with step by step instructions. This should get you started, but the core of this challenge is about working with data in JavaScript.  There are some hints below on how to use the Leaflet.js syntax, but you will be responsible for implementing these skills in a thoughtful way.  If you get stuck (beyond what Stackoverflow can help with), <a ng-href="mailto:kshino@uw.edu" href="mailto:kshino@uw.edu"> ask your TA,</a> or <a href="mailto:mikefree@uw.edu">ask Mike</a>.</p>
+
+<hr class='sub-chapters'>
 
 <h3 class="ng-scope">Set up: Fork and Clone the Repo, Run a Server</h3>
 
@@ -64,6 +81,9 @@
 </ol>
 
 <p class="alert alert-warning ng-scope">Note, you <strong>will not</strong> be able to read in your data without running a local server, as explained in step 5.</p>
+
+<hr class='sub-chapters'>
+
 <h3 class="ng-scope">Create a map</h3>
 
 <p class="ng-scope">Your <code>index.html</code> file already has all of the necessary libraries and files included for you to begin building your map.  However, it does not actually call the function that will build your map.  Inside of the <code>&lt;script&gt;</code> tag of your <code>index.html</code> file, call the function that draws your map.
@@ -87,12 +107,15 @@
 </ol><span class="ng-scope">
 Once you've completed this step, your maptiles (i.e., a blank map) should appear within the container div on your page.</span><p class="ng-scope"></p>
 
+<hr class='sub-chapters'>
+
 <h3 class="ng-scope">Get your data</h3>
 <p class="ng-scope">At the end of your <code>drawMap</code> function, you should call your  <code>getData</code> function. In the <code>getData</code> function, you should write a jQuery <a href="https://api.jquery.com/jquery.get/" target="_blank">AJAX request</a> that gets data from the (local) file <code>data/response.json</code>, which contains an array of objects, one for each shooting incident.  When the AJAX request is successful, you should call the third function, <code>customBuild</code>. 
 </p>
 
 <p class="alert alert-warning ng-scope">Note, the <code>customBuild</code> function must be called after the AJAX call has completed successfully.  This is because of the asynchronous nature of the request (i.e., your JavaScript code would keep running before the data was returned if you just wrote it in line).</p>
 
+<hr class='sub-chapters'>
 
 <h3 class="ng-scope">Add points to your map</h3>
 
@@ -113,12 +136,16 @@ In order to add points to your map, you'll need to loop through your data, and p
 
 Leaflet expects the </span><code class="ng-scope">layers</code><span class="ng-scope"> variable above to be an object with key-value pairs of layer names and layer objects. See the tutorial example </span><a href="http://leafletjs.com/examples/layers-control.html" target="_blank" class="ng-scope">here</a><span class="ng-scope"> for reference.  This will create the control button in the top-right of your map.</span><p class="ng-scope"></p>
 
+<hr class='sub-chapters'>
+
 <h3 class="ng-scope">Build a Cross-Tabulation</h3>
 <p class="ng-scope">This part of the challenge requires you to demonstrate strong data manipulation skills.  Computing aggregate information from your data is a common task built into project requirements. While working with your data, you should compute total counts for 4 categories of your choice, and present them in a cross tabulation as seen here:</p>
 
 <img class="img-responsive screenshot ng-scope" src="../img/challenge3/cross-tab.png" alt="Screenshot of page" style="width:90%;border:1px solid black;margin:10px">
 
 <p class="ng-scope">Feel free to choose any groupings (i.e., gender, race, outcome, etc.) to present in the table.  There are no specific steps for you to follow here.  Think carefully about how to use objects to track data, and use jQuery to create the proper <a href="http://www.w3schools.com/html/html_tables.asp" target="_blank">table</a> elements.  And don't forget to add some nice <a href="http://getbootstrap.com/css/#tables" target="_blank">bootstrap classes</a>!</p>
+
+<hr class='sub-chapters'>
 
 <h3 class="ng-scope">Additional information</h3>
 
@@ -131,6 +158,8 @@ Leaflet expects the </span><code class="ng-scope">layers</code><span class="ng-s
     </ul>
 <p class="ng-scope"></p></div>
     	 <div>
+         <hr class='chapters'>
+         
             <h2>Submit your attempt</h2>
             <p>Your attempt will be graded using the following rubric:</p>
             <table class="table">
