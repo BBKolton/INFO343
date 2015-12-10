@@ -3,7 +3,7 @@ var ROOT_API = 'https://info343.xyz/api/'
 var CHALLENGE_URL = ROOT_API + 'challenges/all';
 var LECTURE_URL = ROOT_API + 'lectures/all';
 
-var LECTURE_TIME = 'T08:30:00.000Z'
+var LECTURE_TIME = 'T08:30:00.000Z';
 
 mainApp.config(function($stateProvider) {
 
@@ -53,8 +53,8 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			var weekView = calendarFeature(challenge_result, lecture_result);
 			weekView.fullCalendar('changeView', 'basicWeek');
 			weekView.fullCalendar('option', 'height', 222);
-    	});
-    });
+  	});
+  });
 })
 
 .controller('navCtrl', function($scope, $http) {
@@ -92,7 +92,7 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 .controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
 	//get teh challenge
 	$http.get('pages/challenges/' + $stateParams.id + '.html').success(function(result) {
-		console.log(result);
+		//console.log(result);
 		$scope.challenge = $sce.trustAsHtml(result);
 	})
 
@@ -102,6 +102,20 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		console.log(items);
 		$scope.items = items;
 	})
+
+	$http.get(ROOT_API + 'user').then(function(user) {
+		if (user.data.status != 2) {
+			$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
+				console.log(items);
+				items = items.data;
+				$scope.checked = {};
+				for (item in items) {
+					$scope.checked[items[item].id] = true;
+				}
+				console.log($scope.checked);
+			});
+		}
+	});
 })
 
 
@@ -212,21 +226,65 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 	}
 });
 
-// honestly don't know how to pull out an ajax request elegantly...
-// used by challenge, calendar, and homepage.
-
-// function requestChallenges(scope, http) {
-// 	http.get(CHALLENGE_URL).success(function(result){
-// 		scope = result;
-//     });
-// }
+var repeatingEvents = [{
+    title:"My repeating event",
+    id: 1,
+    start: '10:00', // a start time (10am in this example)
+    end: '14:00', // an end time (6pm in this example)
+    dow: [ 1, 4 ], // Repeat monday and thursday
+    ranges: [{ //repeating events are only displayed if they are within one of the following ranges.
+        start: moment().startOf('week'), //next two weeks
+        end: moment().endOf('week').add(7,'d')
+    },{
+        start: moment('2015-02-01','YYYY-MM-DD'), //all of february
+        end: moment('2015-02-01','YYYY-MM-DD').endOf('month')
+    }],
+}];
 
 function calendarFeature(c_list, l_list) {
 	var parentCalendar = $('.calendar').fullCalendar(
 		{
-        // put your options and callbacks here
-        
-    	timeFormat: 'h(:mm)'
+	        events: [{
+	        	title: 'Professor Office Hour',
+	        	start: '2015-10-01T14:30:00.000Z',
+	        	end: '2015-12-09T16:00:00.000Z',
+	        	dow: [1, 2],
+	        	color: 'green',
+	        	ranges: [
+			   		{
+				        start: moment('2015-10-01','YYYY-MM-DD'), //all of february
+				        end: moment('2015-12-09','YYYY-MM-DD')
+			    	}
+			    ]
+
+	        }, 
+
+	        {
+	        	title: 'TA Office Hour',
+	        	start: '2015-10-01T10:30:00.000Z',
+	        	end: '2015-12-11T12:00:00.000Z',
+	        	dow: [2, 4],
+	        	color: '#e67300',
+	        	ranges: [
+			   		{
+				        start: moment('2015-10-01','YYYY-MM-DD'), //all of february
+				        end: moment('2015-12-11','YYYY-MM-DD')
+			    	}
+			    ]
+
+	        }],
+
+	        // Determines whether or not to render the event
+		    eventRender: function(event, element, view){
+		        if (event.ranges)
+			        return (event.ranges.filter(function(range){
+			            return (event.start.isBefore(range.end) &&
+			                    event.end.isAfter(range.start));
+			        }).length) > 0;
+			   	else
+			   		return true;
+		    },
+	    	timeFormat: 'h(:mm)'
     	}	
 	);
 
@@ -238,7 +296,7 @@ function populateEvent(c_list, l_list, parentCalendar) {
 		var curr = c_list[i];
 		var newEvent = {
                 start: curr.dueDate,
-                title: curr.name,
+                title: curr.name + 'Due',
                 id: curr.id,
                 color: '#cc0000',
                 allDay: false
@@ -259,19 +317,6 @@ function populateEvent(c_list, l_list, parentCalendar) {
 
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
-
-	// for(var i = 0; i < l_list.length; i++) {
-	// 	var curr = l_list[i];
-	// 	var newEvent = {
- //                start: (curr.date.substring(0, 10) + LECTURE_TIME),
- //                title: curr.name,
- //                id: curr.id,
- //                allDay: false,
- //                url: curr.slidesLink
- //            };
-
-	// 	parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
-	// }
 
 	return parentCalendar;
 }

@@ -1,9 +1,19 @@
-<div class='col-md-8'>
-	<div ng-bind-html="challenge"></div>
-</div>
-<div class='col-md-4'>
-	<h2>Checklist</h2>
-	<div ng-repeat='item in items'>
-		<p>{{item.description}}</p>
+<script src='js/checklist.js'></script>
+<div class='container'>
+	<div class='col-md-8'>
+		<div ng-bind-html="challenge"></div>
+	</div>
+	<div class='col-md-4'>
+		<div class='checklist'>
+			<h3>Checklist</h3>
+			
+			<table class='table table-striped'>
+				<tr ng-repeat='item in items'>
+					<td>{{checked[item.placement] ? 'checked' : 'X'}}</td>
+					<td>{{item.description}}</td>
+				</tr>
+			</table>
+
+		</div>
 	</div>
 </div>

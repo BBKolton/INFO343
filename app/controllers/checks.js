@@ -27,3 +27,12 @@ router.post('/api/checks/:challenge/:number', shib.ensureAuth('/shib'), function
 	});
 });
 
+router.get('/api/checks/:challenge', shib.ensureAuth('/shib'), function(req, res) {
+	db.checks.findAll({
+		where: {
+			netId: req.user.netId
+		}
+	}).then(function(checks) {
+		res.json(checks);
+	})
+})
