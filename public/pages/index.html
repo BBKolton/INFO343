@@ -50,7 +50,8 @@
 						<li><a ui-sref="challenges">Challenges</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a ng-href='/login'>{{userWelcome}}</a></li>
+						<li ng-show="userWelcome == 'Login'"><a ng-href='/login'>{{userWelcome}}</a></li>
+						<li ng-show="userWelcome != 'Login'"><a>{{userWelcome}}</a></li>						
 					</ul>
 				</div>
 			</div>
