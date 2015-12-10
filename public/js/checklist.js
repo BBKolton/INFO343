@@ -1,4 +1,5 @@
 $(function() {
+
     var $sidebar   = $(".checklist"), 
         $window    = $(window),
         offset     = $sidebar.offset(),

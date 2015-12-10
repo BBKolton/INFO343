@@ -86,6 +86,12 @@ h3 {
 	margin-left: 10px;
 }
 
+#checklist td {
+	font-size: 12px;
+	padding: 2px;
+	vertical-align: middle;
+}
+
 .press-icon {
 	text-align: center;
 }
@@ -103,6 +109,7 @@ h3 {
 .challenge-top-post {
 	margin-left: 10px;
 	margin-right: 10px;
+	font-size: 12px;
 }
 
 .chapters {
