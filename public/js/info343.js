@@ -76,13 +76,8 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 })
 
 .controller('calendarCtrl', function($scope, $http) {
-	$http.get(CHALLENGE_URL).success(function(result){
-		//$scope.challengeList = result;
-		calendarFeature(result);
-  });
 	$http.get(CHALLENGE_URL).success(function(challenge_result){
 		$http.get(LECTURE_URL).success(function(lecture_result){
-
 			calendarFeature(challenge_result, lecture_result);
   	});
   });
