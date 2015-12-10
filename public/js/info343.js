@@ -279,7 +279,7 @@ function calendarFeature(c_list, l_list) {
 		{
 	        events: [
 	        	officeHourEvent('Professor Office Hour', [1, 2], 'green'),
-	        	officeHourEvent('TA Office Hour', [2, 4], '#D9DD00')
+	        	officeHourEvent('TA Office Hour', [2, 4], '#9F81F7')
 	        ],
 
 	        // Determines whether or not to render the event
