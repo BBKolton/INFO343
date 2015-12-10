@@ -152,13 +152,13 @@ mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 			if (user.data.status != 2) {
 				$scope.loggedIn = true;
 				$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
-					console.log(items);
+					//console.log(items);
 					items = items.data;
 					$scope.checked = {};
 					for (item in items) {
 						$scope.checked[items[item].listNumber] = true;
 					}
-					console.log($scope.checked)
+					//console.log($scope.checked)
 				});
 			}
 		});
