@@ -53,8 +53,8 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 			var weekView = calendarFeature(challenge_result, lecture_result);
 			weekView.fullCalendar('changeView', 'basicWeek');
 			weekView.fullCalendar('option', 'height', 222);
-    	});
-    });
+  	});
+  });
 })
 
 .controller('navCtrl', function($scope, $http) {
@@ -102,6 +102,20 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		console.log(items);
 		$scope.items = items;
 	})
+
+	$http.get(ROOT_API + 'user').then(function(user) {
+		if (user.data.status != 2) {
+			$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
+				console.log(items);
+				items = items.data;
+				$scope.checked = {};
+				for (item in items) {
+					$scope.checked[items[item].id] = true;
+				}
+				console.log($scope.checked);
+			});
+		}
+	});
 })
 
 

@@ -6,7 +6,8 @@ body {
 
 h1 {
 	font-size: 25px;
-	padding: 1em;
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 h3 {
@@ -51,14 +52,28 @@ h3 {
 /* Syllabus */
 
 
-/* Challenges, Caldendar */
+/* Caldendar */
 .calendar, #chal-table {
 	padding: 5em;
 }
 
 #dueDate {
 }
-/* Challenges, Caldendar */
+/* Caldendar */
+
+
+/* Challenges */
+.checklist {
+	background-color: #eee;
+	padding: 0px;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+}
+
+.checklist h3 {
+	margin-left: 20px;
+}
+/* Challenges */
 
 
 /* Error */
