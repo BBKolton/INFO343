@@ -1,3 +1,95 @@
-<div class="container">
+<div>
 	<h1>Challenge Six</h1>
+
+	<h2><a ng-href="#c/challenges" href='/index.html#/challenges'>← Back to challenges</a></h2>
+    <div>
+        <img > <!--Image goes here -->
+    </div>
+
+    <!-- Hopefully get this information fro the database! -->
+    <h1 class="challenge-title ng-binding">Project Proposal</h1>
+    <h3 class="challenge-subtitle ng-binding">Due: 11/17/15 <span style="text-decoration:underline">before</span> class, 150 points</h3>
+
+	<div class="challenge-description ng-scope">
+		<h2 class="ng-scope">Summary</h2>
+		<p class="ng-scope">A few weeks into the quarter, we'll form teams for this project. For your final project, each team can decide what they want to build. You can build a new web site for a real client such as a student organization, an artist, a non-profit, or a local business. Or you can build a more sophisticated web application, either for a client or yourselves. It's up to you, but there are a few base-level requirements that I want you to meet (see the <a href="#challenges/project">full project description</a>)</p>
+		
+		<h2 class="ng-scope">Proposal Requirements</h2>
+		<h3 class="ng-scope">Project Description</h3>
+		<p class="ng-scope">This is a written, non-technical description of what you will build.  Depending on the specifics of your project, you should address the following questions:</p>
+		<ul class="ng-scope">
+			<li>Who is the client or target audience of the web-page?</li>
+			<li>What is the purpose of your project?</li>
+			<li>What information will your project communicate?</li>
+			<li>What will your project enable people to do?</li>
+			<li>Are there similar websites out there that are similar to your application?  How are they similar/different?</li>
+		</ul>
+
+		<h3 class="ng-scope">Technical Description</h3>
+		<p class="ng-scope">This section of your proposal should include a list of the libraries/packages you plan on using to complete your project.  This includes, but is not limited to:</p>
+		<ul class="ng-scope">
+			<li>The JavaScript framework you will use to structure your code (i.e., Angular.js, React.js, etc.)</li>
+			<li>The service you will plan to use for data storage (i.e., Parse, Firebase, etc.)</li>
+			<li>The new technical skills you will need to learn to complete the project</li>
+		</ul>
+
+		<h3 class="ng-scope">Wireframe</h3>
+		<p class="ng-scope">Creating a low-fidelity representation of your webpage is a crucial part of the design process.  By laying out the different components of your project and the connections between them, you are able to identify the steps necessary to be successful.  These can be handdrawn sketches, powerpoint/keynote presentations, or can be built using a wireframing tool like <a href="https://balsamiq.com/" target="_blank">balsamiq</a>, <a href="https://www.lucidchart.com/" target="_blank">Lucid Chart</a>, or another tool of your choice.  Regardless of the tool, your wireframe should include the following:</p>
+		<ul class="ng-scope">
+			<li>A visual representation of each component of your project, including:</li>
+				<ul>
+					<li>Page content</li>
+					<li>Navigation menus</li>
+					<li>Header/footer information</li>
+					<li>User authentication interfaces</li>
+				</ul>
+			<li>Descriptions of interactivity (i.e., hover/click/scroll events)</li>
+			<li>Clear representations of connections between pages (or sections of pages)</li>
+		</ul>
+		<p class="alert alert-warning ng-scope">Note: your wireframe document is not binding, and you'll likely make changes as you actually build the project.  However, it should help you elicit important design questions at an early stage in the process</p>
+
+		<p class="ng-scope">While wireframing can be a tedious process, it will help you make a project plan and identify future roadblocks.  The purpose of this assignment is not to create pixel-perfect representations of your future website, but to provide you with an opportunity to consider the functionality and layout of your application.  Although wireframe components may be hand drawn, please make sure that they are clear and easy to read.</p>
+	</div>
+	 <div>
+        <h2>Submit your attempt</h2>
+        <p>Your attempt will be graded using the following rubric:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Criterion</th>
+                    <th>Weight</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Project Description</td>
+                    <td class="ng-binding">30%</td>
+                    <td class="ng-binding">Did the group create a detailed description of the purpose and functionality of their project?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Technical Description</td>
+                    <td class="ng-binding">20%</td>
+                    <td class="ng-binding">Did the group outline the different JavaScript frameworks/libraries they will use to structure their code and accomplish specific tasks?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Wireframe</td>
+                    <td class="ng-binding">50%</td>
+                    <td class="ng-binding">Did the group create a wireframe that visually depicts the components of the website and the connections between them?  Are interactive features clearly described?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric -->
+            </tbody>
+        </table>
+
+        <div class="ng-scope">
+        	<a target="_blank" href="https://canvas.uw.edu/courses/990525/assignments/2974083"><button type="button" class="btn btn-success">Submit</button></a>
+        </div>      
+    </div>
+
+	<footer>
+		<div id="footer-background">
+		</div>
+		<div class="copyright">
+           © 2015,
+            <a target="_blank" href="https://ischool.uw.edu/people/faculty/mikefree">Michael Freeman</a>,
+            <a target="_blank" href="https://ischool.uw.edu/">University of Washington Information School</a><p></p>                        
+        </div>
+	</footer>
 </div>
