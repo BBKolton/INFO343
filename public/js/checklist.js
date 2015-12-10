@@ -5,7 +5,7 @@ $(function() {
         topPadding = 30,
         windowSize = $window.width();
 
-    if (windowSize < 992) {
+    if (windowSize >= 992) {
         $window.scroll(function() {
             if ($window.scrollTop() > offset.top) {
                 $sidebar.stop().animate({
