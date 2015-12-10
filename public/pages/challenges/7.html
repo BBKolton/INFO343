@@ -1,3 +1,112 @@
-<div class="container">
+<div>
 	<h1>Challenge Seven</h1>
+
+	<h2><a ng-href="#c/challenges" href='/index.html#/challenges'>← Back to challenges</a></h2>
+    <div>
+        <img > <!--Image goes here -->
+    </div>
+
+    <!-- Hopefully get this information fro the database! -->
+    <h1 class="challenge-title ng-binding">Personal Portfolio</h1>
+    <h3 class="challenge-subtitle ng-binding">Due: 11/24/15 <span style="text-decoration:underline">before</span> class, 300 points</h3>
+
+	<div class="challenge-description ng-scope">
+		<section class="ng-scope">
+		    <h2>Summary</h2>
+			<p>Creating an online presence is a great way to connect to cool organizations, and showcase the type of work you have done (and are interested in doing!).  This challenge presents you with an opportunity to showcase the work you've done thus far in class in a professional and modern portfolio.</p>
+
+		    <h2>Objectives</h2>
+	    	<p>By completing this challenge, you will practice and demonstrate mastery of the following skills:</p>
+		    <ul>
+		        <li>Building a web-page with multi-page architecture</li>
+		        <li>Designing a data-driven web-page with Angular.js</li>
+		        <li>Build a mobile-friendly web-page using modern web-standards (i.e., bootstrap).</li>
+		        <li>Practice your design skills to impress future collaborators.</li>
+		    </ul>
+
+		    <h2>Resources</h2>
+			<p>In order to complete this challenge, you'll need to leverage your data storage and data representation skills you've learned using Angular.  These resources may come in handy.</p>
+	    	<h3>Resources on the Web</h3>
+		    <ul class="resources">
+		        <li class="resource slides"><a target="_blank" href="lectures/angular">Angular I Slides</a></li>
+		        <li class="resource slides"><a target="_blank" href="lectures/angular2">Angular II Slides</a></li>
+		        <li class="resource slides"><a target="_blank" href="lectures/firebase">Firebase Slides</a></li>
+		        <li class="resource slides"><a target="_blank" href="lectures/angular-ui-router">Multi-page Architecture Slides</a></li>
+		    </ul>
+		</section>
+
+		<section class="ng-scope">
+		    <h2>Required Features</h2>
+		    <p>This is an opportunity for you to express your creativity and showcase the great work that you've done thus far in the course.  If you'd like to focus on another interest area (i.e., showcasing your photography), make sure you meet the same requirements.</p>
+
+		    <h3>Data-driven content</h3>
+		    <p>At this point in the course, you should understand the power of data-driven content.  Rather than write out each element in HTMl, your content should be derived from data, and presented using angular directives such as <code>ng-repeat</code>.  You have a few different options for storing and accessing your data</p>
+		    <ul>
+		        <li>Store your data (i.e projects, links, descriptions, etc.) in a .csv file. If you do this, you'll either need to:
+		            <ul>
+		                <li>Parse the data once you've loaded it, which is far easier if you use a library like <a href="http://papaparse.com/" target="_blank">PapaParse</a></li>
+		                <li>Write your .csv file, then manually turn it into a JSON object using a service like <a href="https://shancarter.github.io/mr-data-converter/" target="_blank">Mr. Data Converter</a></li>
+		            </ul>
+		            </li><li>Use a service like <a href="http://Firebase.com" target="_blank">Firebase</a> to store your data. How you get the data there is a question you'll have to solve....</li> 
+		    </ul>
+		    <p>This loaded data should drive the content of the page.  For example, if you are showcasing multiple projects you've worked on (including images, links, a desription, etc.) your data should maintain those images/descriptions/links, and you should use angular to handle the display of that data.  You could even go as far as storing other contact (i.e., contact info, landing page description) in data as well.</p> 
+		    
+		    <h3>Multi-page Architecture</h3>
+		    <p>Building pages with multi-page architecture is a common web-standard.  Rather than figuring out page-redirects with jQuery, it is much more efficient to handle these component with the <a href="http://angular-ui.github.io/ui-router/site/#/api/ui.router" target="_blank">Angular UI-Router</a> service.  This allows users to create and load html fragments into their page content without reloading the page.  In order to do this, you'll need to perform the following tasks:</p>
+		    <ul>
+		        <li>Create a navigation element that persists across pages.</li>
+		        <li>Create <strong>at least</strong> 3 different pages that users can navigate across.  These could include a home page, projects page, interests page, contact page, etc.</li>
+		    </ul>
+
+		    <h3>Deploy Site to Your Student Web Server</h3>
+		    <p>As you've done in previous challenges, commit your files to a local repository, push those changes to a GitHub repository, and then deploy your site to your student web server.  You will submit your github project URL as your submission.  Before you do so, please create a <code>Readme.md</code> file to answer the following questions:</p>
+	        <ol>
+	            <li>What is the URL of this project on your student web-server?</li>
+	            <li>Did you receive help from any other sources (classmates, etc.)? If so, please list who.</li>
+	            <li>Approximately how many hours did it take you to complete this challenge?</li>
+	            <li>Did you encounter any problems in this challenge we should warn students about in the future? How can we make the challenge better?</li>
+	        </ol>
+		</section>
+	</div>
+	<div>
+        <h2>Submit your attempt</h2>
+        <p>Your attempt will be graded using the following rubric:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Criterion</th>
+                    <th>Weight</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Multi-page Architecture</td>
+                    <td class="ng-binding">40%</td>
+                    <td class="ng-binding">Does the portfolio page have a multi-page architecture controlled by Angular.js?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">Data-driven Content</td>
+                    <td class="ng-binding">30%</td>
+                    <td class="ng-binding">Is the page content driven by an underlying data source?  Is that data loaded and handled by Angular.js?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                    <td class="ng-binding">UI/UX</td>
+                    <td class="ng-binding">30%</td>
+                    <td class="ng-binding">Does page navigation function properly?  Are modern standards used to layout elements?  Does the page work well on a small device?</td>
+                </tr><!-- end ngRepeat: crit in currentRubric -->
+            </tbody>
+        </table>
+    </div>
+    <div ng-if="section" class="ng-scope">
+		<a target="_blank" href="https://canvas.uw.edu/courses/990525/assignments/2974081"><button type="button" class="btn btn-success">Submit</button></a>
+    </div>
+
+	<footer>
+		<div id="footer-background">
+		</div>
+		<div class="copyright">
+           © 2015,
+            <a target="_blank" href="https://ischool.uw.edu/people/faculty/mikefree">Michael Freeman</a>,
+            <a target="_blank" href="https://ischool.uw.edu/">University of Washington Information School</a><p></p>                        
+        </div>
+	</footer>
 </div>
