@@ -61,10 +61,21 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		return newList;
 	}
 
+	function evenlyFill(list, max) {
+		for (var i = list.length; i < max; i++) {
+			list.push({name: '&nbsp;&#160;'});
+		}
+		return list;
+	}
+
     $http.get(CHALLENGE_URL).success(function(challenge_result){
 		$http.get(LECTURE_URL).success(function(lecture_result){
-			$scope.challengeList = pruneEvent(challenge_result);
-			$scope.lectureList = pruneEvent(lecture_result);
+			var prunedChallenge = pruneEvent(challenge_result);
+			var prunedLecture = pruneEvent(lecture_result);
+			var max = Math.max(prunedChallenge.length, prunedLecture.length);
+
+			$scope.challengeList = evenlyFill(prunedChallenge, max);
+			$scope.lectureList = evenlyFill(prunedLecture, max);
 
 			var weekView = calendarFeature(challenge_result, lecture_result);
 			weekView.fullCalendar('changeView', 'basicWeek');
