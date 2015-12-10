@@ -216,9 +216,15 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 function calendarFeature(c_list, l_list) {
 	var parentCalendar = $('.calendar').fullCalendar(
 		{
-        // put your options and callbacks here
-        
-    	timeFormat: 'h(:mm)'
+	        events: [{
+	        	title: 'Professor Office Hour',
+	        	start: 'T14:30:00.000Z',
+	        	end: 'T16:00:00.000Z',
+	        	dow: [1, 2],
+	        	color: 'green'
+	        }],
+	        
+	    	timeFormat: 'h(:mm)'
     	}	
 	);
 
@@ -251,7 +257,6 @@ function populateEvent(c_list, l_list, parentCalendar) {
 
 		parentCalendar.fullCalendar('renderEvent', newEvent, 'stick');
 	}
-
 
 	return parentCalendar;
 }
