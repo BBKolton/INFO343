@@ -22,12 +22,11 @@
 						<button ng-click='checkItem(item.placement)' ng-show='checked[item.placement]' class='btn btn-success btn-xs'><span class='glyphicon glyphicon-ok'></span></button>
 						<button ng-click='checkItem(item.placement)' ng-show='!checked[item.placement]' class='btn btn-danger btn-xs'><span class='glyphicon glyphicon-remove'></span></button>
 					</td>
-					<td>{{item.description}}</td>
+					<td class='item'>{{item.description}}</td>
 				</tr>
 			</table>
 
 			<h3 class='text-center'>TOP POST</h3>
-			<hr class='sub-chapters'>
 			<div class='challenge-top-post'>
 				<h4>{{topPost.title}}</h4>
 				<p>

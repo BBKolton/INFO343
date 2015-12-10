@@ -98,8 +98,13 @@ footer {
 	border: 1px solid #ddd;
 }
 
-hr {
-	border-color: #bbb;
+td.item {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+tbody {
+	border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .check-button-area {
