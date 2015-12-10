@@ -296,7 +296,7 @@ function populateEvent(c_list, l_list, parentCalendar) {
 		var curr = c_list[i];
 		var newEvent = {
                 start: curr.dueDate,
-                title: curr.name + 'Due',
+                title: curr.name + ' Due',
                 id: curr.id,
                 color: '#cc0000',
                 allDay: false
