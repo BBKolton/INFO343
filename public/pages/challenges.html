@@ -26,13 +26,12 @@
 				<!-- needs a link to challenge and board for each of these, probably stored as a link in the database API thingy-->
 				<tr ng-repeat = 'challenge in challengeList'>
 					<td>{{challenge.dueDate.substring(5, 7) + '&#8209;' + challenge.dueDate.substring(8, 10) + '&#8209;' + challenge.dueDate.substring(0, 4)}}</td>
-					<td><a href=''>{{challenge.name}}</a></td>
+					<td><a href='/index.html#/challenge/{{challenge.id}}'>{{challenge.name}}</a></td>
 					<td>{{challenge.points}}</td>
 					<td>{{challenge.description}}</td>
-					<td><a href=''>placeholder</a></td>
+					<td><a href='/index.html#/board/{{challenge.id}}'>placeholder</a></td>
 				</tr>
 			</table>
-			<a href='challenge-1.html'>TEMPORARY</a>
 		</div>
 	</div>
 </div>

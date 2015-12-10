@@ -38,8 +38,8 @@ mainApp.config(function($stateProvider) {
 		controller: 'challengeViewCtrl'
 	})
 	.state('message', {
-		url: '/message/:board',
-		templateUrl: '../pages/message.html',
+		url: '/board/:board',
+		templateUrl: '../pages/board.html',
 		controller: 'messageCtrl'
 	}).state('error', {
 		url: '*path',
