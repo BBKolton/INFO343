@@ -1,3 +1,224 @@
 <div class="container">
-	<h1>Challenge Four</h1>
+    <h1>Challenge Four</h1>
+
+    <h2><a ng-href="#c/challenges" href='/index.html#/challenges'>← Back to challenges</a></h2>
+        <div>
+            <img class="landing-icon" src="../img/challenge4/landing-icon.png">
+        </div>
+        <h1 class="challenge-title ng-binding">Build a CRUD web application</h1>
+        <h3 class="challenge-subtitle ng-binding">Due: 10/29/15 <span style="text-decoration:underline">before</span> class, 300 points</h3>
+    	<!-- ngInclude: 'challenges/' + currentChallengeId + '.html' --><div class="challenge-description ng-scope" ng-include="'challenges/' + currentChallengeId + '.html'"><h2 class="ng-scope">Summary</h2>
+<p class="ng-scope">The map-based data visualization you created in the last challenge is a nice example of a read-only reporting web application. These kinds of apps get data from a central server and present it to users in an easy-to-understand and navigate format. But they are typically read-only, meaning that the application doesn't enable users to create new data and save it back to the server.</p>
+
+<p class="ng-scope">In this challenge, you'll expand your web development skills by building a read/write web application. We commonly refer to these kinds of systems as <span class="term">CRUD applications</span>, as they let users create, read, update, and delete their own information. Most of these systems also implement <span class="term">authentication</span>, allowing users to sign up and sign in to private accounts, so that the system knows who creates what data.</p>
+
+<p class="ng-scope">In the past, if you wanted to build a web application with centralized data storage and authentication, you had to build both the client and server-sides. Over the last few years, however, several generic, cloud-based, data storage web services have been developed, which anyone can use to store and manage data without having to write, host, or maintain a web server. Most of them also provide built-in user account management, authentication, and authorization rules. For many kinds of applications, these services have altogether eliminated the need to write the server-side of the application.</p>
+
+<p class="ng-scope">For this challenge, you will use one of these services that has become very popular over the last couple of years: <a target="_blank" href="https://parse.com/">Parse.com</a>. Parse was acquired by Facebook a few years ago, so it has a lot of money and hype behind it now. Their service is very well designed, their administration interface is beautifully put together, and their documentation is superb. You will use their JavaScript library to interact with their servers, and the jQuery library to render data on to the web page (if you already know jQuery well, see the advanced requirements for other options).</p>
+
+<h2 class="ng-scope">Objectives</h2>
+
+<p class="ng-scope">By completing this challenge you will practice and demonstrate the following skills</p>
+
+<ul class="ng-scope">
+    <li>Using a cloud-based data storage service to create, read, update, and delete data</li>
+    <li>Using the jQuery library to add elements dynamically to the page based on the data your application creates, reads, updates, and deletes.</li>
+    <li>Showing appropriate visual feedback to the user while making asynchronous requests to the server.</li>
+</ul>
+
+<h2 class="ng-scope">Resources</h2>
+
+<p class="ng-scope">We'll have a good amount of class time to practice Parse and jQuery, but these may come in handy for reference:</p>
+
+<h3 class="ng-scope">Relevant Slides from Class</h3>
+
+<ul class="resources ng-scope">
+    <li class="resource slides"><a target="_blank" href="lectures/javascript">JavaScript</a></li>
+    <li class="resource slides"><a target="_blank" href="lectures/jquery">jQuery</a></li>
+    <li class="resource slides"><a target="_blank" href="lectures/parse-1">Data Storage I</a></li>
+    <li class="resource slides"><a target="_blank" href="lectures/parse-2">Data Storage II</a></li>
+</ul>
+
+
+<h3 class="ng-scope">Resources on the Web</h3>
+
+<ul class="resources ng-scope">
+    <li class="resource reading"><a target="_blank" href="https://parse.com/products/core">Parse Core Service Overview</a></li>
+    <li class="resource reading"><a target="_blank" href="https://parse.com/docs/js/guide">Parse JavaScript Library Getting Started Guide</a></li>    
+    <li class="resource reading"><a target="_blank" href="https://api.jquery.com/">jQuery API Documentation</a></li>
+</ul>
+
+<h2 class="ng-scope">Getting started</h2>
+
+<p class="ng-scope">Unlike other challenges, there is no starter repository for this challenge (you're ready start a project on your own!).  You can <a href="https://help.github.com/articles/create-a-repo/" target="_blank">create a repository</a> on github, and clone it to your machine as you have in the past.
+</p>
+
+<p class="ng-scope">When you create your project (or at some point before submission), you must create a <code>Readme.md</code> file that describes your project.  In addition to a short description, please include the following information:
+
+</p><ol class="ng-scope">
+    <li>Did you receive help from any other sources (classmates, etc.)? If so, please list who.</li>
+    <li>Did you complete any advanced extensions to this challenge? If so, what?</li>
+    <li>Approximately how many hours did it take you to complete this challenge?</li>
+    <li>Did you encounter any problems in this challenge we should warn students about in the future? How can we make the challenge better?</li>
+</ol>
+
+<p class="ng-scope"></p>
+<h2 class="ng-scope">Application Requirements</h2>
+
+<p class="ng-scope">Unlike earlier assignments, you'll be responsible for translating these high level descriptions into discrete coding tasks.  I suggest writing out the programming tasks necessary for building each component of your application.</p>
+
+<p class="ng-scope">The application you build for this challenge will let users write reviews about something, similar to Yelp or Amazon's product reviews. To keep this focused, you will build a review page for just one thing, but you get to decide what that thing is. It could be anything people might want to review: a book, movie, music track, video game, picture, clothing, restaurant, etc. It can be real or fictitious. Be creative!</p>
+
+
+<p class="ng-scope">You have total control over the visual design and user experience, but here is an example of how this sort of page might look (you <strong>do not</strong> have to imitate this design, but should create an elegant interface using modern web standards).</p>
+
+<img class="img-responsive screenshot bordered ng-scope" src="../img/challenge4/reviews.png" alt="reviews screenshot">
+
+<p class="alert alert-warning ng-scope">Remember to make your page look and function well both on small mobile devices and larger desktop computers.</p>
+
+<h3 class="ng-scope">Product information</h3>
+<p class="ng-scope">Your review page must contain information about the thing that is being reviewed. This content should be relatively brief and focused, as the main point of this challenge is to enable the reviewing functionality.  You may want to include a product title, a short paragraph of information, an image, etc.</p>
+
+<p class="ng-scope">In addition to displaying the individual reviews (see below), you must also display the average rating from all reviews. Again, look at how Yelp and Amazon do it, but you'll typically want to put this featured prominently alongside the product information.
+
+    </p><p class="alert alert-warning ng-scope">If you get a <code>NaN</code> when calculating the average, you may need to specify that the values are numbers (i.e., <code>Number(value),</code>, either when calculating the average, or before saving the data to Parse.</p>
+
+<p class="ng-scope"></p>
+
+<h3 class="ng-scope">Creating reviews</h3>
+ <p class="ng-scope">You'll build an interface for the user to create a review that likely involves a <code>&lt;form&gt;</code> element to input free-text, as well as an interactive way to input a rating (see next section) .  The user must be able to write a new review, which must contain at least these properties:
+        </p><ul class="ng-scope">             
+             <li>a short <code>title</code></li>
+             <li>a multi-line <code>body</code></li>
+             <li>a <strong>numeric</strong> <code>rating</code> (scale of 1-5: see below)</li>
+         </ul>
+
+    <p class="ng-scope">New reviews must be saved to your Parse application database. Define a new Parse object class, create an instance, set the properties, and <a href="https://parse.com/docs/js/guide#objects-saving-objects">save it</a>.  To do this, you'll need to retrieve the information from your rating element, as well as your form.</p>
+
+<h3 class="ng-scope">Assigning Ratings</h3>
+
+<p class="ng-scope">For the rating, you should use one of the many jQuery rating plug-in libraries, which allow the user to choose one or more stars by clicking/tapping on them. Just as with other element types, you can use jQuery to select the element and retrieve an attribute (such as 'rating'). The most popular one seems to be <a href="http://wbotelhos.com/raty">jQuery Raty</a>, which uses raster icons for the stars. Another option is <a href="https://github.com/Jacob87/raty-fa">jQuery Raty FA</a>, which is a fork of the former library that uses the scalable vector stars from <a href="https://fortawesome.github.io/Font-Awesome/">Font Awesome</a>. Vector-based icons can scale to any size or resolution, so they tend to look better on high-definition screens.
+
+</p><p class="alert alert-warning ng-scope">Note that the score returned from these plug-ins is often a string value and not a number. You should <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt">convert this to an integer</a> before saving it to Parse. This will enable you to calculate the average rating more easily.</p>
+       
+<h3 class="ng-scope">Displaying Reviews</h3>
+
+<p class="ng-scope">At this point, you should have written your product description and built an interface for users to create reviews.  In order to display the reviews stored in your database, you must  fetch all existing reviews and display them on the page, which you can do using a <a href="https://parse.com/docs/js/guide#queries">Parse query</a>.  Once you have the reviews, you should iterative through them in JavaScript, and use jQuery to create new HTML elements and  <a target="_blank" href="http://www.w3schools.com/jquery/html_append.asp">append</a> them to the page. Remember that the Parse library is making asynchronous requests to the server, so you must wait for the query to return before trying to render the data.</p>
+
+<p class="ng-scope">Because the review title and body are entered by the user and integrated into the page by your code, it's a best practice to protect against <a href="https://en.wikipedia.org/wiki/Code_injection#HTML_script_injection">script injection attacks</a>. The easiest way to do this is to use jQuery's <code><a href="https://api.jquery.com/text/">text()</a></code> method instead of it's <code>html()</code> method when populating the review title and body elements. The <code>text()</code> method escapes the HTML, so any embedded HTML will just show up literally on the page, and will not be interpreted as HTML by the browser.</p>
+
+<p class="ng-scope">You should also display summary information of the up/down votes received by each review (see below).  A common way to do this is textually, stating "2 out of 3 people found this review helpful" (i.e., 2 up-votes, 1 down-vote)</p>
+
+<h3 class="ng-scope">Interacting with reviews</h3>
+
+<p class="ng-scope">Users must be able to indicate whether a particular review was helpful or unhelpful (e.g., up/down vote icons or yes/no buttons), and these vote totals must be persisted with the review object on Parse. Note that multiple users may be voting on the same review at the same time, so you should use Parse's <a target="_blank" href="https://parse.com/docs/js/guide#objects-counters">atomic increment</a> function to safely increment the values. To keep things simple, you may let users vote on their own reviews and vote multiple times. Check out the advanced extra-credit requirements if you want to enable authentication and authorization rules that prohibit this.</p>
+
+    
+<p class="ng-scope">Users must also be able to delete a particular review. To keep things simple, you may allow users to delete any review, even those created by others. Check out the advanced extra-credit requirements if you want to enable authentication and authorization rules that prohibit this.</p>
+
+
+<h2 class="ng-scope">Advanced Extra-Credit Requirements <img class="pull-right" src="../img/challenge4/double-black-diamond.png" alt="double-black-diamond sign"></h2>
+
+<h3 id="extra-credit-auth" class="ng-scope">Authentication and Authorization</h3>
+
+<p class="ng-scope">The base requirements allow users to vote on their own reviews and delete those written by others, but a real application would never allow that. In order to prohibit such things, you have to know for sure who the current user is, and that requires authentication. Thankfully, Parse provides all the functionality you need for application user accounts and username/password authentication.</p>
+
+<p class="alert alert-warning ng-scope">Note that these application user accounts are private to your particular Parse application. They are not general developer accounts on the Parse service itself, and they are totally separate from all other Parse applications. These application user accounts are stored in your application's Parse database, in the <code>Users</code> class.</p>
+
+<p class="ng-scope">Parse enables user account sign-up and sign-in, but you will have to provide the user interface that drives this. Once the user is signed in, you will also add logic to prohibit various unauthorized activities. Your solution must adhere to the following additional requirements:</p>
+
+<ul class="ng-scope">
+    <li>The user must sign in before writing a review (no anonymous reviews). The user must supply their username and password through some kind of form, and you code should pass those values to the <code><a href="https://parse.com/docs/js/guide#users-logging-in">Parse.User.logIn()</a></code> method to sign in. Use <code><a href="https://parse.com/docs/js/guide#users-current-user">Parse.User.current()</a></code> to determine if the user is signed in, and who the signed-in user actually is.</li>
+
+    <li>If the user does not yet have an account, the user must be able to sign up for one. When signing up you may allow the user to provide more information than just the username and password (e.g., first and last name, email address, etc.). You can then display some of this information on the page to indicate who the current user is.  Alternatively, you may set up your application to have a Facebook login option.</li>
+
+    <li>After signing in, you must provide the user a mechanism for signing out (e.g., a button or link). Use <code><a href="https://parse.com/docs/js/guide#users-current-user">Parse.User.logOut()</a></code> to sign the user out.</li>
+
+    <li>When saving a new review, you must add one additional property to the review: <code>user</code>, which should be set to the current user object that you get back from <code><a href="https://parse.com/docs/js/guide#users-current-user">Parse.User.current()</a></code>. This will let you track the author of each review. Parse will save only a reference to the <code>User</code> object in this property, so there's no duplication of data.</li>
+
+    <li>Now that all reviews have a known author, you must display the author's name with each review. By default, Parse will return only the user's ID when you query the reviews, so you will also want to tell the Parse query to <a href="https://parse.com/docs/js/api/classes/Parse.Query.html#methods_include">include the related user objects</a> for the <code>'user'</code> property.</li>
+
+    <li>You must prohibit users from deleting reviews written by others. Every parse object, including <code>User</code> objects, gets a unique ID, accessible via the <code>id</code> property (e.g., <code>currentUser.id</code>). Compare the review author's <code>id</code> property to the current user's <code>id</code> property to determine if they are the same or different users.</li>
+
+    <li>You must prohibit users from voting on their own reviews.</li>
+
+    <li>For extra-extra credit, you may also track which reviews the current user has voted on and prohibit the current user from voting on the same review twice. This requires storing an <a href="https://parse.com/docs/js/guide#objects-arrays">array</a> on the user object, containing the review <code>id</code>s the user has voted on. Use Parse's <code><a href="https://parse.com/docs/js/guide#objects-arrays">addUnique()</a></code> method to safely add new <code>id</code> values to this array.</li>
+
+</ul>
+
+<h3 class="ng-scope">Use a Templating Engine</h3>
+
+<p class="ng-scope">If you already know jQuery well, and don't want to generate/populate all those elements using imperative code, consider using a templating engine instead. These engines let you define an HTML template for how a single review would look, with special tokens that get replaced with properties of the current review object. The library then makes it easy to generate populated markup for all of your review objects based on the single template, which you can then insert into the page <em>en masse</em> using jQuery.</p>
+
+<p class="ng-scope">There are many of these templating engines, but here are the most popular ones:</p>
+
+<dl class="ng-scope">
+    <dt><a href="https://github.com/janl/mustache.js">Mustache</a></dt>
+    <dd>A really simple templating engine that has been ported to just about every programming language there is.</dd>
+
+    <dt><a href="http://handlebarsjs.com/">Handlebars</a></dt>
+    <dd>A simple but more flexible templating engine based on Mustache templates.</dd>
+
+    <dt><a href="http://facebook.github.io/react/">React.js</a></dt>
+    <dd>A much, much, <strong>much</strong> more complicated templating engine that is gaining in popularity, partially because Facebook has been really hyping it lately. Learning React can be a huge time-sink, so I wouldn't recommend this unless you are already familiar with the core concepts behind templating engines, view frameworks, and object-oriented JavaScript. But if you are already a more advanced web developer and have been itching to learn React, this is your opportunity.</dd>
+
+</dl>
+</div>
+    	 <div>
+            <h2>Submit your attempt</h2>
+            <p>Your attempt will be graded using the following rubric:</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Weight</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="ng-binding">Creating Reviews</td>
+                        <td class="ng-binding">25%</td>
+                        <td class="ng-binding">Is the application able to create new product reviews using the described UI and save those reviews to Parse?</td>
+                    </tr>
+                    <tr>
+                        <td class="ng-binding">Displaying Reviews</td>
+                        <td class="ng-binding">25%</td>
+                        <td class="ng-binding">Does the application fetch reviews from a Parse database and display them to the user?  Is the helpfulness of the review displayed?  Is the average review rating displayed alongside the product information?</td>
+                    </tr>
+                    <tr>  
+                        <td class="ng-binding">Review Interaction</td>
+                        <td class="ng-binding">25%</td>
+                        <td class="ng-binding">Are users able to vote on review helpfulness and delete reviews?</td>
+                    </tr>
+                    <tr>
+                        <td class="ng-binding">User Experience</td>
+                        <td class="ng-binding">25%</td>
+                        <td class="ng-binding">Is sufficient product information provided? Is the layout clean and easy to use? Does the application work well on a mobile device?   </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="section" class="ng-scope">
+            	<a target="_blank" href="https://canvas.uw.edu/courses/990525/assignments/2974076"><button type="button" class="btn btn-success">Submit</button></a>
+            </div>
+            
+        </div>
+    </div>
+
+</main></div>
+	</main>
+	<footer>
+		<div id="footer-background">
+		</div>
+		<div class="copyright">
+           © 2015,
+            <a target="_blank" href="https://ischool.uw.edu/people/faculty/mikefree">Michael Freeman</a>,
+            <a target="_blank" href="https://ischool.uw.edu/">University of Washington Information School</a><p></p>                        
+        </div>
+	</footer>
+	<script>
+		// Blur buttons on click
+		$('button').on('click', function() {$(this).blur()})
+	</script>	
+
 </div>

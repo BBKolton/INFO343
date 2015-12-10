@@ -1,3 +1,183 @@
 <div class="container">
-	<h1>Challenge Three</h1>
+    <h1>Challenge Three</h1>
+
+    <h2><a ng-href="#c/challenges" href='/index.html#/challenges'>← Back to challenges</a></h2>
+        <div>
+            <img class="landing-icon" src="../img/challenge3/landing-icon.png">
+        </div>
+        <h1 class="challenge-title ng-binding">Mapping police shootings with Leaflet.js</h1>
+        <h3 class="challenge-subtitle ng-binding">Due: 10/20/15 <span style="text-decoration:underline">before</span> class, 300 points</h3>
+    	<!-- ngInclude: 'challenges/' + currentChallengeId + '.html' --><div class="challenge-description ng-scope" ng-include="'challenges/' + currentChallengeId + '.html'"><h2 class="ng-scope">Summary</h2>
+
+<p class="ng-scope">Web development skills don't just allow you to create slick web pages -- they enable you to communicate important information to broad audiences.  In this exercise, you'll create an interactive map of the crowdsourced police shootings <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202" target="_blank">data</a>  that was <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202" target="_blank">crowdsourced from Deadspin</a> last fall.  This project will challenge you to stretch your functional programming skills, as well as independently learn a new library, so I suggest getting started early.</p>
+
+<p class="ng-scope"></p>
+
+<h2 class="ng-scope">Objectives</h2>
+<p class="ng-scope">By completing this challenge, you will practice and demonstrate mastery of the following skills:</p>
+
+<ul class="ng-scope">
+    <li>Cloning a GitHub repository</li>
+    <li>Requesting data using an AJAX call</li>
+    <li>Practice your data manipulation skills using JavaScript</li>
+    <li>Creating an interactive map using Leaflet.js</li>
+    <li>Deploy a web site to a web server using git</li>
+</ul>
+
+<h2 class="ng-scope">Resources</h2>
+
+<p class="ng-scope">Prior to this challenge, we'll cover the necessary JavaScript skills for data manipulation.  However, this challenge requires you to go out and learn how to use a new library (Leaflet.js).  The base repository has the necessary skeleton to get started, but you'll have to go out and learn the syntax for using the library.</p>
+
+<h3 class="ng-scope">Relevant Slides from Class</h3>
+
+<ul class="resources ng-scope">
+    <li class="resource slides"><a target="_blank" href="lectures/javascript">JavaScript</a></li>
+    <li class="resource slides"><a target="_blank" href="lectures/jquery">jQuery</a></li>
+
+</ul>
+
+<h3 class="ng-scope">Resources on the Web</h3>
+
+<ul class="resources ng-scope">
+    <li class="resource reading"><a target="_blank" href="http://leafletjs.com/">Leaflet.js</a></li>
+    <li class="resource reading"><a target="_blank" href="http://www.w3schools.com/jquery/ajax_ajax.asp">W3 Schools AJAX</a></li>
+</ul>
+<p class="ng-scope">To give you an idea of what you will build, here's a screenshot of one implementation (you may choose different colors, maptiles, layers, labels, etc.)</p><span class="ng-scope">.
+</span><p class="ng-scope"><img class="img-responsive screenshot" src="../img/challenge3/final.png" alt="Screenshot of page" style="border:1px solid black;padding:5px"></p>
+<h2 class="ng-scope">Required Steps</h2>
+
+<p class="ng-scope">This challenge begins by providing you with step by step instructions. This should get you started, but the core of this challenge is about working with data in JavaScript.  There are some hints below on how to use the Leaflet.js syntax, but you will be responsible for implementing these skills in a thoughtful way.  If you get stuck (beyond what Stackoverflow can help with), <a ng-href="mailto:kshino@uw.edu" href="mailto:kshino@uw.edu"> ask your TA,</a> or <a href="mailto:mikefree@uw.edu">ask Mike</a>.</p>
+
+<h3 class="ng-scope">Set up: Fork and Clone the Repo, Run a Server</h3>
+
+<p class="ng-scope">You should now be comfortable forking and cloning a repository using Gitub. The following repository contains file stubs and the various assets you will need to complete the challenge.</p>
+
+<ol class="steps ng-scope">
+    <li>Go to my <a target="_blank" href="https://github.com/mkfreeman/police-shooting">Police Shooting Repo</a> on GitHub</li>
+    <li>Click the "Fork" button located to the right of the repository name and follow any instructions you might receive<br> 
+        <img class="img-responsive screenshot" src="../img/challenge3/fork-button.png" alt="fork button on GitHub">
+    </li>
+    <li>In <strong>your forked repository on GitHub</strong> (not my original one), click the copy button next to the HTTPS clone URL to copy that URL to your clipboard <br>
+        <img class="img-responsive screenshot" src="../img/challenge3/copy-clone-url.png" alt="copy clone url screenshot">
+    </li>
+    <li>Clone the repository to your local machine, just like you've done before.</li>
+    <li>On your local machine's terminal, <code>cd</code> into your repository, and start running a local server by typing in <code>python -m SimpleHTTPServer 8080</code>.  You can then open your project in your web browser at <code>localhost:8080</code>.  For more details, see this <a href="http://faculty.washington.edu/mikefree/info343/lectures/html-css/#/20" target="_blank">slide</a> or search the web.</li>
+</ol>
+
+<p class="alert alert-warning ng-scope">Note, you <strong>will not</strong> be able to read in your data without running a local server, as explained in step 5.</p>
+<h3 class="ng-scope">Create a map</h3>
+
+<p class="ng-scope">Your <code>index.html</code> file already has all of the necessary libraries and files included for you to begin building your map.  However, it does not actually call the function that will build your map.  Inside of the <code>&lt;script&gt;</code> tag of your <code>index.html</code> file, call the function that draws your map.
+    </p><pre class="ng-scope language-html" data-language="Html"><code class=" language-html"><span class="token script language-javascript"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a class="token tag-id" href="http://docs.webplatform.org/script" target="_blank">script</a></span><span class="token punctuation">&gt;</span></span><span class="token lf">
+</span>    <span class="token function">drawMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token lf">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><a class="token tag-id" href="http://docs.webplatform.org/script" target="_blank">script</a></span><span class="token punctuation">&gt;</span></span></span></code>
+</pre>
+<p class="ng-scope"></p>
+
+
+<p class="ng-scope">In your <code>map.js</code> file, there are three empty functions already waiting for you.  In the first function, <code>drawMap</code>, you'll actually add the map to your page.  Many web-maps (like the one your create), are actually comprised of small image files called <a href="https://www.mapbox.com/guides/how-web-maps-work/" target="_blank">maptiles</a> that are stitched together. <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> is a tile service that doesn't require you to create an account, though the tiles from <a href="https://www.mapbox.com/developers/" target="_blank">Mapbox</a> are a little nicer looking (both are free to use).  
+
+</p><p class="ng-scope">To create your map, follow these steps:
+</p><ol class="ng-scope">
+    <li>Create a <code>map</code> variable, and use the <code>setView</code> method to define how the map is centered and zoomed (you'll need to determine the appropriate positioning)</li>
+    <pre class=" language-javascript" data-language="JavaScript"><code class=" language-javascript"><span class="token keyword keyword-var">var</span> map <span class="token operator">=</span> L<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token string">'your-div-container-name'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setView</span><span class="token punctuation">(</span><span class="token punctuation">[</span>latitude<span class="token punctuation">,</span> longitude<span class="token punctuation">]</span><span class="token punctuation">,</span> zoom<span class="token punctuation">)</span></code></pre>
+    <li>Create a tile-layer, and add it to your map.  This tells the Leaflet library where the maptiles are coming from (this is the syntax for OpenStreetMap).</li>
+    <pre class=" language-javascript" data-language="JavaScript"><code class=" language-javascript"><span class="token keyword keyword-var">var</span> layer <span class="token operator">=</span> L<span class="token punctuation">.</span><span class="token function">tileLayer</span><span class="token punctuation">(</span><span class="token string">'http://{s}.tile.osm.org/{z}/{x}/{y}.png'</span><span class="token punctuation">)</span></code></pre>
+    <li>Then, simply add your tile layer to your map.</li>
+    <pre class=" language-javascript" data-language="JavaScript"><code class=" language-javascript">layer<span class="token punctuation">.</span><span class="token function">addTo</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span></code></pre>
+</ol><span class="ng-scope">
+Once you've completed this step, your maptiles (i.e., a blank map) should appear within the container div on your page.</span><p class="ng-scope"></p>
+
+<h3 class="ng-scope">Get your data</h3>
+<p class="ng-scope">At the end of your <code>drawMap</code> function, you should call your  <code>getData</code> function. In the <code>getData</code> function, you should write a jQuery <a href="https://api.jquery.com/jquery.get/" target="_blank">AJAX request</a> that gets data from the (local) file <code>data/response.json</code>, which contains an array of objects, one for each shooting incident.  When the AJAX request is successful, you should call the third function, <code>customBuild</code>. 
+</p>
+
+<p class="alert alert-warning ng-scope">Note, the <code>customBuild</code> function must be called after the AJAX call has completed successfully.  This is because of the asynchronous nature of the request (i.e., your JavaScript code would keep running before the data was returned if you just wrote it in line).</p>
+
+
+<h3 class="ng-scope">Add points to your map</h3>
+
+<p class="ng-scope">This is the core part of this challenge, in which you'll need to do the following:
+
+</p><ul class="ng-scope">
+    <li>Create multiple <a href="http://leafletjs.com/examples/layers-control.html" target="_blank">LayerGroups</a> based on the data.  For example, I created a different LayerGroup for each race in the dataset (hint: <code class=" language-javascript"><span class="token keyword keyword-var">var</span> layerName <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">L<span class="token punctuation">.</span>LayerGroup</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code>)</li>
+    <li>Create a circle for each data point (hint: <code class=" language-javascript"><span class="token keyword keyword-var">var</span> circle <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">L<span class="token punctuation">.</span>circleMarker</span><span class="token punctuation">(</span><span class="token punctuation">[</span>latitude<span class="token punctuation">,</span> longitude<span class="token punctuation">]</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span></code>)</li>
+    <li>Add each data point to the appropriate layer (<b>not</b> directly to the map). (hint: <code class=" language-javascript">circle<span class="token punctuation">.</span><span class="token function">addTo</span><span class="token punctuation">(</span>layer<span class="token punctuation">)</span></code>)</li>
+    <li>Manipulate the appearance (size, color) of each circle based on it's data (I used whether or not the victim was killed to change color).</li>
+    <li>Add hover text to each data point based on its description (hint: <code class=" language-javascript">circle<span class="token punctuation">.</span><span class="token function">bindPopup</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span></code>)</li>
+</ul><span class="ng-scope">
+In order to add points to your map, you'll need to loop through your data, and perform the above steps in thoughtful ways.  For example, think about how to efficiently create new layers for each group (i.e., race) without looping through the data multiple times.</span><p class="ng-scope"></p>
+
+<p class="ng-scope">After adding all points to your layers, you'll need to add those layers to the map in order to view them (same syntax as adding the tile layer).  Finally, in order to add the ability to control the visibility of layers, use the following syntax:
+</p><pre class="ng-scope language-javascript" data-language="JavaScript"><code class=" language-javascript">L<span class="token punctuation">.</span>control<span class="token punctuation">.</span><span class="token function">layers</span><span class="token punctuation">(</span><span class="token keyword keyword-null">null</span><span class="token punctuation">,</span>layers<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addTo</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span></code></pre><span class="ng-scope">
+
+Leaflet expects the </span><code class="ng-scope">layers</code><span class="ng-scope"> variable above to be an object with key-value pairs of layer names and layer objects. See the tutorial example </span><a href="http://leafletjs.com/examples/layers-control.html" target="_blank" class="ng-scope">here</a><span class="ng-scope"> for reference.  This will create the control button in the top-right of your map.</span><p class="ng-scope"></p>
+
+<h3 class="ng-scope">Build a Cross-Tabulation</h3>
+<p class="ng-scope">This part of the challenge requires you to demonstrate strong data manipulation skills.  Computing aggregate information from your data is a common task built into project requirements. While working with your data, you should compute total counts for 4 categories of your choice, and present them in a cross tabulation as seen here:</p>
+
+<img class="img-responsive screenshot ng-scope" src="../img/challenge3/cross-tab.png" alt="Screenshot of page" style="width:90%;border:1px solid black;margin:10px">
+
+<p class="ng-scope">Feel free to choose any groupings (i.e., gender, race, outcome, etc.) to present in the table.  There are no specific steps for you to follow here.  Think carefully about how to use objects to track data, and use jQuery to create the proper <a href="http://www.w3schools.com/html/html_tables.asp" target="_blank">table</a> elements.  And don't forget to add some nice <a href="http://getbootstrap.com/css/#tables" target="_blank">bootstrap classes</a>!</p>
+
+<h3 class="ng-scope">Additional information</h3>
+
+
+<p class="ng-scope">Showcasing sensitive data requires that you properly introduce the topic and site your sources.  In addition to creating your map, your submitted webpage should include the following:
+    </p><ul class="ng-scope">
+        <li>A description of what the map is showing</li>
+        <li>A link to the original data source</li>
+        <li>Any other information that you believe helps contextualize your project</li>
+    </ul>
+<p class="ng-scope"></p></div>
+    	 <div>
+            <h2>Submit your attempt</h2>
+            <p>Your attempt will be graded using the following rubric:</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Weight</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                        <td class="ng-binding">Map Completeness</td>
+                        <td class="ng-binding">40%</td>
+                        <td class="ng-binding">Did the student create a map with multiple layers and varying visual features (i.e., size and color of points)?  </td>
+                    </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                        <td class="ng-binding">Cross-tabulation</td>
+                        <td class="ng-binding">20%</td>
+                        <td class="ng-binding">Was the student able to create and populate the described cross-tabulation?</td>
+                    </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                        <td class="ng-binding">Implementation</td>
+                        <td class="ng-binding">20%</td>
+                        <td class="ng-binding">How well-written is the code? Does the student efficiently loop through data to create different features (i.e., layers and points)?</td>
+                    </tr><!-- end ngRepeat: crit in currentRubric --><tr ng-repeat="crit in currentRubric" class="ng-scope">
+                        <td class="ng-binding">User Experience</td>
+                        <td class="ng-binding">20%</td>
+                        <td class="ng-binding">Did the student pay sufficient attention to elements of user experience (page layout, colors used, etc.)?  Is sufficient background information provided?</td>
+                    </tr><!-- end ngRepeat: crit in currentRubric -->
+                </tbody>
+            </table>
+            <!-- ngIf: section --><div ng-if="section" class="ng-scope">
+            	<a target="_blank" href="https://canvas.uw.edu/courses/990525/assignments/2974080"><button type="button" class="btn btn-success">Submit</button></a>
+            </div><!-- end ngIf: section -->
+            
+        </div>
+    </div><!-- end ngIf: currentChallengeId -->
+
+</main></div>
+	</main>
+	<footer>
+		<div id="footer-background">
+		</div>
+		<div class="copyright">
+           © 2015,
+            <a target="_blank" href="https://ischool.uw.edu/people/faculty/mikefree">Michael Freeman</a>,
+            <a target="_blank" href="https://ischool.uw.edu/">University of Washington Information School</a><p></p>                        
+        </div>
+	</footer>
 </div>
