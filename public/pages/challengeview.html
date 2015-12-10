@@ -5,7 +5,7 @@
 	</div>
 	<div class='col-md-4'>
 		<div class='checklist' id='checklist'>
-			<h3>Checklist</h3>
+			<h3>CHECKLIST</h3>
 			
 			<table class='table table-striped'>
 				<tr ng-repeat='item in items'>
@@ -17,19 +17,18 @@
 				</tr>
 			</table>
 
-			<h3>Top Post</h3>
+			<h3>TOP POST</h3>
 			<div class='challenge-top-post'>
 				<h4>{{topPost.title}}</h4>
-				<span class='votes'>
-					<span>{{topPost.votes}} </span>
-					<span class='glyphicon glyphicon-arrow-up'></span>
-				</span>&nbsp;
-					<!--
-					<span style="color: red">MAKE THIS PRETTY LIKE THE BOARDS, ADD BUTTONS AND SHIT IDK, MAKE THE LAST CHECKLIST ITEM NOT EH SAME COLOR AS THIS BACKGROUND?? IM TIRED -Brucey</span>
-					-->
-				<p><b>by {{topPost.netId}}</b></p>
+				<p>
+					<span class='votes'>
+						<span>{{topPost.votes}} </span>
+						<span class='glyphicon glyphicon-arrow-up'></span>
+					</span>&nbsp;
+					<b>by {{topPost.netId}}</b>
+				</p>
 				<p>{{topPost.text}}</p>
-				<p><a href='index.html#/board/{{topPost.challenge}}'>Join the discussion!<button class='btn btn-primary' id='challengesMessageBoard'><i class="fa fa-weixin"></i></button></a></p>
+				<p><a href='index.html#/board/{{topPost.challenge}}'><button class='btn btn-xs btn-primary' id='challengesMessageBoard'><i class="fa fa-weixin"></i></button>&nbsp;Join the discussion!</a></p>
 			</div>
 
 		</div>
