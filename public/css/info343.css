@@ -90,6 +90,16 @@ h3 {
 	text-align: center;
 }
 
+#challengeTitle {
+	padding: 0px;
+	font-size: 35px;
+	color: rgb(128,0,128);
+}
+
+#challengeDue {
+	color: rgb(220,20,60);
+}
+
 .challenge-top-post {
 	margin-left: 10px;
 	margin-right: 10px;
