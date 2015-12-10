@@ -103,19 +103,35 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		$scope.items = items;
 	})
 
-	$http.get(ROOT_API + 'user').then(function(user) {
-		if (user.data.status != 2) {
-			$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
-				console.log(items);
-				items = items.data;
-				$scope.checked = {};
-				for (item in items) {
-					$scope.checked[items[item].id] = true;
-				}
-				console.log($scope.checked);
-			});
-		}
-	});
+	$scope.checkItem = function(placement) {
+		console.log("posting to: " + ROOT_API + 'checks/' + $stateParams.id + '/' + placement)
+		$http.post(ROOT_API + 'checks/' + $stateParams.id + '/' + placement).then(function() {
+			refreshChecks();
+		});
+	}
+	
+	$scope.loggedIn = false;
+	$scope.checked = {};
+
+	refreshChecks();
+
+	function refreshChecks() {
+		$http.get(ROOT_API + 'user').then(function(user) {
+			if (user.data.status != 2) {
+				$scope.loggedIn = true;
+				$http.get(ROOT_API + 'checks/' + $stateParams.id).then(function(items) {
+					console.log(items);
+					items = items.data;
+					$scope.checked = {};
+					for (item in items) {
+						$scope.checked[items[item].listNumber] = true;
+					}
+					console.log($scope.checked)
+				});
+			}
+		});
+	}
+
 })
 
 

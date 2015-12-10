@@ -13,15 +13,18 @@ router.post('/api/checks/:challenge/:number', shib.ensureAuth('/shib'), function
 	db.checks.find({
 		where: {
 			netId: req.user.netId,
-			challenge: req.params.challenge
+			challenge: req.params.challenge,
+			listNumber: req.params.number
 		}
 	}).then(function(check) {
 		if (!check) {
-			db.create({
+			db.checks.create({
 				netId: req.user.netId,
 				challenge: req.params.challenge,
 				listNumber: req.params.number
 			});
+		} else {
+			check.destroy();
 		}
 		res.json({status: 1});
 	});
@@ -30,7 +33,8 @@ router.post('/api/checks/:challenge/:number', shib.ensureAuth('/shib'), function
 router.get('/api/checks/:challenge', shib.ensureAuth('/shib'), function(req, res) {
 	db.checks.findAll({
 		where: {
-			netId: req.user.netId
+			netId: req.user.netId,
+			challenge: req.params.challenge
 		}
 	}).then(function(checks) {
 		res.json(checks);
