@@ -25,7 +25,7 @@ h3 {
 #homeTitle {
 	font-size: 25px;
 	font-weight: 100;
-	padding: 0px;
+	padding-bottom: 1em;
 	margin: 0px;
 	text-align: center;
 }
@@ -39,8 +39,11 @@ h3 {
 #classInfo {
 	margin-bottom: 50px;
 }
+
 #upcoming {
 	margin-top: 50px;
+	padding-left: 5em;
+	padding-right: 5em;
 }
 /* Home */
 
@@ -57,7 +60,8 @@ h3 {
 	padding: 5em;
 }
 
-#dueDate {
+
+
 }#messageIcon {
 	text-align: center;
 }

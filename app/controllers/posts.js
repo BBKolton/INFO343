@@ -11,16 +11,28 @@ module.exports = function(app) {
 //get all posts of a challenge
 router.get('/api/posts/:challenge', function(req, res) {
 	db.sequelize.query("SELECT p.id, p.netId, p.parent, p.challenge, p.title, p.text, count(v.post) as votes " +
-	                "FROM posts p " +
-	                "LEFT JOIN votes v ON p.id = v.post " +
-	                "WHERE p.challenge = ?" + 
-	                "GROUP BY p.id, v.post ", {replacements: [req.params.challenge]})
+	                   "FROM posts p " +
+	                   "LEFT JOIN votes v ON p.id = v.post " +
+	                   "WHERE p.challenge = ?" + 
+	                   "GROUP BY p.id, v.post ", {replacements: [req.params.challenge]})
 	.then(function(posts) {
 		res.json(posts)
 	})
 });
 
 
+router.get('/api/posts/:challenge/top', function(req, res) {
+	db.sequelize.query("SELECT p.id, p.netId, p.title, p.text, count(v.post) as votes " +
+                     "FROM posts p " +
+                     "LEFT JOIN votes v on p.id = v.post " +
+                     "WHERE p.challenge = ? " +
+                     "GROUP BY p.id, v.post " +
+                     "ORDER BY count(v.post) DESC " +
+                     "LIMIT 1", {replacements: [req.params.challenge]})
+	.then(function(post) {
+		res.json(post);
+	})
+})
 
 
 //write a new post to an existing thread

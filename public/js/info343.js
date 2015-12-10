@@ -47,7 +47,7 @@ mainApp.config(function($stateProvider) {
 	})
 });
 
-mainApp.controller('homeCtrl', function($scope, $http) {
+mainApp.controller('homeCtrl', function($scope, $http, $sce) {
 
 	//takes only the events that are 7 days ahead of the current date.
 	function pruneEvent(list) {
@@ -61,10 +61,21 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 		return newList;
 	}
 
+	function evenlyFill(list, max) {
+		for (var i = list.length; i < max; i++) {
+			list.push({name: '\u00A0'});
+		}
+		return list;
+	}
+
     $http.get(CHALLENGE_URL).success(function(challenge_result){
 		$http.get(LECTURE_URL).success(function(lecture_result){
-			$scope.challengeList = pruneEvent(challenge_result);
-			$scope.lectureList = pruneEvent(lecture_result);
+			var prunedChallenge = pruneEvent(challenge_result);
+			var prunedLecture = pruneEvent(lecture_result);
+			var max = Math.max(prunedChallenge.length, prunedLecture.length);
+
+			$scope.challengeList = evenlyFill(prunedChallenge, max);
+			$scope.lectureList = evenlyFill(prunedLecture, max);
 
 			var weekView = calendarFeature(challenge_result, lecture_result);
 			weekView.fullCalendar('changeView', 'basicWeek');
@@ -108,15 +119,19 @@ mainApp.controller('homeCtrl', function($scope, $http) {
 .controller('challengeViewCtrl', function($scope, $sce, $http, $stateParams) {
 	//get teh challenge
 	$http.get('pages/challenges/' + $stateParams.id + '.html').success(function(result) {
-		//console.log(result);
 		$scope.challenge = $sce.trustAsHtml(result);
 	})
 
 	//get eh challenbge checklist
 	$http.get(ROOT_API + 'items/' + $stateParams.id).then(function(items) {
 		items = items.data;
-		console.log(items);
+		//console.log(items);
 		$scope.items = items;
+	})
+
+	$http.get(ROOT_API + 'posts/' + $stateParams.id + '/top').then(function(post) {
+		$scope.topPost = post.data[0][0];
+		//console.log($scope.topPost);
 	})
 
 	$scope.checkItem = function(placement) {
